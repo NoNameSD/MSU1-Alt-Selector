@@ -98,8 +98,7 @@ Public Class MsuSettingsControl
         RaiseEvent AppliedChanges(Me, Nothing)
     End Sub
 
-    Private Sub Form_AppliedChanges(sender As Object, e As EventArgs)
-        Me.Dirty = False
+    Private Sub Form_AppliedChanges(sender As Object, e As EventArgs) Handles Me.AppliedChanges
         Call Me.SettingsToEdit.SaveToJson()
     End Sub
 
