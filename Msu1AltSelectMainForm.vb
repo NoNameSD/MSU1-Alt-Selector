@@ -1675,7 +1675,15 @@ searchPattern:="*.msu",
 #End If
 
     Private Sub lstvAltTracks_ItemChecked(sender As Object, e As ItemCheckedEventArgs) Handles lstvAltTracks.ItemChecked
+        Static checkInProgress As Boolean = False
+
+        If checkInProgress Then
+            Return ' Prevents nested execution
+        End If
         If _FillingAltTrackList Then Return
+
+        checkInProgress = True
+
         Dim ItemCheck = e.Item
         Dim ItemCheckTrackAltNumber As UInt16 = CUShort(ItemCheck.Group.Name)
 
@@ -1692,6 +1700,7 @@ searchPattern:="*.msu",
                 Me.TrackAltIdMarkedAsCurrent = ItemCheckTrackAltNumber
             End If
         End If
+        checkInProgress = False
     End Sub
 
     Private Sub grpMsuTracks_DragDrop(sender As Object, e As DragEventArgs) Handles grpMsuTracks.DragDrop
