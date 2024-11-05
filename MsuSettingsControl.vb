@@ -99,6 +99,7 @@ Public Class MsuSettingsControl
     End Sub
 
     Private Sub Form_AppliedChanges(sender As Object, e As EventArgs) Handles Me.AppliedChanges
+        Me.Dirty = False
         Call Me.SettingsToEdit.SaveToJson()
     End Sub
 
