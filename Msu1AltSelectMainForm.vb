@@ -339,7 +339,7 @@ Public Class Msu1AltSelectMainForm
             End If
 
             ' Track not found or null value given
-            ' Remove selection
+            ' Unselect all
             Call RemoveTrackSelection()
         End Set
     End Property
@@ -398,12 +398,6 @@ Public Class Msu1AltSelectMainForm
             Return Nothing
         End Get
         Set(trackAltIdToSelect As Nullable(Of System.UInt16))
-            Dim trackIdSelected As Nullable(Of Byte) = Me.TrackIdSelected
-            If trackIdSelected Is Nothing Then
-                Call RemoveAltTrackSelection()
-                Return
-            End If
-
             Dim selectedItems As ListView.SelectedListViewItemCollection = lstvAltTracks.SelectedItems
 
             ' If no alt. Track is selected
@@ -441,11 +435,12 @@ Public Class Msu1AltSelectMainForm
                         Return
                     End If
                 Next
+            Else
+                ' alt. Track not found or null value given
+                ' Unselect all
+                Call Me.RemoveAltTrackSelection()
             End If
 
-            ' alt. Track not found or null value given
-            ' Remove selection
-            Call RemoveAltTrackSelection()
         End Set
     End Property
 
@@ -481,46 +476,33 @@ Public Class Msu1AltSelectMainForm
     ''' </returns>
     Public Property TrackAltIdMarkedAsCurrent As Nullable(Of System.UInt16)
         Get
-            Dim trackIdSelectedN As Nullable(Of Byte) = Me.TrackIdSelected
+            Dim checkedItems As ListView.CheckedListViewItemCollection = lstvAltTracks.CheckedItems
 
-            If trackIdSelectedN.HasValue Then
-
-                Dim checkedItems As ListView.CheckedListViewItemCollection = lstvAltTracks.CheckedItems
-
-                If checkedItems.Count = MsuHelper.ZeroByte Then
-                    Return Nothing
-                End If
-
-                Dim checkedItem As ListViewItem = checkedItems.Item(0)
-
-                Dim trackAltNumber As String = checkedItem.Group.Name
-                Return CUShort(trackAltNumber)
+            If checkedItems.Count = MsuHelper.ZeroByte Then
+                Return Nothing
             End If
 
-            Return Nothing
+            Dim checkedItem As ListViewItem = checkedItems.Item(0)
+
+            Dim trackAltNumber As String = checkedItem.Group.Name
+            Return CUShort(trackAltNumber)
         End Get
-        Set(value As Nullable(Of System.UInt16))
-            Dim trackIdSelectedN As Nullable(Of Byte) = Me.TrackIdSelected
-            If trackIdSelectedN Is Nothing Then
-                Call RemoveAltTrackSelection()
-                Return
-            End If
-
+        Set(trackAltIdToMark As Nullable(Of System.UInt16))
             Dim checkedItems As ListView.CheckedListViewItemCollection = lstvAltTracks.CheckedItems
 
             ' If no alt. Track is selected
             If checkedItems.Count = MsuHelper.ZeroByte Then
                 ' No Item to select
-                If value.HasValue Then
+                If trackAltIdToMark.HasValue Then
                 Else
                     Return ' No change
                 End If
             End If
 
             ' Given value is not null
-            If value.HasValue Then
+            If trackAltIdToMark.HasValue Then
 
-                Dim newValue As System.UInt16 = CUShort(value)
+                Dim newValue As System.UInt16 = CUShort(trackAltIdToMark)
 
                 Dim trackAltNumberStr As String
                 Dim trackAltNumber As System.UInt16
@@ -533,11 +515,12 @@ Public Class Msu1AltSelectMainForm
 
                     listViewItem.Checked = trackAltNumber = newValue
                 Next
+            Else
+                ' null value given
+                ' uncheck all
+                Call Me.RemoveAltTrackMarkedAsCurrent()
             End If
 
-            ' alt. Track not found or null value given
-            ' Remove selection
-            Call RemoveAltTrackSelection()
         End Set
     End Property
 
@@ -550,6 +533,12 @@ Public Class Msu1AltSelectMainForm
     Private Sub RemoveAltTrackSelection()
         For Each selectedItems As ListViewItem In lstvAltTracks.SelectedItems
             selectedItems.Selected = False
+        Next
+    End Sub
+
+    Private Sub RemoveAltTrackMarkedAsCurrent()
+        For Each checkedItems As ListViewItem In lstvAltTracks.CheckedItems
+            checkedItems.Checked = False
         Next
     End Sub
 
