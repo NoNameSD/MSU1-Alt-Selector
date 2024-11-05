@@ -1073,13 +1073,28 @@ searchPattern:="*.msu",
 
     Private Sub btnConvertPcm_Click(sender As Object, e As EventArgs) Handles btnConvertPcm.Click
         If Me.MsuTracks Is Nothing Then Return
+        Dim i As Byte
 
-        If String.IsNullOrWhiteSpace(Me.Settings.AudioConversionSettings.MsuPcmPath) OrElse (Not System.IO.File.Exists(Me.Settings.AudioConversionSettings.MsuPcmPath)) Then
+        If String.IsNullOrWhiteSpace(Me.Settings.AudioConversionSettings.MsuPcmPath) Then
+            i = 1 ' MSUPCM++ path empty in settings
+        ElseIf Not System.IO.File.Exists(Me.Settings.AudioConversionSettings.MsuPcmPath) Then
+            i = 2 ' MSUPCM++ path invalid in settings
+        End If
+
+        If i <> 0 Then
+            Dim sErrTxt As String
+
+            If i = 1 Then ' MSUPCM++ path empty in settings
+                sErrTxt = $"MSUPCM++ is needed to convert the PCM files."
+            Else ' i = 2  ' MSUPCM++ path invalid in settings
+                sErrTxt = $"MSUPCM++ location ""{Me.Settings.AudioConversionSettings.MsuPcmPath}"" is invalid."
+            End If
+
+            sErrTxt += $"{System.Environment.NewLine}Please select the location in the settings."
 
             Call System.Windows.Forms.MessageBox.Show(
                     owner:=Me,
-                    text:=
-                        $"MSUPCM++ is needed to convert the PCM files.{System.Environment.NewLine}Please select the location in the settings.",
+                    text:=sErrTxt,
                     caption:="MSUPCM++ needed",
                     buttons:=MessageBoxButtons.OK,
                     icon:=MessageBoxIcon.Asterisk
