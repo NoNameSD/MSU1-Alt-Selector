@@ -179,13 +179,6 @@ Public Class Msu1AltSelectMainForm
                     Me.JsonFilePath = jsonFilePath
                 End If
         End Select
-
-        If Me.MsuTracks IsNot Nothing Then
-            If Me.Settings.TrackAltSettings.AutoSetAutoSwitch Then
-                Me.EnableAutoSwitch = Me.MsuTracks.HasAltTracksWithAutoSwitch
-            End If
-            Call Me.CheckForNormalTrackVersion()
-        End If
     End Sub
 
     Private Sub ScanNewMsuFolder(ByRef msuFilePath As String, e As System.ComponentModel.CancelEventArgs)
@@ -212,14 +205,31 @@ Public Class Msu1AltSelectMainForm
         Try
             Dim msuTracks = Msu.Tracks.MsuTracks.LoadFromJson(jsonFilePath, Me.Logger, Me.Settings)
             Me.JsonFilePath = jsonFilePath
-            Me.MsuTracks = msuTracks
+            Call LoadFromJson(msuTracks, e)
+        Catch ex As Exception
+            Call Me.Logger.AddToLog(ex.ToString, entryColor:=Drawing.Color.Red)
+            Call MsuExceptionDisplay.DisplayExceptionAsMessageBox(owner:=Me, ex:=ex)
+            Call DisposeMsuTracksObj()
+            If e IsNot Nothing Then e.Cancel = True
+            Return
+        End Try
+    End Sub
+
+    Private Sub LoadFromJson(ByRef parsedJsonData As MsuTracks)
+        Call LoadFromJson(parsedJsonData, Nothing)
+    End Sub
+
+    Private Sub LoadFromJson(ByRef parsedJsonData As MsuTracks, e As System.ComponentModel.CancelEventArgs)
+        Call DisposeMsuTracksObj()
+
+        Try
+            Me.MsuTracks = parsedJsonData
             Me.txtPathMsu.Text = Me.MsuTracks.MsuFilePath
             If Me.Settings.TrackAltSettings.AutoSetDisplayOnlyTracksWithAlts Then Call Me.DisplayOnlyTracksWithAltsAutoCheck()
             Call FillTrackList()
         Catch ex As Exception
             Call Me.Logger.AddToLog(ex.ToString, entryColor:=Drawing.Color.Red)
             Call MsuExceptionDisplay.DisplayExceptionAsMessageBox(owner:=Me, ex:=ex)
-            Call DisposeMsuTracksObj()
             If e IsNot Nothing Then e.Cancel = True
             Return
         End Try
@@ -232,6 +242,11 @@ Public Class Msu1AltSelectMainForm
             Call Me.Logger.AddToLog(ex.ToString, entryColor:=Drawing.Color.Red)
             Call MsuExceptionDisplay.DisplayExceptionAsMessageBox(owner:=Me, ex:=ex)
         End Try
+
+        If Me.Settings.TrackAltSettings.AutoSetAutoSwitch Then
+            Me.EnableAutoSwitch = Me.MsuTracks.HasAltTracksWithAutoSwitch
+        End If
+        Call Me.CheckForNormalTrackVersion()
     End Sub
 
     ''' <summary>
@@ -799,6 +814,11 @@ Public Class Msu1AltSelectMainForm
 
         If Me.MsuTracks IsNot Nothing Then Call Me.FillTrackList()
 
+        ' Set MSU File Path in the display text box again
+        ' in case the path was changed manually in the settings
+        Me.txtPathMsu.Text = Me.MsuTracks.MsuFilePath
+        Call Me.SetToolTips()
+
         If Me.Settings IsNot Nothing AndAlso maxLoggerEntriesSave <> Me.Settings.LoggerSettings.MaxEntries Then
             Me.Logger.MaxEntries = Me.Settings.LoggerSettings.MaxEntries
             Me.nudLogEntries.Value = Me.Logger.MaxEntries
@@ -922,8 +942,6 @@ Public Class Msu1AltSelectMainForm
             My.Application.Info.ProductName,
             String.Concat(My.Application.Info.Version.Major, "."c, My.Application.Info.Version.Minor, "."c, My.Application.Info.Version.Revision))
 
-        Call Me.SetToolTips()
-
         Call Me.MsuTracksConfigLoadStateUpdate()
 
         Me.EnableAutoSwitch = False
@@ -942,6 +960,8 @@ Public Class Msu1AltSelectMainForm
         Me.nudLogEntries.Value = objLogger.MaxEntries
 
         Call FindAndLoadMsu()
+
+        Call Me.SetToolTips()
 
         Me.Logger.AddToLog(text:="Program started", entryColor:=Drawing.Color.FromArgb(1, 1, 1))
     End Sub
@@ -981,16 +1001,21 @@ Public Class Msu1AltSelectMainForm
                     Continue For
                 End If
 
-                Call MsuConfig.ValidateMsuTrackPaths()
+                Dim e As New System.ComponentModel.CancelEventArgs
 
                 MsuConfig.Logger = Me.Logger
 
-                Me.MsuTracks = MsuConfig
+                Call Me.LoadFromJson(parsedJsonData:=MsuConfig, e:=e)
+
+                If e.Cancel Then
+                    ' Loading failed
+                    Call MsuConfig.Dispose()
+                    jsonLoadError = True
+                    Continue For
+                End If
+                MsuConfig = Nothing
 
                 Me.JsonFilePath = JsonFile
-                Me.txtPathMsu.Text = Me.MsuTracks.MsuFilePath
-                If Me.Settings.TrackAltSettings.AutoSetDisplayOnlyTracksWithAlts Then Call Me.DisplayOnlyTracksWithAltsAutoCheck()
-                Call FillTrackList()
 
                 If isStartupPath Then
                     Call Me.Logger.AddToLog($"Loaded from MSU JsonConfig ""{System.IO.Path.GetFileName(JsonFile)}"" in startup path.")
