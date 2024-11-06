@@ -5,6 +5,8 @@ Imports System.IO
 
 Namespace Msu
     Public Module MsuHelper
+        Public Const IsDevelopmentVersion As Boolean = True
+
         Public Const BackSlashChar As Char = "\"c
         Public Const DotChar As Char = "."c
         Public Const HyphenChar As Char = "-"c
@@ -16,6 +18,24 @@ Namespace Msu
         <VBFixedString(5)> Public Const JsonExtL As String = DotChar & JsonL
         <VBFixedString(3)> Public Const PcmL As String = "pcm"
         <VBFixedString(4)> Public Const PcmExtL As String = DotChar & PcmL
+
+        Public Function GetHashOfSelf() As String
+            Dim oHash = System.Security.Cryptography.SHA1.Create
+            Dim sFilePath = System.Environment.ProcessPath
+
+            Dim fileStream =
+                New System.IO.FileStream(
+                    path:=sFilePath,
+                    access:=System.IO.FileAccess.Read,
+                    share:=System.IO.FileShare.ReadWrite Or IO.FileShare.Delete,
+                    mode:=System.IO.FileMode.Open)
+
+            Dim iHashBytes = oHash.ComputeHash(fileStream)
+
+            Call fileStream.Close()
+
+            Return Convert.ToBase64String(iHashBytes)
+        End Function
 
         <System.Runtime.InteropServices.DllImport("shell32.dll", CharSet:=System.Runtime.InteropServices.CharSet.Unicode)>
         Private Function FindExecutable _

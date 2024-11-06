@@ -925,12 +925,20 @@ Public Class Msu1AltSelectMainForm
     End Sub
 
     Private Sub Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        MyBase.Text =
+
+        If Msu.MsuHelper.IsDevelopmentVersion Then
+            MyBase.Text =
+        String.Format(
+            "{0} (Dev {1})",
+            My.Application.Info.ProductName,
+            String.Concat(Msu.MsuHelper.GetHashOfSelf))
+        Else
+            MyBase.Text =
         String.Format(
             "{0} (Version {1})",
             My.Application.Info.ProductName,
             String.Concat(My.Application.Info.Version.Major, "."c, My.Application.Info.Version.Minor, "."c, My.Application.Info.Version.Revision))
-
+        End If
         Call Me.MsuTracksConfigLoadStateUpdate()
 
         Me.EnableAutoSwitch = False
