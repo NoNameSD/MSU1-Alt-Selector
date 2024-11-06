@@ -805,7 +805,7 @@ Public Class Msu1AltSelectMainForm
 
         ' Set MSU File Path in the display text box again
         ' in case the path was changed manually in the settings
-        Me.txtPathMsu.Text = Me.MsuTracks.MsuFilePath
+        If Me.MsuTracks IsNot Nothing Then Me.txtPathMsu.Text = Me.MsuTracks.MsuFilePath
         Call Me.SetToolTips()
 
         If Me.Settings IsNot Nothing AndAlso maxLoggerEntriesSave <> Me.Settings.LoggerSettings.MaxEntries Then
