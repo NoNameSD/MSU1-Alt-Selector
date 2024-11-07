@@ -104,6 +104,23 @@ Namespace Msu
             End Property
 
             ''' <summary>
+            ''' Attribute used in JSON configuration for creating PCM files using MSUPCM++<br/>
+            ''' </summary>
+#Disable Warning IDE0051 ' Remove unused private members
+            <Newtonsoft.Json.JsonProperty("output_prefix")>
+            Private WriteOnly Property OutputPrefixMSUPCM As String
+#Enable Warning IDE0051 ' Remove unused private members
+                Set(outputPref As String)
+                    If String.IsNullOrWhiteSpace(_PcmPrefix) Then
+                        _PcmPrefix = outputPref
+                    End If
+                    If String.IsNullOrWhiteSpace(Me.MsuName) Then
+                        Me.MsuName = outputPref
+                    End If
+                End Set
+            End Property
+
+            ''' <summary>
             ''' Array containing all Tracks
             ''' This Array is stored inside the Property <see cref="MsuTracks.TrackDict"/>
             ''' </summary>
