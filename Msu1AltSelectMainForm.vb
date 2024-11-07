@@ -256,6 +256,8 @@ Public Class Msu1AltSelectMainForm
         If _MsuTracks IsNot Nothing Then
             Call _MsuTracks.Dispose()
             Me.MsuTracks = Nothing
+            Call Me.lstvTracks.Items.Clear()
+            Call Me.lstvAltTracks.Items.Clear()
         End If
     End Sub
 
