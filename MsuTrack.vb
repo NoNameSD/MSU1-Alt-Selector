@@ -19,11 +19,13 @@ Namespace Msu
             <Newtonsoft.Json.JsonProperty("track_number")>
             Public MustOverride Property TrackNumber As Byte
 
+#Disable Warning CA1507 ' Use nameof to express symbol names
             ''' <summary>
             ''' Title / Name of the <see cref="MsuPcmFile"/>
             ''' </summary>
             <Newtonsoft.Json.JsonProperty("title")>
             Public MustOverride Property Title As String
+#Enable Warning CA1507 ' Use nameof to express symbol names
 
             ''' <summary>
             ''' BaseName of the PCM-Track
@@ -1560,7 +1562,7 @@ NextPath:
                 Call ArgumentNullException.ThrowIfNull(msuTracksConfig.Settings, NameOf(msuTracksConfig.Settings))
                 If String.IsNullOrWhiteSpace(msuTracksConfig.Settings.AudioConversionSettings.MsuPcmPath) _
                 OrElse (Not System.IO.File.Exists(msuTracksConfig.Settings.AudioConversionSettings.MsuPcmPath)) Then
-                    Throw New ArgumentNullException(NameOf(msuTracksConfig.Settings.AudioConversionSettings.MsuPcmPath))
+                    Throw New System.IO.FileNotFoundException("MCUPCM++ not found.", msuTracksConfig.Settings.AudioConversionSettings.MsuPcmPath)
                 End If
                 If keepProcessesOpen And processWindowStyle = ProcessWindowStyle.Hidden Then
                     Throw New ArgumentException($"The flag {NameOf(keepProcessesOpen)} cannot be set to true while the {NameOf(processWindowStyle)} is set to {processWindowStyle.ToString}")
@@ -1896,7 +1898,7 @@ NextPath:
 
                 Dim [return] =
                     WaitForMultipleObjects(
-                              nCount:=processesPtr.Count,
+                              nCount:=processesPtr.Length,
                            lpHandles:=processesPtr,
                       dwMilliseconds:=INFINITE,
                             fWaitAll:=True)
