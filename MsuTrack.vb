@@ -695,11 +695,18 @@ Namespace Msu
             ''' <exception cref="MsuAltTracksMultipleNotInSwapDirException"/>
             ''' <exception cref="MsuAltTracksAllInSwapDirException"/>
             Public Sub ValidateMsuTrackPaths()
-                If Me.TrackAltDict.Count = 1 Then
-                    ' No check needed for only one alt. Track Object
-                    ' No alt. Tracks exist, only the currently used version.
-                    Return
-                End If
+
+                Select Case Me.TrackAltDict.Count
+                    Case 0
+                        ' No alt. Track Object exists.
+                        ' At least one alt. Track Object is needed for the version currently in use.
+                        Call Me.AddPcmTrack(Me.Parent.GetAltLocationForMainTrackVersion(), Me.Parent.Settings.TrackAltSettings.MsuTrackMainVersionTitle)
+                    Case 1
+                        ' No check needed for only one alt. Track Object
+                        ' No alt. Tracks exist. Only the version currently in use exists.
+                        Return
+                End Select
+
                 Dim currentMsuTrackAlt As MsuTrackAlt
 
                 Try
