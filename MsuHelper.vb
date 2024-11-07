@@ -21,7 +21,11 @@ Namespace Msu
 
         Public Function GetHashOfSelf() As String
             Dim oHash = System.Security.Cryptography.SHA1.Create
-            Dim sFilePath = System.Environment.ProcessPath
+            Dim sFilePath = System.Reflection.Assembly.GetEntryAssembly().Location ' File of compiled dll
+
+            If String.IsNullOrEmpty(System.Environment.ProcessPath) Then
+                sFilePath = System.Environment.ProcessPath ' Path of exe
+            End If
 
             Dim fileStream =
                 New System.IO.FileStream(
