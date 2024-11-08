@@ -270,8 +270,9 @@ Public Class Msu1AltSelectMainForm
             If trackNumberN.HasValue Then
                 Dim trackNumber As Byte = CByte(trackNumberN)
 
-                If Me.MsuTracks.TrackDict.ContainsKey(trackNumber) Then
-                    Return Me.MsuTracks.TrackDict.Item(trackNumber)
+                Dim value As MsuTrack = Nothing
+                If Me.MsuTracks.TrackDict.TryGetValue(trackNumber, value) Then
+                    Return value
                 End If
             End If
 
@@ -357,9 +358,9 @@ Public Class Msu1AltSelectMainForm
             If trackIdSelected IsNot Nothing _
        AndAlso trackAltIdSelectedN.HasValue Then
 
-                Dim trackAltIdSelected = CUShort(trackAltIdSelectedN)
-                If trackIdSelected.TrackAltDict.ContainsKey(trackAltIdSelected) Then
-                    Return trackIdSelected.TrackAltDict.Item(trackAltIdSelected)
+                Dim value As MsuTrackAlt = Nothing
+                If trackIdSelected.TrackAltDict.TryGetValue(CUShort(trackAltIdSelectedN), value) Then
+                    Return value
                 End If
             End If
             Return Nothing
@@ -457,9 +458,9 @@ Public Class Msu1AltSelectMainForm
             If trackIdSelected IsNot Nothing _
        AndAlso trackAltIdMarkedAsCurrentN.HasValue Then
 
-                Dim trackAltIdMarkedAsCurrent = CUShort(trackAltIdMarkedAsCurrentN)
-                If trackIdSelected.TrackAltDict.ContainsKey(trackAltIdMarkedAsCurrent) Then
-                    Return trackIdSelected.TrackAltDict.Item(trackAltIdMarkedAsCurrent)
+                Dim value As MsuTrackAlt = Nothing
+                If trackIdSelected.TrackAltDict.TryGetValue(CUShort(trackAltIdMarkedAsCurrentN), value) Then
+                    Return value
                 End If
             End If
             Return Nothing
@@ -1200,11 +1201,7 @@ searchPattern:="*.msu",
     End Sub
 
     Private Sub DisableControls(ByRef Parent As Control, ByRef Controls As Control.ControlCollection)
-
-        If TemporarilyDisabledControls.ContainsKey(Parent) Then
-        Else
-            Call TemporarilyDisabledControls.Add(Parent, True)
-        End If
+        Call TemporarilyDisabledControls.TryAdd(Parent, True)
 
         For i = 0 To Controls.Count - 1
             Dim Control = Controls.Item(i)

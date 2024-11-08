@@ -837,10 +837,10 @@ Partial Class Msu1AltSelectMainForm
     Private WithEvents chAltTrackAutoSwitch As ColumnHeader
     Private WithEvents chTrackNumber As ColumnHeader
     Private WithEvents chTrackTitle As ColumnHeader
-    Private WithEvents grpMsuTracks As Windows.Forms.GroupBox
-    Private WithEvents grpAutoSwitch As Windows.Forms.GroupBox
-    Private WithEvents ctrlDisplayOnlyTracksWithAlts As Windows.Forms.CheckBox
-    Private WithEvents ctrlEnableAutoSwitch As Windows.Forms.CheckBox
+    Private WithEvents grpMsuTracks As System.Windows.Forms.GroupBox
+    Private WithEvents grpAutoSwitch As System.Windows.Forms.GroupBox
+    Private WithEvents ctrlDisplayOnlyTracksWithAlts As System.Windows.Forms.CheckBox
+    Private WithEvents ctrlEnableAutoSwitch As System.Windows.Forms.CheckBox
     Private WithEvents nudAutoSwitchInterval As NumericUpDown
     Private WithEvents lblAutoSwitchInterval As Label
     Private WithEvents lblAutoSwitchIntervalUnit As Label
