@@ -1607,9 +1607,7 @@ NextPath:
             End Function
 
             Public Shared Function NewFromExistingPcmTracksInConfig(ByRef msuTracksConfig As MsuTracks, ByRef sampleRate As UInt32, ByRef volumePercentage As UInt16, ByRef processWindowStyle As System.Diagnostics.ProcessWindowStyle, ByRef keepProcessesOpen As Boolean, ByRef parentHandle As IntPtr, ByRef processCount As Byte) As MsuPcmBulkConversion
-                If msuTracksConfig Is Nothing Then
-                    Throw New ArgumentNullException(NameOf(msuTracksConfig))
-                End If
+                ArgumentNullException.ThrowIfNull(msuTracksConfig)
                 Return New MsuPcmBulkConversion(
                 msuTracksConfig:=msuTracksConfig,
                     msuPcmFiles:=msuTracksConfig.GetExistingPcmTracks,
