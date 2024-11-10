@@ -80,6 +80,10 @@ Namespace Msu
                 End Set
             End Property
 
+            Public Function ShouldSerializeMsuLocation() As Boolean
+                Return Me.Settings.TrackAltSettings.SaveMsuLocation
+            End Function
+
             ''' <summary>
             ''' Basename of the selected .msu file
             ''' </summary>

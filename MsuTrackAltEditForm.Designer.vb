@@ -35,7 +35,7 @@ Partial Class MsuTrackAltEditForm
         ucMsuTrack.Location = New System.Drawing.Point(0, 0)
         ucMsuTrack.Margin = New Padding(3, 3, 3, 0)
         ucMsuTrack.Name = "ucMsuTrack"
-        ucMsuTrack.Size = New System.Drawing.Size(500, 209)
+        ucMsuTrack.Size = New System.Drawing.Size(500, 267)
         ucMsuTrack.TabIndex = 0
         ' 
         ' btnOk
@@ -44,7 +44,7 @@ Partial Class MsuTrackAltEditForm
         btnOk.BackgroundImageLayout = ImageLayout.None
         btnOk.DialogResult = DialogResult.TryAgain
         btnOk.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        btnOk.Location = New System.Drawing.Point(322, 212)
+        btnOk.Location = New System.Drawing.Point(322, 270)
         btnOk.Name = "btnOk"
         btnOk.Size = New System.Drawing.Size(54, 24)
         btnOk.TabIndex = 1
@@ -56,7 +56,7 @@ Partial Class MsuTrackAltEditForm
         btnCancel.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         btnCancel.DialogResult = DialogResult.TryAgain
         btnCancel.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        btnCancel.Location = New System.Drawing.Point(382, 212)
+        btnCancel.Location = New System.Drawing.Point(382, 270)
         btnCancel.Name = "btnCancel"
         btnCancel.Size = New System.Drawing.Size(54, 24)
         btnCancel.TabIndex = 2
@@ -68,7 +68,7 @@ Partial Class MsuTrackAltEditForm
         btnApply.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         btnApply.DialogResult = DialogResult.TryAgain
         btnApply.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        btnApply.Location = New System.Drawing.Point(442, 212)
+        btnApply.Location = New System.Drawing.Point(442, 270)
         btnApply.Margin = New Padding(3, 3, 3, 0)
         btnApply.Name = "btnApply"
         btnApply.Size = New System.Drawing.Size(54, 24)
@@ -80,7 +80,7 @@ Partial Class MsuTrackAltEditForm
         ' 
         AutoScaleDimensions = New System.Drawing.SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New System.Drawing.Size(499, 239)
+        ClientSize = New System.Drawing.Size(499, 297)
         Controls.Add(btnApply)
         Controls.Add(btnCancel)
         Controls.Add(btnOk)

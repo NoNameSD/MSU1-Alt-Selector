@@ -41,7 +41,21 @@ Partial Class MsuTrackAltControl
         txtAutoSwitch = New TextBox()
         lblAutoSwitch = New Label()
         ttpMsuTrackAltControl = New ToolTip(Me.components)
+        lblLoopPoint = New Label()
+        lblLoopPointConv = New Label()
+        nudLoopPoint = New NumericUpDown()
+        nudLoopPointConv = New NumericUpDown()
+        grpLoopPointBase = New GroupBox()
+        ctrlBase16 = New RadioButton()
+        ctrlBase10 = New RadioButton()
+        btnLoopPointToMax = New Button()
+        btnLoopPointConvToMax = New Button()
+        btnLoopPointReset = New Button()
+        btnLoopPointConvReset = New Button()
         CType(nudMsuTrackAltId, ComponentModel.ISupportInitialize).BeginInit()
+        CType(nudLoopPoint, ComponentModel.ISupportInitialize).BeginInit()
+        CType(nudLoopPointConv, ComponentModel.ISupportInitialize).BeginInit()
+        grpLoopPointBase.SuspendLayout()
         Me.SuspendLayout()
         ' 
         ' ofdPathPcm
@@ -151,7 +165,7 @@ Partial Class MsuTrackAltControl
         ' 
         ' btnSelPathPcm
         ' 
-        btnSelPathPcm.Location = New Drawing.Point(3, 185)
+        btnSelPathPcm.Location = New Drawing.Point(3, 243)
         btnSelPathPcm.Name = "btnSelPathPcm"
         btnSelPathPcm.Size = New Drawing.Size(145, 25)
         btnSelPathPcm.TabIndex = 13
@@ -161,7 +175,7 @@ Partial Class MsuTrackAltControl
         ' btnSelLocationPcm
         ' 
         btnSelLocationPcm.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        btnSelLocationPcm.Location = New Drawing.Point(152, 185)
+        btnSelLocationPcm.Location = New Drawing.Point(152, 243)
         btnSelLocationPcm.Name = "btnSelLocationPcm"
         btnSelLocationPcm.Size = New Drawing.Size(145, 25)
         btnSelLocationPcm.TabIndex = 14
@@ -197,12 +211,128 @@ Partial Class MsuTrackAltControl
         ttpMsuTrackAltControl.InitialDelay = 250
         ttpMsuTrackAltControl.ReshowDelay = 50
         ' 
+        ' lblLoopPoint
+        ' 
+        lblLoopPoint.AutoSize = True
+        lblLoopPoint.Location = New System.Drawing.Point(3, 188)
+        lblLoopPoint.Name = "lblLoopPoint"
+        lblLoopPoint.Size = New System.Drawing.Size(68, 15)
+        lblLoopPoint.TabIndex = 15
+        lblLoopPoint.Text = "Loop point:"
+        ' 
+        ' lblLoopPointConv
+        ' 
+        lblLoopPointConv.AutoSize = True
+        lblLoopPointConv.Location = New System.Drawing.Point(3, 217)
+        lblLoopPointConv.Name = "lblLoopPointConv"
+        lblLoopPointConv.Size = New System.Drawing.Size(134, 15)
+        lblLoopPointConv.TabIndex = 17
+        lblLoopPointConv.Text = "Loop point (Converted):"
+        ' 
+        ' nudLoopPoint
+        ' 
+        nudLoopPoint.CausesValidation = False
+        nudLoopPoint.Hexadecimal = True
+        nudLoopPoint.Location = New System.Drawing.Point(143, 185)
+        nudLoopPoint.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
+        nudLoopPoint.Name = "nudLoopPoint"
+        nudLoopPoint.Size = New System.Drawing.Size(80, 23)
+        nudLoopPoint.TabIndex = 18
+        nudLoopPoint.Value = New Decimal(New Integer() {-1, 0, 0, 0})
+        ' 
+        ' nudLoopPointConv
+        ' 
+        nudLoopPointConv.Location = New System.Drawing.Point(143, 214)
+        nudLoopPointConv.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
+        nudLoopPointConv.Name = "nudLoopPointConv"
+        nudLoopPointConv.Size = New System.Drawing.Size(80, 23)
+        nudLoopPointConv.TabIndex = 21
+        nudLoopPointConv.Value = New Decimal(New Integer() {-1, 0, 0, 0})
+        ' 
+        ' grpLoopPointBase
+        ' 
+        grpLoopPointBase.Controls.Add(Me.ctrlBase16)
+        grpLoopPointBase.Controls.Add(Me.ctrlBase10)
+        grpLoopPointBase.Location = New System.Drawing.Point(318, 178)
+        grpLoopPointBase.Name = "grpLoopPointBase"
+        grpLoopPointBase.Size = New System.Drawing.Size(50, 59)
+        grpLoopPointBase.TabIndex = 25
+        grpLoopPointBase.TabStop = False
+        grpLoopPointBase.Text = "Base"
+        ' 
+        ' ctrlBase16
+        ' 
+        ctrlBase16.AutoSize = True
+        ctrlBase16.Location = New System.Drawing.Point(6, 34)
+        ctrlBase16.Name = "ctrlBase16"
+        ctrlBase16.Size = New System.Drawing.Size(37, 19)
+        ctrlBase16.TabIndex = 1
+        ctrlBase16.TabStop = True
+        ctrlBase16.Text = "16"
+        ctrlBase16.UseVisualStyleBackColor = True
+        ' 
+        ' ctrlBase10
+        ' 
+        ctrlBase10.AutoSize = True
+        ctrlBase10.Location = New System.Drawing.Point(6, 13)
+        ctrlBase10.Name = "ctrlBase10"
+        ctrlBase10.Size = New System.Drawing.Size(37, 19)
+        ctrlBase10.TabIndex = 0
+        ctrlBase10.TabStop = True
+        ctrlBase10.Text = "10"
+        ctrlBase10.UseVisualStyleBackColor = True
+        ' 
+        ' btnLoopPointToMax
+        ' 
+        btnLoopPointToMax.Location = New System.Drawing.Point(229, 184)
+        btnLoopPointToMax.Name = "btnLoopPointToMax"
+        btnLoopPointToMax.Size = New System.Drawing.Size(38, 25)
+        btnLoopPointToMax.TabIndex = 19
+        btnLoopPointToMax.Text = "Max"
+        btnLoopPointToMax.UseVisualStyleBackColor = True
+        ' 
+        ' btnLoopPointConvToMax
+        ' 
+        btnLoopPointConvToMax.Location = New System.Drawing.Point(229, 213)
+        btnLoopPointConvToMax.Name = "btnLoopPointConvToMax"
+        btnLoopPointConvToMax.Size = New System.Drawing.Size(38, 25)
+        btnLoopPointConvToMax.TabIndex = 22
+        btnLoopPointConvToMax.Text = "Max"
+        btnLoopPointConvToMax.UseVisualStyleBackColor = True
+        ' 
+        ' btnLoopPointReset
+        ' 
+        btnLoopPointReset.Location = New System.Drawing.Point(270, 184)
+        btnLoopPointReset.Name = "btnLoopPointReset"
+        btnLoopPointReset.Size = New System.Drawing.Size(43, 25)
+        btnLoopPointReset.TabIndex = 20
+        btnLoopPointReset.Text = "Reset"
+        btnLoopPointReset.UseVisualStyleBackColor = True
+        ' 
+        ' btnLoopPointConvReset
+        ' 
+        btnLoopPointConvReset.Location = New System.Drawing.Point(270, 213)
+        btnLoopPointConvReset.Name = "btnLoopPointConvReset"
+        btnLoopPointConvReset.Size = New System.Drawing.Size(43, 25)
+        btnLoopPointConvReset.TabIndex = 23
+        btnLoopPointConvReset.Text = "Reset"
+        btnLoopPointConvReset.UseVisualStyleBackColor = True
+        ' 
         ' MsuTrackAltControl
         ' 
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New Drawing.SizeF(7F, 15F)
         Me.AutoScaleMode = AutoScaleMode.Font
+        Me.Controls.Add(btnLoopPointConvReset)
+        Me.Controls.Add(btnLoopPointReset)
+        Me.Controls.Add(btnLoopPointConvToMax)
+        Me.Controls.Add(btnLoopPointToMax)
         Me.Controls.Add(txtAutoSwitch)
+        Me.Controls.Add(grpLoopPointBase)
+        Me.Controls.Add(nudLoopPointConv)
+        Me.Controls.Add(nudLoopPoint)
+        Me.Controls.Add(lblLoopPointConv)
+        Me.Controls.Add(lblLoopPoint)
         Me.Controls.Add(lblAutoSwitch)
         Me.Controls.Add(btnSelLocationPcm)
         Me.Controls.Add(btnSelPathPcm)
@@ -218,8 +348,12 @@ Partial Class MsuTrackAltControl
         Me.Controls.Add(txtMsuAltTitle)
         Me.Controls.Add(lblMsuTitle)
         Me.Name = "MsuTrackAltControl"
-        Me.Size = New Drawing.Size(300, 212)
+        Me.Size = New Drawing.Size(300, 272)
         CType(nudMsuTrackAltId, ComponentModel.ISupportInitialize).EndInit()
+        CType(nudLoopPoint, ComponentModel.ISupportInitialize).EndInit()
+        CType(nudLoopPointConv, ComponentModel.ISupportInitialize).EndInit()
+        grpLoopPointBase.ResumeLayout(False)
+        grpLoopPointBase.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
     End Sub
@@ -243,4 +377,15 @@ Partial Class MsuTrackAltControl
     Friend WithEvents txtAutoSwitch As TextBox
     Friend WithEvents lblAutoSwitch As Label
     Friend WithEvents ttpMsuTrackAltControl As ToolTip
+    Friend WithEvents lblLoopPoint As Label
+    Friend WithEvents lblLoopPointConv As Label
+    Friend WithEvents nudLoopPoint As NumericUpDown
+    Friend WithEvents nudLoopPointConv As NumericUpDown
+    Friend WithEvents grpLoopPointBase As GroupBox
+    Friend WithEvents ctrlBase10 As RadioButton
+    Friend WithEvents ctrlBase16 As RadioButton
+    Friend WithEvents btnLoopPointToMax As Button
+    Friend WithEvents btnLoopPointConvToMax As Button
+    Friend WithEvents btnLoopPointReset As Button
+    Friend WithEvents btnLoopPointConvReset As Button
 End Class

@@ -9,6 +9,7 @@ Public Class Msu1AltSelectMainForm
     Private WithEvents _MsuTracks As MsuTracks
     Private _JsonFilePath As String
     Private _DisplayOnlyTracksWithAlts As Boolean
+    Private _DisplayLoopPoints As Boolean
     Public Property Settings As Msu.Settings.Settings
 
     Private Property JsonFilePath As String
@@ -106,6 +107,29 @@ Public Class Msu1AltSelectMainForm
         Next
 
         Me.DisplayOnlyTracksWithAlts = tracksWithAltsExist
+    End Sub
+
+    Public Property DisplayLoopPoints As Boolean
+        Get
+            Return _DisplayLoopPoints
+        End Get
+        Set(value As Boolean)
+            If _DisplayLoopPoints <> value Then
+                _DisplayLoopPoints = value
+            End If
+            If _DisplayLoopPoints <> Me.ctrlDisplayLoopPoints.Checked Then
+                Me.ctrlDisplayLoopPoints.Checked = _DisplayLoopPoints
+            End If
+        End Set
+    End Property
+
+    Private Sub ctrlDisplayLoopPoints_CheckedChanged(sender As Object, e As EventArgs) Handles ctrlDisplayLoopPoints.CheckedChanged
+        If Me.ctrlDisplayLoopPoints.Checked <> Me.DisplayLoopPoints Then
+            Me.DisplayLoopPoints = Me.ctrlDisplayLoopPoints.Checked
+            If Me.MsuTracks IsNot Nothing Then
+                Me.FillAltTrackList()
+            End If
+        End If
     End Sub
 
     Private Sub SelectMsuFileClicked(sender As System.Object, e As System.EventArgs) Handles btnSelPathMsu.Click
@@ -607,27 +631,77 @@ Public Class Msu1AltSelectMainForm
         If lstvTracks.SelectedItems.Count = MsuHelper.ZeroByte Then
             Exit Sub
         End If
+        Dim bPcmTrackWithNormalVersionExists As Boolean = False
 
         Dim trackNumber As Byte = CByte(Me.TrackIdSelected)
 
         Dim msuTrack As MsuTrack = Me.MsuTracks.TrackDict(trackNumber)
         Dim trackAltDict As SortedDictionary(Of UShort, MsuTrackAlt) = msuTrack.TrackAltDict()
 
+        ' Save the column width information before removing columns
+        ' For some reason that information gets discarded when removing a column
+        ' and the width of the last column added gets used instead
+        Static iWidths(2) As Int32
+
+        ' First remove all optional columns
+
+        If lstvAltTracks.Columns.Contains(Me.chAltTrackAutoSwitch) Then
+            iWidths(0) = Me.chAltTrackAutoSwitch.Width
+            Call lstvAltTracks.Columns.Remove(Me.chAltTrackAutoSwitch)
+        End If
+
+        If lstvAltTracks.Columns.Contains(Me.chAltTrackLoopPoint) Then
+            iWidths(1) = Me.chAltTrackLoopPoint.Width
+            Call lstvAltTracks.Columns.Remove(Me.chAltTrackLoopPoint)
+        End If
+        If lstvAltTracks.Columns.Contains(Me.chAltTrackLoopPointConverted) Then
+            iWidths(2) = Me.chAltTrackLoopPointConverted.Width
+            Call lstvAltTracks.Columns.Remove(Me.chAltTrackLoopPointConverted)
+        End If
+
+        ' Optional Columns
+
         ' Display AutoSwitch Column only if there is data to display
         If msuTrack.HasAltTracksWithAutoSwitch Then
             If lstvAltTracks.Columns.Contains(Me.chAltTrackAutoSwitch) Then
             Else
+                If iWidths(0) <> 0 Then
+                    Me.chAltTrackAutoSwitch.Width = iWidths(0)
+                End If
                 Call lstvAltTracks.Columns.Add(Me.chAltTrackAutoSwitch)
             End If
-        Else
-            If lstvAltTracks.Columns.Contains(Me.chAltTrackAutoSwitch) Then
-                Call lstvAltTracks.Columns.Remove(Me.chAltTrackAutoSwitch)
+        End If
+
+        ' Display Loop Points if the user has set the flag
+        If Me.DisplayLoopPoints Then
+            If lstvAltTracks.Columns.Contains(Me.chAltTrackLoopPoint) Then
+            Else
+                If iWidths(1) <> 0 Then
+                    Me.chAltTrackLoopPoint.Width = iWidths(1)
+                End If
+                Call lstvAltTracks.Columns.Add(Me.chAltTrackLoopPoint)
+            End If
+            If lstvAltTracks.Columns.Contains(Me.chAltTrackLoopPointConverted) Then
+            Else
+                If iWidths(2) <> 0 Then
+                    Me.chAltTrackLoopPointConverted.Width = iWidths(2)
+                End If
+                Call lstvAltTracks.Columns.Add(Me.chAltTrackLoopPointConverted)
             End If
         End If
+
+        Dim bTrackMainNormalVerExists = msuTrack.FilePathWithNormalVersionSuffixExists()
+        bPcmTrackWithNormalVersionExists = bTrackMainNormalVerExists
 
         For Each keyValuePair As KeyValuePair(Of UShort, MsuTrackAlt) In trackAltDict
 
             Dim msuTrackAlt As MsuTrackAlt = keyValuePair.Value
+
+            Dim bTrackAltNormalVerExists = msuTrackAlt.FilePathWithNormalVersionSuffixExists()
+
+            If bTrackAltNormalVerExists AndAlso Not bPcmTrackWithNormalVersionExists Then
+                bPcmTrackWithNormalVersionExists = bTrackAltNormalVerExists
+            End If
 
             Dim lstVGrp As New ListViewGroup(msuTrackAlt.AltNumber.ToString, msuTrackAlt.Title)
 
@@ -637,26 +711,107 @@ Public Class Msu1AltSelectMainForm
 
             ' Use first Item for Record as Id
             Dim listVitId As ListViewItem.ListViewSubItem = lstVit.SubItems().Item(0)
-
-            ' Add Item to Record as Title
-            Dim listVitTitle As New ListViewItem.ListViewSubItem
-            Call listVitCol.Add(listVitTitle)
-
-            ' Add Item to Record as Title
-            Dim listVitAutoSwitch As New ListViewItem.ListViewSubItem
-            Call listVitCol.Add(listVitAutoSwitch)
-
             listVitId.Name = "TrackId"
             listVitId.Text = msuTrackAlt.AltNumber.ToString
-            listVitTitle.Name = "TrackTitle"
-            listVitTitle.Text = msuTrackAlt.Title
-            listVitAutoSwitch.Name = "AutoSwitch"
-            listVitAutoSwitch.Text = msuTrackAlt.AutoSwitchTrackNumbersJson
+
+            For i = 0 To lstvAltTracks.Columns.Count - 1
+                Dim lstVColumn As System.Windows.Forms.ColumnHeader = lstvAltTracks.Columns.Item(i)
+
+                If lstVColumn Is chAltTrackTitle Then
+
+                    ' Add Track Title to Record
+                    Dim lstvSiTitle As New ListViewItem.ListViewSubItem
+
+                    lstvSiTitle.Name = "TrackTitle"
+                    lstvSiTitle.Text = msuTrackAlt.Title
+
+                    Call listVitCol.Add(lstvSiTitle)
+                ElseIf lstVColumn Is chAltTrackAutoSwitch Then
+
+                    ' Add Auto Switch Tracks to Record
+                    Dim lstvSiAs As New ListViewItem.ListViewSubItem
+
+                    lstvSiAs.Name = "AutoSwitch"
+                    lstvSiAs.Text = msuTrackAlt.AutoSwitchTrackNumbersJson
+
+                    Call listVitCol.Add(lstvSiAs)
+                ElseIf lstVColumn Is chAltTrackLoopPoint Then
+
+                    ' Add Loop Point Data to Record
+                    Dim lstvSiLp As New ListViewItem.ListViewSubItem
+                    lstvSiLp.Name = "LoopPoint"
+
+
+                    Dim iLoopPointN As Nullable(Of UInt32) = Nothing
+
+                    If bTrackAltNormalVerExists Then
+                        iLoopPointN = MsuPcmFile.GetLoopPoint(msuTrackAlt.FilePathWithNormalVersionSuffix)
+                    ElseIf msuTrackAlt.FilePathExists Then
+                        iLoopPointN = MsuPcmFile.GetLoopPoint(msuTrackAlt.FilePath)
+                    ElseIf bTrackMainNormalVerExists Then
+                        iLoopPointN = MsuPcmFile.GetLoopPoint(msuTrack.FilePathWithNormalVersionSuffix)
+                    ElseIf msuTrack.FilePathExists Then
+                        iLoopPointN = MsuPcmFile.GetLoopPoint(msuTrack.FilePath)
+                    End If
+
+                    If iLoopPointN Is Nothing Then
+                        lstvSiLp.Text = "/"c
+                    Else
+                        If Me.MsuTracks.Settings.TrackAltSettings.DisplayLoopPointInHexadecimal Then
+                            lstvSiLp.Text = CUInt(iLoopPointN).ToString("X8")
+                        Else
+                            lstvSiLp.Text = CStr(iLoopPointN)
+                        End If
+                    End If
+
+                    Call listVitCol.Add(lstvSiLp)
+                ElseIf lstVColumn Is chAltTrackLoopPointConverted Then
+
+                    ' Add Loop Point Data for converted Version to Record
+                    Dim lstvSiLpC As New ListViewItem.ListViewSubItem
+                    lstvSiLpC.Name = "LoopPointConverted"
+
+                    Dim iLoopPointN As Nullable(Of UInt32) = Nothing
+
+                    If msuTrackAlt.FilePathExists Then
+
+                        If bTrackAltNormalVerExists Then
+                            iLoopPointN = MsuPcmFile.GetLoopPoint(msuTrackAlt.FilePath)
+                        End If
+                    ElseIf msuTrack.FilePathExists Then
+                        If bTrackMainNormalVerExists Then
+                            iLoopPointN = MsuPcmFile.GetLoopPoint(msuTrack.FilePath)
+                        End If
+                    End If
+
+                    If iLoopPointN Is Nothing Then
+                        lstvSiLpC.Text = "/"c
+                    Else
+                        If Me.MsuTracks.Settings.TrackAltSettings.DisplayLoopPointInHexadecimal Then
+                            lstvSiLpC.Text = CUInt(iLoopPointN).ToString("X8")
+                        Else
+                            lstvSiLpC.Text = CStr(iLoopPointN)
+                        End If
+                    End If
+
+                    Call listVitCol.Add(lstvSiLpC)
+                End If
+            Next
 
             lstVit.ToolTipText = msuTrackAlt.FilePath
 
             Call lstvAltTracks.Items.Add(lstVit)
         Next
+
+        If Me.DisplayLoopPoints Then
+            If bPcmTrackWithNormalVersionExists Then
+                ' Converted versions exist
+            Else
+                ' Converted versions don't exist
+                ' No Data for column in all rows. Don't display column at all.
+                Call lstvAltTracks.Columns.Remove(Me.chAltTrackLoopPointConverted)
+            End If
+        End If
 
         Try
             Call Me.RefreshAltTrackSelection(False)
@@ -1166,6 +1321,7 @@ searchPattern:="*.msu",
         Call controlDisable.Add(Me.btnSaveJsonAs)
         Call controlDisable.Add(Me.btnScanMsuDirectory)
         Call controlDisable.Add(Me.ctrlDisplayOnlyTracksWithAlts)
+        Call controlDisable.Add(Me.ctrlDisplayLoopPoints)
         Call controlDisable.Add(Me.grpMsuTracks)
         Call controlDisable.Add(Me.grpPcmConvert)
         Call controlDisable.Add(Me.grpAutoSwitch)

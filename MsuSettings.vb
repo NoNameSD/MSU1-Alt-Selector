@@ -278,6 +278,14 @@ Namespace Msu
             <Newtonsoft.Json.JsonProperty("msu_track_main_version_location")>
             <System.ComponentModel.DefaultValue(_MainVerAltFldDefault)>
             Public Property MsuTrackMainVersionLocation As String
+
+            <Newtonsoft.Json.JsonProperty("save_msu_location")>
+            <System.ComponentModel.DefaultValue(True)>
+            Public Property SaveMsuLocation As Boolean
+
+            <Newtonsoft.Json.JsonProperty("display_loop_point_hexadecimal")>
+            <System.ComponentModel.DefaultValue(False)>
+            Public Property DisplayLoopPointInHexadecimal As Boolean
         End Class
 
         Public Class LoggerSettings : Inherits ClassWithPropertyReset

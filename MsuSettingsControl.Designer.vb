@@ -33,6 +33,8 @@ Partial Class MsuSettingsControl
         lblMsuTrackMainVersionLocation = New Label()
         ctrlAutoSetDisplayOnlyTracksWithAlts = New CheckBox()
         ctrlAutoSetAutoSwitch = New CheckBox()
+        ctrlDisplayLoopPointInHexadecimal = New CheckBox()
+        ctrlSaveMsuLocation = New CheckBox()
         btnDownloadMsuPcm = New Button()
         ofdPathMsuPcm = New OpenFileDialog()
         lblLogEntries = New Label()
@@ -133,6 +135,30 @@ Partial Class MsuSettingsControl
         ctrlAutoSetAutoSwitch.Text = "Enable/Disable AutoSwitch automatically:"
         ctrlAutoSetAutoSwitch.UseVisualStyleBackColor = True
         ' 
+        ' ctrlDisplayLoopPointInHexadecimal
+        ' 
+        ctrlDisplayLoopPointInHexadecimal.AutoSize = True
+        ctrlDisplayLoopPointInHexadecimal.CheckAlign = Drawing.ContentAlignment.MiddleRight
+        ctrlDisplayLoopPointInHexadecimal.Location = New Drawing.Point(2, 156)
+        ctrlDisplayLoopPointInHexadecimal.Margin = New Padding(2, 3, 3, 3)
+        ctrlDisplayLoopPointInHexadecimal.Name = "ctrlDisplayLoopPointInHexadecimal"
+        ctrlDisplayLoopPointInHexadecimal.Size = New Drawing.Size(246, 19)
+        ctrlDisplayLoopPointInHexadecimal.TabIndex = 9
+        ctrlDisplayLoopPointInHexadecimal.Text = "Display loop point in Hexadecimal:"
+        ctrlDisplayLoopPointInHexadecimal.UseVisualStyleBackColor = True
+        ' 
+        ' ctrlSaveMsuLocation
+        ' 
+        ctrlSaveMsuLocation.AutoSize = True
+        ctrlSaveMsuLocation.CheckAlign = Drawing.ContentAlignment.MiddleRight
+        ctrlSaveMsuLocation.Location = New Drawing.Point(2, 185)
+        ctrlSaveMsuLocation.Margin = New Padding(2, 3, 3, 3)
+        ctrlSaveMsuLocation.Name = "ctrlSaveMsuLocation"
+        ctrlSaveMsuLocation.Size = New Drawing.Size(246, 19)
+        ctrlSaveMsuLocation.TabIndex = 9
+        ctrlSaveMsuLocation.Text = "Save location of msu in configuration:"
+        ctrlSaveMsuLocation.UseVisualStyleBackColor = True
+        ' 
         ' btnDownloadMsuPcm
         ' 
         btnDownloadMsuPcm.Anchor = AnchorStyles.Top Or AnchorStyles.Right
@@ -152,7 +178,7 @@ Partial Class MsuSettingsControl
         ' lblLogEntries
         ' 
         lblLogEntries.AutoSize = True
-        lblLogEntries.Location = New Drawing.Point(3, 158)
+        lblLogEntries.Location = New Drawing.Point(3, 214)
         lblLogEntries.Name = "lblLogEntries"
         lblLogEntries.Size = New Drawing.Size(128, 15)
         lblLogEntries.TabIndex = 10
@@ -160,7 +186,7 @@ Partial Class MsuSettingsControl
         ' 
         ' nudLogEntries
         ' 
-        nudLogEntries.Location = New Drawing.Point(137, 156)
+        nudLogEntries.Location = New Drawing.Point(137, 214)
         nudLogEntries.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
         nudLogEntries.Name = "nudLogEntries"
         nudLogEntries.Size = New Drawing.Size(57, 23)
@@ -177,6 +203,8 @@ Partial Class MsuSettingsControl
         Me.Controls.Add(btnDownloadMsuPcm)
         Me.Controls.Add(ctrlAutoSetAutoSwitch)
         Me.Controls.Add(ctrlAutoSetDisplayOnlyTracksWithAlts)
+        Me.Controls.Add(ctrlDisplayLoopPointInHexadecimal)
+        Me.Controls.Add(ctrlSaveMsuLocation)
         Me.Controls.Add(txtMsuTrackMainVersionLocation)
         Me.Controls.Add(lblMsuTrackMainVersionLocation)
         Me.Controls.Add(txtMsuTrackMainVersionTitle)
@@ -185,7 +213,7 @@ Partial Class MsuSettingsControl
         Me.Controls.Add(txtMsuPcmPath)
         Me.Controls.Add(lblMsuPcmPath)
         Me.Name = "MsuSettingsControl"
-        Me.Size = New Drawing.Size(430, 186)
+        Me.Size = New Drawing.Size(430, 244)
         CType(nudLogEntries, ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -202,6 +230,8 @@ Partial Class MsuSettingsControl
     Friend WithEvents lblMsuTrackMainVersionLocation As Label
     Friend WithEvents ctrlAutoSetDisplayOnlyTracksWithAlts As CheckBox
     Friend WithEvents ctrlAutoSetAutoSwitch As CheckBox
+    Friend WithEvents ctrlDisplayLoopPointInHexadecimal As CheckBox
+    Friend WithEvents ctrlSaveMsuLocation As CheckBox
     Friend WithEvents btnDownloadMsuPcm As Button
     Friend WithEvents ofdPathMsuPcm As OpenFileDialog
     Private WithEvents lblLogEntries As Label

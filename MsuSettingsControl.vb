@@ -72,6 +72,8 @@ Public Class MsuSettingsControl
         Me.txtMsuTrackMainVersionLocation.Text = Me.SettingsTmp.TrackAltSettings.MsuTrackMainVersionLocation
         Me.ctrlAutoSetDisplayOnlyTracksWithAlts.Checked = Me.SettingsTmp.TrackAltSettings.AutoSetDisplayOnlyTracksWithAlts
         Me.ctrlAutoSetAutoSwitch.Checked = Me.SettingsTmp.TrackAltSettings.AutoSetAutoSwitch
+        Me.ctrlDisplayLoopPointInHexadecimal.Checked = Me.SettingsTmp.TrackAltSettings.DisplayLoopPointInHexadecimal
+        Me.ctrlSaveMsuLocation.Checked = Me.SettingsTmp.TrackAltSettings.SaveMsuLocation
         Me.nudLogEntries.Value = Me.SettingsTmp.LoggerSettings.MaxEntries
 
     End Sub
@@ -92,6 +94,9 @@ Public Class MsuSettingsControl
 
         Me.SettingsToEdit.TrackAltSettings.AutoSetDisplayOnlyTracksWithAlts = Me.SettingsTmp.TrackAltSettings.AutoSetDisplayOnlyTracksWithAlts
         Me.SettingsToEdit.TrackAltSettings.AutoSetAutoSwitch = Me.SettingsTmp.TrackAltSettings.AutoSetAutoSwitch
+
+        Me.SettingsToEdit.TrackAltSettings.DisplayLoopPointInHexadecimal = Me.SettingsTmp.TrackAltSettings.DisplayLoopPointInHexadecimal
+        Me.SettingsToEdit.TrackAltSettings.SaveMsuLocation = Me.SettingsTmp.TrackAltSettings.SaveMsuLocation
 
         Me.SettingsToEdit.LoggerSettings.MaxEntries = Me.SettingsTmp.LoggerSettings.MaxEntries
 
@@ -185,7 +190,20 @@ Public Class MsuSettingsControl
     Private Sub ctrlAutoSetAutoSwitch_Validated(sender As Object, e As EventArgs) Handles ctrlAutoSetAutoSwitch.Validated
         RaiseEvent UserChangedValue(sender, e)
     End Sub
+    Private Sub ctrlDisplayLoopPointInHexadecimal_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ctrlDisplayLoopPointInHexadecimal.Validating
+        Me.SettingsTmp.TrackAltSettings.DisplayLoopPointInHexadecimal = Me.ctrlDisplayLoopPointInHexadecimal.Checked()
+    End Sub
 
+    Private Sub ctrlDisplayLoopPointInHexadecimal_Validated(sender As Object, e As EventArgs) Handles ctrlDisplayLoopPointInHexadecimal.Validated
+        RaiseEvent UserChangedValue(sender, e)
+    End Sub
+    Private Sub ctrlSaveMsuLocation_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ctrlSaveMsuLocation.Validating
+        Me.SettingsTmp.TrackAltSettings.SaveMsuLocation = Me.ctrlSaveMsuLocation.Checked()
+    End Sub
+
+    Private Sub ctrlSaveMsuLocation_Validated(sender As Object, e As EventArgs) Handles ctrlSaveMsuLocation.Validated
+        RaiseEvent UserChangedValue(sender, e)
+    End Sub
     Private Sub nudLogEntries_ValueChanged(sender As Object, e As EventArgs) Handles nudLogEntries.ValueChanged
         If Me.SettingsTmp Is Nothing Then Return
         Me.SettingsTmp.LoggerSettings.MaxEntries = CUInt(nudLogEntries.Value)
@@ -216,6 +234,13 @@ Public Class MsuSettingsControl
 
             .SetToolTip(Me.ctrlAutoSetAutoSwitch,
                         "Automatically enables automatic switching, if the loaded configuration contains at least one alt. track, that has data for automatic switching configured.")
+
+            .SetToolTip(Me.ctrlDisplayLoopPointInHexadecimal,
+                        "When displaying the loop point of the pcm files, the numbers are shown in hexadecimal instead of decimal.")
+
+            .SetToolTip(Me.ctrlSaveMsuLocation,
+                        "When saving a MSU config to JSON the folder path of the msu is saved." & System.Environment.NewLine &
+                        "This allows putting the JSON config into another location than the msu itself.")
 
             .SetToolTip(Me.lblMsuTrackMainVersionTitle,
                         "Title, that is used for the Main/Default Version of the MsuTrack, that is stored in the Main Folder.")

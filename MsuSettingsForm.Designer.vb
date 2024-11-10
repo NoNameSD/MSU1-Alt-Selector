@@ -41,7 +41,7 @@ Partial Class MsuSettingsForm : Inherits System.Windows.Forms.Form
         btnOk.BackgroundImageLayout = ImageLayout.None
         btnOk.DialogResult = DialogResult.TryAgain
         btnOk.ImageAlign = Drawing.ContentAlignment.TopLeft
-        btnOk.Location = New Drawing.Point(280, 187)
+        btnOk.Location = New Drawing.Point(280, 216)
         btnOk.Name = "btnOk"
         btnOk.Size = New Drawing.Size(54, 24)
         btnOk.TabIndex = 2
@@ -53,7 +53,7 @@ Partial Class MsuSettingsForm : Inherits System.Windows.Forms.Form
         btnCancel.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         btnCancel.DialogResult = DialogResult.TryAgain
         btnCancel.ImageAlign = Drawing.ContentAlignment.TopLeft
-        btnCancel.Location = New Drawing.Point(340, 187)
+        btnCancel.Location = New Drawing.Point(340, 216)
         btnCancel.Name = "btnCancel"
         btnCancel.Size = New Drawing.Size(54, 24)
         btnCancel.TabIndex = 3
@@ -65,7 +65,7 @@ Partial Class MsuSettingsForm : Inherits System.Windows.Forms.Form
         btnApply.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         btnApply.DialogResult = DialogResult.TryAgain
         btnApply.ImageAlign = Drawing.ContentAlignment.TopLeft
-        btnApply.Location = New Drawing.Point(400, 187)
+        btnApply.Location = New Drawing.Point(400, 216)
         btnApply.Margin = New Padding(3, 3, 3, 0)
         btnApply.Name = "btnApply"
         btnApply.Size = New Drawing.Size(54, 24)
@@ -85,7 +85,7 @@ Partial Class MsuSettingsForm : Inherits System.Windows.Forms.Form
         TreeNode2.Name = "CurrentConfig"
         TreeNode2.Text = "Current Config"
         tvSettings.Nodes.AddRange(New TreeNode() {TreeNode1, TreeNode2})
-        tvSettings.Size = New Drawing.Size(137, 214)
+        tvSettings.Size = New Drawing.Size(137, 243)
         tvSettings.TabIndex = 0
         ' 
         ' scSettings
@@ -104,7 +104,7 @@ Partial Class MsuSettingsForm : Inherits System.Windows.Forms.Form
         scSettings.Panel2.Controls.Add(btnOk)
         scSettings.Panel2.Controls.Add(btnCancel)
         scSettings.Panel2.Controls.Add(SettingsControl)
-        scSettings.Size = New Drawing.Size(598, 214)
+        scSettings.Size = New Drawing.Size(598, 243)
         scSettings.SplitterDistance = 137
         scSettings.TabIndex = 7
         ' 
@@ -113,14 +113,14 @@ Partial Class MsuSettingsForm : Inherits System.Windows.Forms.Form
         SettingsControl.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         SettingsControl.Location = New Drawing.Point(0, 0)
         SettingsControl.Name = "SettingsControl"
-        SettingsControl.Size = New Drawing.Size(454, 211)
+        SettingsControl.Size = New Drawing.Size(454, 240)
         SettingsControl.TabIndex = 1
         ' 
         ' MsuSettingsForm
         ' 
         Me.AutoScaleDimensions = New Drawing.SizeF(7F, 15F)
         Me.AutoScaleMode = AutoScaleMode.Font
-        Me.ClientSize = New Drawing.Size(599, 214)
+        Me.ClientSize = New Drawing.Size(599, 243)
         Me.Controls.Add(scSettings)
         Me.FormBorderStyle = FormBorderStyle.SizableToolWindow
         Me.Name = "MsuSettingsForm"

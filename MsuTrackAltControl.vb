@@ -48,6 +48,11 @@ Public Class MsuTrackAltControl
     Private Property MsuTrack As MsuTrack
     Private Property MsuTracks As MsuTracks
 
+    Private Property LoopPoint As Nullable(Of UInt32)
+    Private Property LoopPointConverted As Nullable(Of UInt32)
+    Private Property LoopPointToEdit As Nullable(Of UInt32)
+    Private Property LoopPointConvertedToEdit As Nullable(Of UInt32)
+
     Public Property MsuSelButtonForFullPathEnabled As Boolean
         Get
             Return Me.btnSelPathPcm.Enabled
@@ -101,10 +106,48 @@ Public Class MsuTrackAltControl
             .AutoSwitchTrackNumbers = Me.MsuTrackAltToEdit.AutoSwitchTrackNumbers
         }
 
+        If Me.MsuTrackAltTmp.FilePathWithNormalVersionSuffixExists Then
+
+            Me.LoopPoint = MsuPcmFile.GetLoopPoint(Me.MsuTrackAltTmp.FilePathWithNormalVersionSuffix)
+
+            If Me.MsuTrackAltTmp.FilePathExists Then
+                Me.LoopPointConverted = MsuPcmFile.GetLoopPoint(Me.MsuTrackAltTmp.FilePath)
+            End If
+
+        ElseIf Me.MsuTrackAltTmp.FilePathExists Then
+
+            Me.LoopPoint = MsuPcmFile.GetLoopPoint(Me.MsuTrackAltTmp.FilePath)
+
+        ElseIf Me.MsuTrack.FilePathWithNormalVersionSuffixExists Then
+
+            Me.LoopPoint = MsuPcmFile.GetLoopPoint(Me.MsuTrack.FilePathWithNormalVersionSuffix)
+
+            If Me.MsuTrack.FilePathExists Then
+                Me.LoopPointConverted = MsuPcmFile.GetLoopPoint(Me.MsuTrack.FilePath)
+            End If
+
+        ElseIf Me.MsuTrack.FilePathExists Then
+
+            Me.LoopPoint = MsuPcmFile.GetLoopPoint(Me.MsuTrack.FilePath)
+
+        End If
+
+        Me.LoopPointToEdit = Me.LoopPoint
+        Me.LoopPointConvertedToEdit = Me.LoopPointConverted
+
+        If Me.ctrlBase10.Checked OrElse Me.ctrlBase16.Checked Then
+        Else
+            If Me.MsuTracks.Settings.TrackAltSettings.DisplayLoopPointInHexadecimal Then
+                Me.ctrlBase16.Checked = True
+            Else
+                Me.ctrlBase10.Checked = True
+            End If
+        End If
+
         Call SetToolTips()
         Call RefreshTextFields()
     End Sub
-    Private Sub Form_UserChangedValue(sender As Object, e As EventArgs)
+    Private Sub Form_UserChangedValue(sender As Object, e As EventArgs) Handles Me.UserChangedValue
         Call Me.RefreshTextFields()
         RaiseEvent FormDirty(sender, e)
     End Sub
@@ -132,13 +175,35 @@ Public Class MsuTrackAltControl
 
         Dim autoSwitchTrackNumbersJson = Me.MsuTrackAltTmp.AutoSwitchTrackNumbersJson
         Me.txtAutoSwitch.Text = autoSwitchTrackNumbersJson
-    End Sub
 
+        Me.grpLoopPointBase.Enabled = Not (Me.LoopPointConvertedToEdit Is Nothing AndAlso Me.LoopPointConvertedToEdit Is Nothing)
+
+        If Me.LoopPointToEdit Is Nothing Then
+            Me.nudLoopPoint.Enabled = False
+            Me.lblLoopPoint.Enabled = False
+            Me.nudLoopPoint.Text = vbNullString
+        Else
+            Me.nudLoopPoint.Value = CDec(Me.LoopPointToEdit)
+            Me.nudLoopPoint.Enabled = True
+            Me.lblLoopPoint.Enabled = True
+        End If
+
+        If Me.LoopPointConvertedToEdit Is Nothing Then
+            Me.nudLoopPointConv.Enabled = False
+            Me.lblLoopPointConv.Enabled = False
+            Me.nudLoopPointConv.Text = vbNullString
+        Else
+            Me.nudLoopPointConv.Value = CDec(Me.LoopPointConvertedToEdit)
+            Me.nudLoopPointConv.Enabled = True
+            Me.lblLoopPointConv.Enabled = True
+        End If
+
+    End Sub
     Public Sub ApplyChanges()
+        Dim msuTrackAltExisting As MsuTrackAlt = Nothing
 
         ' Check for existing Track with this Id
-        If Me.MsuTrack.TrackAltDict.ContainsKey(Me.MsuTrackAltTmp.AltNumber) Then
-            Dim msuTrackAltExisting As MsuTrackAlt = Me.MsuTrack.TrackAltDict.Item(Me.MsuTrackAltTmp.AltNumber)
+        If Me.MsuTrack.TrackAltDict.TryGetValue(Me.MsuTrackAltTmp.AltNumber, msuTrackAltExisting) Then
 
             If msuTrackAltExisting IsNot Me.MsuTrackAltToEdit Then
                 Throw New MsuTrackAltAlreadyExistsException(msuTrackAltExisting, MsuTrackAltAlreadyExistsException.ExceptionType.DuplicateId)
@@ -146,7 +211,7 @@ Public Class MsuTrackAltControl
         End If
 
         If Me.MsuTrack.TrackAltDict.Count <> 0 Then
-            Dim msuTrackAltExisting As MsuTrackAlt = Me.MsuTrack.GetAltTrackByLocation(Me.MsuTrackAltTmp.LocationAbsolute)
+            msuTrackAltExisting = Me.MsuTrack.GetAltTrackByLocation(Me.MsuTrackAltTmp.LocationAbsolute)
 
             If msuTrackAltExisting IsNot Me.MsuTrackAltToEdit Then
                 Throw New MsuTrackAltAlreadyExistsException(msuTrackAltExisting, MsuTrackAltAlreadyExistsException.ExceptionType.DuplicatePath)
@@ -222,6 +287,106 @@ Public Class MsuTrackAltControl
                 Me.MsuTrackAltToEdit.LocationAbsolute = Me.MsuTrackAltTmp.LocationAbsolute
                 Call Me.MsuTrackAltToEdit.UpdateSavedLocation()
             End If
+
+            ' Update loop point of pcm file if changed
+            If Me.LoopPoint IsNot Nothing AndAlso Me.LoopPointToEdit IsNot Nothing _
+       AndAlso Me.LoopPoint <> Me.LoopPointToEdit Then
+
+                Dim sFilePathToModify As String
+
+                If Me.MsuTrackAltTmp.FilePathWithNormalVersionSuffixExists Then
+
+                    sFilePathToModify = Me.MsuTrackAltTmp.FilePathWithNormalVersionSuffix
+
+                ElseIf Me.MsuTrackAltTmp.FilePathExists Then
+
+                    sFilePathToModify = Me.MsuTrackAltTmp.FilePath
+
+                ElseIf Me.MsuTrack.FilePathWithNormalVersionSuffixExists Then
+
+                    sFilePathToModify = Me.MsuTrack.FilePathWithNormalVersionSuffix
+
+                ElseIf Me.MsuTrack.FilePathExists Then
+
+                    sFilePathToModify = Me.MsuTrack.FilePath
+
+                Else
+                    Throw New Exception("Loop point has been modified, but no possible file to modify exists.")
+                End If
+
+                Dim sText As String =
+                        "The loop point has been modified." & System.Environment.NewLine &
+                        "Do you want to write the new loop point into the pcm file?" & System.Environment.NewLine &
+                        System.Environment.NewLine &
+                       $"Old Loop Point:{vbTab} {CUInt(Me.LoopPoint).ToString("X8")} Hex / {Me.LoopPoint} Dec" & System.Environment.NewLine &
+                       $"New Loop Point:{vbTab} {CUInt(Me.LoopPointToEdit).ToString("X8")} Hex / {Me.LoopPointToEdit} Dec" & System.Environment.NewLine &
+                        System.Environment.NewLine &
+                       $"Path of pcm file to modify: {System.Environment.NewLine}{sFilePathToModify}"
+
+                If System.Windows.Forms.MessageBox.Show(
+                        owner:=Me,
+                        text:=sText,
+                        caption:="Loop point modified",
+                        buttons:=MessageBoxButtons.YesNo,
+                        icon:=MessageBoxIcon.Question
+                    ) = DialogResult.Yes Then
+
+                    MsuPcmFile.SetLoopPoint(sFilePathToModify, CUInt(Me.LoopPointToEdit))
+                    Me.LoopPoint = Me.LoopPointToEdit
+                End If
+            End If
+
+            ' Update loop point of the converted pcm file if changed
+            If Me.LoopPointConverted IsNot Nothing AndAlso Me.LoopPointConvertedToEdit IsNot Nothing _
+       AndAlso Me.LoopPointConverted <> Me.LoopPointConvertedToEdit Then
+
+                Dim sFilePathToModify As String
+                Const sExTxt As String = "Loop point of converted pcm file has been modified, but no possible file to modify exists."
+
+                If Me.MsuTrackAltTmp.FilePathWithNormalVersionSuffixExists Then
+
+                    If Me.MsuTrackAltTmp.FilePathExists Then
+                        sFilePathToModify = Me.MsuTrackAltTmp.FilePath
+                    Else
+                        Throw New Exception(sExTxt)
+                    End If
+
+                ElseIf Me.MsuTrackAltTmp.FilePathExists Then
+
+                    Throw New Exception(sExTxt)
+
+                ElseIf Me.MsuTrack.FilePathWithNormalVersionSuffixExists Then
+
+                    If Me.MsuTrack.FilePathExists Then
+                        sFilePathToModify = Me.MsuTrack.FilePath
+                    Else
+                        Throw New Exception(sExTxt)
+                    End If
+                Else
+                    Throw New Exception(sExTxt)
+                End If
+
+                Dim sText As String =
+                    "The loop point of the converted file has been modified." & System.Environment.NewLine &
+                    "Do you want to write the new loop point into the pcm file?" & System.Environment.NewLine &
+                    System.Environment.NewLine &
+                   $"Old Loop Point:{vbTab} {CUInt(Me.LoopPointConverted).ToString("X8")} Hex / {Me.LoopPointConverted} Dec" & System.Environment.NewLine &
+                   $"New Loop Point:{vbTab} {CUInt(Me.LoopPointConvertedToEdit).ToString("X8")} Hex / {Me.LoopPointConvertedToEdit} Dec" & System.Environment.NewLine &
+                    System.Environment.NewLine &
+                   $"Path of pcm file to modify: {System.Environment.NewLine}{sFilePathToModify}"
+
+                If System.Windows.Forms.MessageBox.Show(
+                    owner:=Me,
+                    text:=sText,
+                    caption:="Loop point modified",
+                    buttons:=MessageBoxButtons.YesNo,
+                    icon:=MessageBoxIcon.Question
+                ) = DialogResult.Yes Then
+
+                    MsuPcmFile.SetLoopPoint(sFilePathToModify, CUInt(Me.LoopPointConvertedToEdit))
+                    Me.LoopPointConverted = Me.LoopPointConvertedToEdit
+                End If
+            End If
         End If
 
         Me.MsuSelButtonForFullPathEnabled = Me.MsuTrackAltTmp.FilePathExists
@@ -230,7 +395,7 @@ Public Class MsuTrackAltControl
         RaiseEvent AppliedChanges(Me, Nothing)
     End Sub
 
-    Private Sub Form_AppliedChanges(sender As Object, e As EventArgs)
+    Private Sub Form_AppliedChanges(sender As Object, e As EventArgs) Handles Me.AppliedChanges
         _Dirty = False
     End Sub
 
@@ -243,6 +408,33 @@ Public Class MsuTrackAltControl
             Me.nudMsuTrackAltId.Value = Me.MsuTrackAltTmp.AltNumber
         Catch ex As System.InvalidCastException
             Me.nudMsuTrackAltId.Value = Me.MsuTrackAltTmp.AltNumber
+        End Try
+    End Sub
+
+
+    Private Sub nudLoopPoint_ValueChanged(sender As Object, e As EventArgs) Handles nudLoopPoint.ValueChanged
+        If Me.MsuTrackAltTmp Is Nothing Then Return
+        Try
+            Me.LoopPointToEdit = CUInt(Me.nudLoopPoint.Value)
+            RaiseEvent UserChangedValue(sender, e)
+        Catch ex As System.OverflowException
+            Stop
+            Me.nudLoopPoint.Value = CDec(Me.LoopPointToEdit)
+        Catch ex As System.InvalidCastException
+            Stop
+            Me.nudLoopPoint.Value = CDec(Me.LoopPointToEdit)
+        End Try
+    End Sub
+
+    Private Sub nudLoopPointConv_ValueChanged(sender As Object, e As EventArgs) Handles nudLoopPointConv.ValueChanged
+        If Me.MsuTrackAltTmp Is Nothing Then Return
+        Try
+            Me.LoopPointConvertedToEdit = CUInt(Me.nudLoopPointConv.Value)
+            RaiseEvent UserChangedValue(sender, e)
+        Catch ex As System.OverflowException
+            Me.nudLoopPointConv.Value = CDec(Me.LoopPointConvertedToEdit)
+        Catch ex As System.InvalidCastException
+            Me.nudLoopPointConv.Value = CDec(Me.LoopPointConvertedToEdit)
         End Try
     End Sub
 
@@ -425,13 +617,13 @@ ShowDialog:
 
 
             .SetToolTip(Me.lblAutoSwitch,
-                        "If one Of these TrackIds Is being played back, this program will switch To this alt. track automatically." & System.Environment.NewLine &
+                        "If one of these TrackIds Is being played back, this program will switch To this alt. track automatically." & System.Environment.NewLine &
                         "Mostly relevant For DKC3.")
             .SetToolTip(Me.txtAutoSwitch, .GetToolTip(Me.lblAutoSwitch))
 
 
             .SetToolTip(Me.lblMsuTrackAltId,
-                        "Unique Id For this alt. track For TrackId " & Me.MsuTrack.TrackNumber & "."c)
+                        "Unique Id for this alt. track For TrackId " & Me.MsuTrack.TrackNumber & "."c)
             .SetToolTip(Me.nudMsuTrackAltId, .GetToolTip(Me.lblMsuTrackAltId))
 
 
@@ -441,6 +633,21 @@ ShowDialog:
 
             .SetToolTip(Me.txtMsuFileName,
                         "Fixed filename the alt. track must have.")
+
+            .SetToolTip(Me.lblLoopPoint,
+                        "Loop point in samples of this track.")
+            .SetToolTip(Me.nudLoopPoint, .GetToolTip(Me.lblLoopPoint))
+
+            .SetToolTip(Me.lblLoopPointConv,
+                        "Loop point in samples of the converted version of this track.")
+            .SetToolTip(Me.nudLoopPointConv, .GetToolTip(Me.lblLoopPointConv))
+
+            .SetToolTip(Me.grpLoopPointBase,
+            "Switches between Decimal and Hexadecimal of the NumericUpDown for the loop point." & System.Environment.NewLine _
+            & System.Environment.NewLine &
+            "Note that .NET has the tendency to reset Hexadecimal values larger than 7FFFFFFF to 0.")
+            .SetToolTip(Me.ctrlBase10, .GetToolTip(Me.grpLoopPointBase))
+            .SetToolTip(Me.ctrlBase16, .GetToolTip(Me.grpLoopPointBase))
         End With
     End Sub
 
@@ -533,4 +740,31 @@ ShowDialog:
 
         e.Effect = DragDropEffects.All
     End Sub
+
+    Private Sub ctrlBase10or16_CheckedChanged(sender As Object, e As EventArgs) Handles ctrlBase10.CheckedChanged, ctrlBase16.CheckedChanged
+        Me.nudLoopPoint.Hexadecimal = Me.ctrlBase16.Checked
+        Me.nudLoopPointConv.Hexadecimal = Me.ctrlBase16.Checked
+    End Sub
+
+    Private Sub btnLoopPointToMax_Click(sender As Object, e As EventArgs) Handles btnLoopPointToMax.Click
+        Me.LoopPointToEdit = UInt32.MaxValue
+        Call RefreshTextFields()
+    End Sub
+
+    Private Sub btnLoopPointConvToMax_Click(sender As Object, e As EventArgs) Handles btnLoopPointConvToMax.Click
+        Me.LoopPointConvertedToEdit = UInt32.MaxValue
+        Call RefreshTextFields()
+    End Sub
+
+    Private Sub btnLoopPointReset_Click(sender As Object, e As EventArgs) Handles btnLoopPointReset.Click
+        Me.LoopPointToEdit = Me.LoopPoint
+        Call RefreshTextFields()
+    End Sub
+
+    Private Sub btnLoopPointConvReset_Click(sender As Object, e As EventArgs) Handles btnLoopPointConvReset.Click
+        Me.LoopPointConvertedToEdit = Me.LoopPointConverted
+        Call RefreshTextFields()
+    End Sub
+
+
 End Class

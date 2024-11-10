@@ -49,6 +49,8 @@ Partial Class Msu1AltSelectMainForm
         AltTrackToolStripSeparator2 = New ToolStripSeparator()
         AddNewAltTrackToolStripMenuItem = New ToolStripMenuItem()
         chAltTrackAutoSwitch = New ColumnHeader()
+        chAltTrackLoopPoint = New ColumnHeader()
+        chAltTrackLoopPointConverted = New ColumnHeader()
         scTracks = New SplitContainer()
         grpPcmConvert = New GroupBox()
         ctrlDisplayCmd = New CheckBox()
@@ -87,6 +89,7 @@ Partial Class Msu1AltSelectMainForm
         btnScanMsuDirectory = New Button()
         Me.BackgroundWorkerDelegate = New ComponentModel.BackgroundWorker()
         ttpMsuAltSel = New ToolTip(Me.components)
+        ctrlDisplayLoopPoints = New CheckBox()
         ContextMenuStripMsuConfig.SuspendLayout()
         ContextMenuStripTracks.SuspendLayout()
         ContextMenuStripAltTracks.SuspendLayout()
@@ -299,6 +302,18 @@ Partial Class Msu1AltSelectMainForm
         ' 
         chAltTrackAutoSwitch.Text = "Auto Switch"
         chAltTrackAutoSwitch.Width = 80
+        ' 
+        ' chAltTrackLoopPoint
+        ' 
+        chAltTrackLoopPoint.Text = "Loop Point"
+        chAltTrackLoopPoint.Width = 70
+        chAltTrackLoopPoint.TextAlign = HorizontalAlignment.Right
+        ' 
+        ' chAltTrackLoopPointConverted
+        ' 
+        chAltTrackLoopPointConverted.Text = "Loop Point (Converted)"
+        chAltTrackLoopPointConverted.Width = 136
+        chAltTrackLoopPointConverted.TextAlign = HorizontalAlignment.Right
         ' 
         ' scTracks
         ' 
@@ -775,6 +790,16 @@ Partial Class Msu1AltSelectMainForm
         ttpMsuAltSel.InitialDelay = 250
         ttpMsuAltSel.ReshowDelay = 50
         ' 
+        ' ctrlDisplayLoopPoints
+        ' 
+        ctrlDisplayLoopPoints.AutoSize = True
+        ctrlDisplayLoopPoints.Location = New System.Drawing.Point(237, 75)
+        ctrlDisplayLoopPoints.Name = "ctrlDisplayLoopPoints"
+        ctrlDisplayLoopPoints.Size = New System.Drawing.Size(118, 19)
+        ctrlDisplayLoopPoints.TabIndex = 83
+        ctrlDisplayLoopPoints.Text = "Show loop points"
+        ctrlDisplayLoopPoints.UseVisualStyleBackColor = True
+        ' 
         ' Msu1AltSelectMainForm
         ' 
         Me.AutoScaleDimensions = New Drawing.SizeF(7F, 15F)
@@ -785,6 +810,7 @@ Partial Class Msu1AltSelectMainForm
         Me.Controls.Add(txtPathMsu)
         Me.Controls.Add(btnSelPathMsu)
         Me.Controls.Add(ctrlDisplayOnlyTracksWithAlts)
+        Me.Controls.Add(ctrlDisplayLoopPoints)
         Me.Controls.Add(btnSaveJsonAs)
         Me.Controls.Add(btnSaveJson)
         Me.Controls.Add(scVerticalHalf)
@@ -835,6 +861,8 @@ Partial Class Msu1AltSelectMainForm
     Private WithEvents chAltTrackId As ColumnHeader
     Private WithEvents chAltTrackTitle As ColumnHeader
     Private WithEvents chAltTrackAutoSwitch As ColumnHeader
+    Private WithEvents chAltTrackLoopPoint As ColumnHeader
+    Private WithEvents chAltTrackLoopPointConverted As ColumnHeader
     Private WithEvents chTrackNumber As ColumnHeader
     Private WithEvents chTrackTitle As ColumnHeader
     Private WithEvents grpMsuTracks As System.Windows.Forms.GroupBox
@@ -891,4 +919,5 @@ Partial Class Msu1AltSelectMainForm
     Private WithEvents rtbLog As Logger.ScrollingRichTextBox
     Private WithEvents ttpMsuAltSel As ToolTip
     Private WithEvents ctrlLogAutoScroll As CheckBox
+    Private WithEvents ctrlDisplayLoopPoints As CheckBox
 End Class
