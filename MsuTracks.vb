@@ -633,13 +633,14 @@ Namespace Msu
             End Sub
 
             Public Sub AddPcmTrackIfMissing(ByRef locationAbsolute As String, ByRef trackNumber As Byte, ByRef isMainDir As Boolean)
+                Dim value As MsuTrack = Nothing
 
                 ' If the Track Object for this Id exists
-                If Me.TrackDict.ContainsKey(trackNumber) Then
+                If Me.TrackDict.TryGetValue(trackNumber, value) Then
 
                     If isMainDir Then
                         Try
-                            Call Me.TrackDict(trackNumber).GetCurrentTrackAlt()
+                            Call value.GetCurrentTrackAlt()
                             ' Main Version already added
                             Return
                         Catch ex As MsuAltTracksAllInSwapDirException
@@ -648,7 +649,7 @@ Namespace Msu
                     End If
 
                     ' Cancel, if location already exists as an alt. track
-                    If Me.TrackDict(trackNumber).LocationExistsAsAltTrack(locationAbsolute) Then
+                    If value.LocationExistsAsAltTrack(locationAbsolute) Then
                         Return
                     End If
                 End If
@@ -676,8 +677,10 @@ Namespace Msu
             ''' </summary>
             ''' <param name="TrackNumber">Key of <see cref="MsuTracks.TrackDict"/></param>
             Private Function GetOrCreateMsuTrack(ByRef trackNumber As Byte) As MsuTrack
-                If Me.TrackDict.ContainsKey(trackNumber) Then
-                    Return Me.TrackDict(trackNumber)
+                Dim value As MsuTrack = Nothing
+
+                If Me.TrackDict.TryGetValue(trackNumber, value) Then
+                    Return value
                 Else
                     Dim msuTrack = New MsuTrack(Me, trackNumber)
                     Call Me.TrackDict.Add(trackNumber, msuTrack)
