@@ -23,84 +23,84 @@ Partial Class MsuTracksSettingsControl
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New ComponentModel.Container()
-        lblMsuLocation = New Label()
-        txtMsuLocation = New TextBox()
-        ttpMsuSettings = New ToolTip(Me.components)
-        lblMsuName = New Label()
-        txtMsuName = New TextBox()
-        txtPcmPrefix = New TextBox()
-        lblPcmPrefix = New Label()
+        Me.lblMsuLocation = New Label()
+        Me.txtMsuLocation = New TextBox()
+        Me.ttpMsuSettings = New ToolTip(Me.components)
+        Me.lblMsuName = New Label()
+        Me.txtMsuName = New TextBox()
+        Me.txtPcmPrefix = New TextBox()
+        Me.lblPcmPrefix = New Label()
         Me.SuspendLayout()
         ' 
         ' lblMsuLocation
         ' 
-        lblMsuLocation.AutoSize = True
-        lblMsuLocation.Location = New Drawing.Point(3, 14)
-        lblMsuLocation.Name = "lblMsuLocation"
-        lblMsuLocation.Size = New Drawing.Size(130, 15)
-        lblMsuLocation.TabIndex = 0
-        lblMsuLocation.Text = "Location of MSU/ROM:"
+        Me.lblMsuLocation.AutoSize = True
+        Me.lblMsuLocation.Location = New System.Drawing.Point(3, 14)
+        Me.lblMsuLocation.Name = "lblMsuLocation"
+        Me.lblMsuLocation.Size = New System.Drawing.Size(130, 15)
+        Me.lblMsuLocation.TabIndex = 0
+        Me.lblMsuLocation.Text = "Location of MSU/ROM:"
         ' 
         ' txtMsuLocation
         ' 
-        txtMsuLocation.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        txtMsuLocation.Location = New Drawing.Point(170, 11)
-        txtMsuLocation.Name = "txtMsuLocation"
-        txtMsuLocation.Size = New Drawing.Size(160, 23)
-        txtMsuLocation.TabIndex = 1
+        Me.txtMsuLocation.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.txtMsuLocation.Location = New System.Drawing.Point(170, 11)
+        Me.txtMsuLocation.Name = "txtMsuLocation"
+        Me.txtMsuLocation.Size = New System.Drawing.Size(160, 23)
+        Me.txtMsuLocation.TabIndex = 1
         ' 
         ' ttpMsuSettings
         ' 
-        ttpMsuSettings.AutoPopDelay = Integer.MaxValue
-        ttpMsuSettings.InitialDelay = 250
-        ttpMsuSettings.ReshowDelay = 50
+        Me.ttpMsuSettings.AutoPopDelay = Integer.MaxValue
+        Me.ttpMsuSettings.InitialDelay = 250
+        Me.ttpMsuSettings.ReshowDelay = 50
         ' 
         ' lblMsuName
         ' 
-        lblMsuName.AutoSize = True
-        lblMsuName.Location = New Drawing.Point(3, 43)
-        lblMsuName.Name = "lblMsuName"
-        lblMsuName.Size = New Drawing.Size(116, 15)
-        lblMsuName.TabIndex = 1
-        lblMsuName.Text = "Name of MSU/ROM:"
+        Me.lblMsuName.AutoSize = True
+        Me.lblMsuName.Location = New System.Drawing.Point(3, 43)
+        Me.lblMsuName.Name = "lblMsuName"
+        Me.lblMsuName.Size = New System.Drawing.Size(116, 15)
+        Me.lblMsuName.TabIndex = 1
+        Me.lblMsuName.Text = "Name of MSU/ROM:"
         ' 
         ' txtMsuName
         ' 
-        txtMsuName.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        txtMsuName.Location = New Drawing.Point(170, 40)
-        txtMsuName.Name = "txtMsuName"
-        txtMsuName.Size = New Drawing.Size(160, 23)
-        txtMsuName.TabIndex = 3
+        Me.txtMsuName.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.txtMsuName.Location = New System.Drawing.Point(170, 40)
+        Me.txtMsuName.Name = "txtMsuName"
+        Me.txtMsuName.Size = New System.Drawing.Size(160, 23)
+        Me.txtMsuName.TabIndex = 3
         ' 
         ' txtPcmPrefix
         ' 
-        txtPcmPrefix.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        txtPcmPrefix.Location = New Drawing.Point(170, 69)
-        txtPcmPrefix.Name = "txtPcmPrefix"
-        txtPcmPrefix.Size = New Drawing.Size(160, 23)
-        txtPcmPrefix.TabIndex = 5
+        Me.txtPcmPrefix.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.txtPcmPrefix.Location = New System.Drawing.Point(170, 69)
+        Me.txtPcmPrefix.Name = "txtPcmPrefix"
+        Me.txtPcmPrefix.Size = New System.Drawing.Size(160, 23)
+        Me.txtPcmPrefix.TabIndex = 5
         ' 
         ' lblPcmPrefix
         ' 
-        lblPcmPrefix.AutoSize = True
-        lblPcmPrefix.Location = New Drawing.Point(3, 72)
-        lblPcmPrefix.Name = "lblPcmPrefix"
-        lblPcmPrefix.Size = New Drawing.Size(161, 15)
-        lblPcmPrefix.TabIndex = 4
-        lblPcmPrefix.Text = "Prefix used for the PCM Files:"
+        Me.lblPcmPrefix.AutoSize = True
+        Me.lblPcmPrefix.Location = New System.Drawing.Point(3, 72)
+        Me.lblPcmPrefix.Name = "lblPcmPrefix"
+        Me.lblPcmPrefix.Size = New System.Drawing.Size(161, 15)
+        Me.lblPcmPrefix.TabIndex = 4
+        Me.lblPcmPrefix.Text = "Prefix used for the PCM Files:"
         ' 
         ' MsuTracksSettingsControl
         ' 
-        Me.AutoScaleDimensions = New Drawing.SizeF(7F, 15F)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
         Me.AutoScaleMode = AutoScaleMode.Font
-        Me.Controls.Add(txtPcmPrefix)
-        Me.Controls.Add(lblPcmPrefix)
-        Me.Controls.Add(txtMsuName)
-        Me.Controls.Add(lblMsuName)
-        Me.Controls.Add(txtMsuLocation)
-        Me.Controls.Add(lblMsuLocation)
+        Me.Controls.Add(Me.txtPcmPrefix)
+        Me.Controls.Add(Me.lblPcmPrefix)
+        Me.Controls.Add(Me.txtMsuName)
+        Me.Controls.Add(Me.lblMsuName)
+        Me.Controls.Add(Me.txtMsuLocation)
+        Me.Controls.Add(Me.lblMsuLocation)
         Me.Name = "MsuTracksSettingsControl"
-        Me.Size = New Drawing.Size(333, 100)
+        Me.Size = New System.Drawing.Size(333, 100)
         Me.ResumeLayout(False)
         Me.PerformLayout()
     End Sub

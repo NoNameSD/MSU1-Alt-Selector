@@ -23,828 +23,828 @@ Partial Class Msu1AltSelectMainForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New ComponentModel.Container()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Msu1AltSelectMainForm))
-        sfdLogExport = New SaveFileDialog()
-        sfdJson = New SaveFileDialog()
-        btnSelPathMsu = New Button()
-        ofdPathMsu = New OpenFileDialog()
-        txtPathMsu = New TextBox()
-        ContextMenuStripMsuConfig = New ContextMenuStrip(Me.components)
-        OpenMsuLocationToolStripMenuItem = New ToolStripMenuItem()
-        lstvTracks = New ListView()
-        chTrackNumber = New ColumnHeader()
-        chTrackTitle = New ColumnHeader()
-        ContextMenuStripTracks = New ContextMenuStrip(Me.components)
-        EditTrackToolStripMenuItem = New ToolStripMenuItem()
-        DeleteTrackToolStripMenuItem = New ToolStripMenuItem()
-        lstvAltTracks = New ListView()
-        chAltTrackId = New ColumnHeader()
-        chAltTrackTitle = New ColumnHeader()
-        ContextMenuStripAltTracks = New ContextMenuStrip(Me.components)
-        SetAsCurrentTrackToolStripMenuItem = New ToolStripMenuItem()
-        AltTrackToolStripSeparator1 = New ToolStripSeparator()
-        OpenAltTrackLocationToolStripMenuItem = New ToolStripMenuItem()
-        EditAltTrackToolStripMenuItem = New ToolStripMenuItem()
-        DeleteAltTrackToolStripMenuItem = New ToolStripMenuItem()
-        AltTrackToolStripSeparator2 = New ToolStripSeparator()
-        AddNewAltTrackToolStripMenuItem = New ToolStripMenuItem()
-        chAltTrackAutoSwitch = New ColumnHeader()
-        chAltTrackLoopPoint = New ColumnHeader()
-        chAltTrackLoopPointConverted = New ColumnHeader()
-        scTracks = New SplitContainer()
-        grpPcmConvert = New GroupBox()
-        ctrlDisplayCmd = New CheckBox()
-        nudProcessCount = New NumericUpDown()
-        nudPcmResample = New NumericUpDown()
-        lblProcessCount = New Label()
-        btnPcmToNormal = New Button()
-        lblHz = New Label()
-        btnConvertPcm = New Button()
-        frameResample = New Panel()
-        optPcmNormal = New RadioButton()
-        optPcmConverted = New RadioButton()
-        nudPcmVolume = New NumericUpDown()
-        lblPcmVolume = New Label()
-        ctrlKeepCmdOpen = New CheckBox()
-        btnSaveJson = New Button()
-        btnSaveJsonAs = New Button()
-        grpMsuTracks = New GroupBox()
-        grpAutoSwitch = New GroupBox()
-        lblAutoSwitchInterval = New Label()
-        lblAutoSwitchIntervalUnit = New Label()
-        nudAutoSwitchInterval = New NumericUpDown()
-        ctrlEnableAutoSwitch = New CheckBox()
-        tmrAutoSwitch = New Timer(Me.components)
-        ctrlDisplayOnlyTracksWithAlts = New CheckBox()
-        scVerticalHalf = New SplitContainer()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Msu1AltSelectMainForm))
+        Me.sfdLogExport = New SaveFileDialog()
+        Me.sfdJson = New SaveFileDialog()
+        Me.btnSelPathMsu = New Button()
+        Me.ofdPathMsu = New OpenFileDialog()
+        Me.txtPathMsu = New TextBox()
+        Me.ContextMenuStripMsuConfig = New ContextMenuStrip(Me.components)
+        Me.OpenMsuLocationToolStripMenuItem = New ToolStripMenuItem()
+        Me.lstvTracks = New ListView()
+        Me.chTrackNumber = New ColumnHeader()
+        Me.chTrackTitle = New ColumnHeader()
+        Me.ContextMenuStripTracks = New ContextMenuStrip(Me.components)
+        Me.EditTrackToolStripMenuItem = New ToolStripMenuItem()
+        Me.DeleteTrackToolStripMenuItem = New ToolStripMenuItem()
+        Me.lstvAltTracks = New ListView()
+        Me.chAltTrackId = New ColumnHeader()
+        Me.chAltTrackTitle = New ColumnHeader()
+        Me.ContextMenuStripAltTracks = New ContextMenuStrip(Me.components)
+        Me.SetAsCurrentTrackToolStripMenuItem = New ToolStripMenuItem()
+        Me.AltTrackToolStripSeparator1 = New ToolStripSeparator()
+        Me.OpenAltTrackLocationToolStripMenuItem = New ToolStripMenuItem()
+        Me.EditAltTrackToolStripMenuItem = New ToolStripMenuItem()
+        Me.DeleteAltTrackToolStripMenuItem = New ToolStripMenuItem()
+        Me.AltTrackToolStripSeparator2 = New ToolStripSeparator()
+        Me.AddNewAltTrackToolStripMenuItem = New ToolStripMenuItem()
+        Me.chAltTrackAutoSwitch = New ColumnHeader()
+        Me.chAltTrackLoopPoint = New ColumnHeader()
+        Me.chAltTrackLoopPointConverted = New ColumnHeader()
+        Me.scTracks = New SplitContainer()
+        Me.grpPcmConvert = New GroupBox()
+        Me.ctrlDisplayCmd = New CheckBox()
+        Me.nudProcessCount = New NumericUpDown()
+        Me.nudPcmResample = New NumericUpDown()
+        Me.lblProcessCount = New Label()
+        Me.btnPcmToNormal = New Button()
+        Me.lblHz = New Label()
+        Me.btnConvertPcm = New Button()
+        Me.frameResample = New Panel()
+        Me.optPcmNormal = New RadioButton()
+        Me.optPcmConverted = New RadioButton()
+        Me.nudPcmVolume = New NumericUpDown()
+        Me.lblPcmVolume = New Label()
+        Me.ctrlKeepCmdOpen = New CheckBox()
+        Me.btnSaveJson = New Button()
+        Me.btnSaveJsonAs = New Button()
+        Me.grpMsuTracks = New GroupBox()
+        Me.grpAutoSwitch = New GroupBox()
+        Me.lblAutoSwitchInterval = New Label()
+        Me.lblAutoSwitchIntervalUnit = New Label()
+        Me.nudAutoSwitchInterval = New NumericUpDown()
+        Me.ctrlEnableAutoSwitch = New CheckBox()
+        Me.tmrAutoSwitch = New Timer(Me.components)
+        Me.ctrlDisplayOnlyTracksWithAlts = New CheckBox()
+        Me.scVerticalHalf = New SplitContainer()
         Me.rtbLog = New Logger.ScrollingRichTextBox()
-        grpLogSettings = New GroupBox()
-        ctrlLogAutoScroll = New CheckBox()
-        scLogSettingButtons = New SplitContainer()
-        btnLogClear = New Button()
-        btnLogExport = New Button()
-        lblLogEntries = New Label()
-        nudLogEntries = New NumericUpDown()
-        btnSettings = New Button()
-        btnScanMsuDirectory = New Button()
+        Me.grpLogSettings = New GroupBox()
+        Me.ctrlLogAutoScroll = New CheckBox()
+        Me.scLogSettingButtons = New SplitContainer()
+        Me.btnLogClear = New Button()
+        Me.btnLogExport = New Button()
+        Me.lblLogEntries = New Label()
+        Me.nudLogEntries = New NumericUpDown()
+        Me.btnSettings = New Button()
+        Me.btnScanMsuDirectory = New Button()
         Me.BackgroundWorkerDelegate = New ComponentModel.BackgroundWorker()
-        ttpMsuAltSel = New ToolTip(Me.components)
-        ctrlDisplayLoopPoints = New CheckBox()
-        ContextMenuStripMsuConfig.SuspendLayout()
-        ContextMenuStripTracks.SuspendLayout()
-        ContextMenuStripAltTracks.SuspendLayout()
-        CType(scTracks, ComponentModel.ISupportInitialize).BeginInit()
-        scTracks.Panel1.SuspendLayout()
-        scTracks.Panel2.SuspendLayout()
-        scTracks.SuspendLayout()
-        grpPcmConvert.SuspendLayout()
-        CType(nudProcessCount, ComponentModel.ISupportInitialize).BeginInit()
-        CType(nudPcmResample, ComponentModel.ISupportInitialize).BeginInit()
-        frameResample.SuspendLayout()
-        CType(nudPcmVolume, ComponentModel.ISupportInitialize).BeginInit()
-        grpMsuTracks.SuspendLayout()
-        grpAutoSwitch.SuspendLayout()
-        CType(nudAutoSwitchInterval, ComponentModel.ISupportInitialize).BeginInit()
-        CType(scVerticalHalf, ComponentModel.ISupportInitialize).BeginInit()
-        scVerticalHalf.Panel1.SuspendLayout()
-        scVerticalHalf.Panel2.SuspendLayout()
-        scVerticalHalf.SuspendLayout()
-        grpLogSettings.SuspendLayout()
-        CType(scLogSettingButtons, ComponentModel.ISupportInitialize).BeginInit()
-        scLogSettingButtons.Panel1.SuspendLayout()
-        scLogSettingButtons.Panel2.SuspendLayout()
-        scLogSettingButtons.SuspendLayout()
-        CType(nudLogEntries, ComponentModel.ISupportInitialize).BeginInit()
+        Me.ttpMsuAltSel = New ToolTip(Me.components)
+        Me.ctrlDisplayLoopPoints = New CheckBox()
+        Me.ContextMenuStripMsuConfig.SuspendLayout()
+        Me.ContextMenuStripTracks.SuspendLayout()
+        Me.ContextMenuStripAltTracks.SuspendLayout()
+        CType(Me.scTracks, ComponentModel.ISupportInitialize).BeginInit()
+        Me.scTracks.Panel1.SuspendLayout()
+        Me.scTracks.Panel2.SuspendLayout()
+        Me.scTracks.SuspendLayout()
+        Me.grpPcmConvert.SuspendLayout()
+        CType(Me.nudProcessCount, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudPcmResample, ComponentModel.ISupportInitialize).BeginInit()
+        Me.frameResample.SuspendLayout()
+        CType(Me.nudPcmVolume, ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpMsuTracks.SuspendLayout()
+        Me.grpAutoSwitch.SuspendLayout()
+        CType(Me.nudAutoSwitchInterval, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.scVerticalHalf, ComponentModel.ISupportInitialize).BeginInit()
+        Me.scVerticalHalf.Panel1.SuspendLayout()
+        Me.scVerticalHalf.Panel2.SuspendLayout()
+        Me.scVerticalHalf.SuspendLayout()
+        Me.grpLogSettings.SuspendLayout()
+        CType(Me.scLogSettingButtons, ComponentModel.ISupportInitialize).BeginInit()
+        Me.scLogSettingButtons.Panel1.SuspendLayout()
+        Me.scLogSettingButtons.Panel2.SuspendLayout()
+        Me.scLogSettingButtons.SuspendLayout()
+        CType(Me.nudLogEntries, ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         ' 
         ' sfdLogExport
         ' 
-        sfdLogExport.DefaultExt = "rtf"
-        sfdLogExport.Filter = "Rich-Text-Format|*.rtf|Plain text|*.txt"
-        sfdLogExport.Title = "Export the current log to a file."
+        Me.sfdLogExport.DefaultExt = "rtf"
+        Me.sfdLogExport.Filter = "Rich-Text-Format|*.rtf|Plain text|*.txt"
+        Me.sfdLogExport.Title = "Export the current log to a file."
         ' 
         ' sfdJson
         ' 
-        sfdJson.DefaultExt = "json"
-        sfdJson.Filter = "JSON config|*.json"
-        sfdJson.Title = "Export the current MSU configuration as JSON"
+        Me.sfdJson.DefaultExt = "json"
+        Me.sfdJson.Filter = "JSON config|*.json"
+        Me.sfdJson.Title = "Export the current MSU configuration as JSON"
         ' 
         ' btnSelPathMsu
         ' 
-        btnSelPathMsu.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        btnSelPathMsu.Location = New Drawing.Point(435, 12)
-        btnSelPathMsu.Name = "btnSelPathMsu"
-        btnSelPathMsu.Size = New Drawing.Size(87, 24)
-        btnSelPathMsu.TabIndex = 1
-        btnSelPathMsu.Text = "Select MSU1"
-        btnSelPathMsu.UseVisualStyleBackColor = True
+        Me.btnSelPathMsu.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Me.btnSelPathMsu.Location = New System.Drawing.Point(435, 12)
+        Me.btnSelPathMsu.Name = "btnSelPathMsu"
+        Me.btnSelPathMsu.Size = New System.Drawing.Size(87, 24)
+        Me.btnSelPathMsu.TabIndex = 1
+        Me.btnSelPathMsu.Text = "Select MSU1"
+        Me.btnSelPathMsu.UseVisualStyleBackColor = True
         ' 
         ' ofdPathMsu
         ' 
-        ofdPathMsu.Filter = "All Files|*.*|All|*.json;*.msu;*.sfc;*.smc|JSON config|*.json|MSU file|*.msu|SNES ROM|*.sfc;*.smc"
-        ofdPathMsu.FilterIndex = 2
-        ofdPathMsu.Title = "Select the .MSU file or the MSU1 patched ROM (Or anything that has the same name as the ROM)"
+        Me.ofdPathMsu.Filter = "All Files|*.*|All|*.json;*.msu;*.sfc;*.smc|JSON config|*.json|MSU file|*.msu|SNES ROM|*.sfc;*.smc"
+        Me.ofdPathMsu.FilterIndex = 2
+        Me.ofdPathMsu.Title = "Select the .MSU file or the MSU1 patched ROM (Or anything that has the same name as the ROM)"
         ' 
         ' txtPathMsu
         ' 
-        txtPathMsu.AllowDrop = True
-        txtPathMsu.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        txtPathMsu.ContextMenuStrip = ContextMenuStripMsuConfig
-        txtPathMsu.Location = New Drawing.Point(6, 12)
-        txtPathMsu.Name = "txtPathMsu"
-        txtPathMsu.ReadOnly = True
-        txtPathMsu.Size = New Drawing.Size(423, 23)
-        txtPathMsu.TabIndex = 0
-        txtPathMsu.WordWrap = False
+        Me.txtPathMsu.AllowDrop = True
+        Me.txtPathMsu.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.txtPathMsu.ContextMenuStrip = Me.ContextMenuStripMsuConfig
+        Me.txtPathMsu.Location = New System.Drawing.Point(6, 12)
+        Me.txtPathMsu.Name = "txtPathMsu"
+        Me.txtPathMsu.ReadOnly = True
+        Me.txtPathMsu.Size = New System.Drawing.Size(423, 23)
+        Me.txtPathMsu.TabIndex = 0
+        Me.txtPathMsu.WordWrap = False
         ' 
         ' ContextMenuStripMsuConfig
         ' 
-        ContextMenuStripMsuConfig.Items.AddRange(New ToolStripItem() {OpenMsuLocationToolStripMenuItem})
-        ContextMenuStripMsuConfig.Name = "ContextMenuStripMsuConfig"
-        ContextMenuStripMsuConfig.Size = New Drawing.Size(153, 26)
+        Me.ContextMenuStripMsuConfig.Items.AddRange(New ToolStripItem() {Me.OpenMsuLocationToolStripMenuItem})
+        Me.ContextMenuStripMsuConfig.Name = "ContextMenuStripMsuConfig"
+        Me.ContextMenuStripMsuConfig.Size = New System.Drawing.Size(153, 26)
         ' 
         ' OpenMsuLocationToolStripMenuItem
         ' 
-        OpenMsuLocationToolStripMenuItem.Name = "OpenMsuLocationToolStripMenuItem"
-        OpenMsuLocationToolStripMenuItem.Size = New Drawing.Size(152, 22)
-        OpenMsuLocationToolStripMenuItem.Text = "Open Location"
+        Me.OpenMsuLocationToolStripMenuItem.Name = "OpenMsuLocationToolStripMenuItem"
+        Me.OpenMsuLocationToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OpenMsuLocationToolStripMenuItem.Text = "Open Location"
         ' 
         ' lstvTracks
         ' 
-        lstvTracks.AccessibleRole = AccessibleRole.List
-        lstvTracks.Alignment = ListViewAlignment.SnapToGrid
-        lstvTracks.AllowColumnReorder = True
-        lstvTracks.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        lstvTracks.BackgroundImageTiled = True
-        lstvTracks.Columns.AddRange(New ColumnHeader() {chTrackNumber, chTrackTitle})
-        lstvTracks.ContextMenuStrip = ContextMenuStripTracks
-        lstvTracks.FullRowSelect = True
-        lstvTracks.GridLines = True
-        lstvTracks.LabelWrap = False
-        lstvTracks.Location = New Drawing.Point(3, 0)
-        lstvTracks.MultiSelect = False
-        lstvTracks.Name = "lstvTracks"
-        lstvTracks.ShowItemToolTips = True
-        lstvTracks.Size = New Drawing.Size(153, 203)
-        lstvTracks.TabIndex = 8
-        lstvTracks.UseCompatibleStateImageBehavior = False
-        lstvTracks.View = View.Details
+        Me.lstvTracks.AccessibleRole = AccessibleRole.List
+        Me.lstvTracks.Alignment = ListViewAlignment.SnapToGrid
+        Me.lstvTracks.AllowColumnReorder = True
+        Me.lstvTracks.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.lstvTracks.BackgroundImageTiled = True
+        Me.lstvTracks.Columns.AddRange(New ColumnHeader() {Me.chTrackNumber, Me.chTrackTitle})
+        Me.lstvTracks.ContextMenuStrip = Me.ContextMenuStripTracks
+        Me.lstvTracks.FullRowSelect = True
+        Me.lstvTracks.GridLines = True
+        Me.lstvTracks.LabelWrap = False
+        Me.lstvTracks.Location = New System.Drawing.Point(3, 0)
+        Me.lstvTracks.MultiSelect = False
+        Me.lstvTracks.Name = "lstvTracks"
+        Me.lstvTracks.ShowItemToolTips = True
+        Me.lstvTracks.Size = New System.Drawing.Size(153, 203)
+        Me.lstvTracks.TabIndex = 8
+        Me.lstvTracks.UseCompatibleStateImageBehavior = False
+        Me.lstvTracks.View = View.Details
         ' 
         ' chTrackNumber
         ' 
-        chTrackNumber.Text = "Id"
-        chTrackNumber.Width = 25
+        Me.chTrackNumber.Text = "Id"
+        Me.chTrackNumber.Width = 25
         ' 
         ' chTrackTitle
         ' 
-        chTrackTitle.Text = "Track title"
-        chTrackTitle.Width = 150
+        Me.chTrackTitle.Text = "Track title"
+        Me.chTrackTitle.Width = 150
         ' 
         ' ContextMenuStripTracks
         ' 
-        ContextMenuStripTracks.Items.AddRange(New ToolStripItem() {EditTrackToolStripMenuItem, DeleteTrackToolStripMenuItem})
-        ContextMenuStripTracks.Name = "ContextMenuStripTracks"
-        ContextMenuStripTracks.Size = New Drawing.Size(132, 48)
+        Me.ContextMenuStripTracks.Items.AddRange(New ToolStripItem() {Me.EditTrackToolStripMenuItem, Me.DeleteTrackToolStripMenuItem})
+        Me.ContextMenuStripTracks.Name = "ContextMenuStripTracks"
+        Me.ContextMenuStripTracks.Size = New System.Drawing.Size(136, 48)
         ' 
         ' EditTrackToolStripMenuItem
         ' 
-        EditTrackToolStripMenuItem.Name = "EditTrackToolStripMenuItem"
-        EditTrackToolStripMenuItem.Size = New Drawing.Size(131, 22)
-        EditTrackToolStripMenuItem.Text = "Edit"
+        Me.EditTrackToolStripMenuItem.Name = "EditTrackToolStripMenuItem"
+        Me.EditTrackToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.EditTrackToolStripMenuItem.Text = "Edit"
         ' 
         ' DeleteTrackToolStripMenuItem
         ' 
-        DeleteTrackToolStripMenuItem.Name = "DeleteTrackToolStripMenuItem"
-        DeleteTrackToolStripMenuItem.ShortcutKeys = Keys.Delete
-        DeleteTrackToolStripMenuItem.Size = New Drawing.Size(131, 22)
-        DeleteTrackToolStripMenuItem.Text = "Delete"
+        Me.DeleteTrackToolStripMenuItem.Name = "DeleteTrackToolStripMenuItem"
+        Me.DeleteTrackToolStripMenuItem.ShortcutKeys = Keys.Delete
+        Me.DeleteTrackToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.DeleteTrackToolStripMenuItem.Text = "Delete"
         ' 
         ' lstvAltTracks
         ' 
-        lstvAltTracks.AccessibleRole = AccessibleRole.List
-        lstvAltTracks.Alignment = ListViewAlignment.SnapToGrid
-        lstvAltTracks.AllowColumnReorder = True
-        lstvAltTracks.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        lstvAltTracks.CheckBoxes = True
-        lstvAltTracks.Columns.AddRange(New ColumnHeader() {chAltTrackId, chAltTrackTitle})
-        lstvAltTracks.ContextMenuStrip = ContextMenuStripAltTracks
-        lstvAltTracks.FullRowSelect = True
-        lstvAltTracks.GridLines = True
-        lstvAltTracks.Location = New Drawing.Point(3, 0)
-        lstvAltTracks.MultiSelect = False
-        lstvAltTracks.Name = "lstvAltTracks"
-        lstvAltTracks.ShowItemToolTips = True
-        lstvAltTracks.Size = New Drawing.Size(342, 203)
-        lstvAltTracks.TabIndex = 9
-        lstvAltTracks.UseCompatibleStateImageBehavior = False
-        lstvAltTracks.View = View.Details
+        Me.lstvAltTracks.AccessibleRole = AccessibleRole.List
+        Me.lstvAltTracks.Alignment = ListViewAlignment.SnapToGrid
+        Me.lstvAltTracks.AllowColumnReorder = True
+        Me.lstvAltTracks.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.lstvAltTracks.CheckBoxes = True
+        Me.lstvAltTracks.Columns.AddRange(New ColumnHeader() {Me.chAltTrackId, Me.chAltTrackTitle})
+        Me.lstvAltTracks.ContextMenuStrip = Me.ContextMenuStripAltTracks
+        Me.lstvAltTracks.FullRowSelect = True
+        Me.lstvAltTracks.GridLines = True
+        Me.lstvAltTracks.Location = New System.Drawing.Point(3, 0)
+        Me.lstvAltTracks.MultiSelect = False
+        Me.lstvAltTracks.Name = "lstvAltTracks"
+        Me.lstvAltTracks.ShowItemToolTips = True
+        Me.lstvAltTracks.Size = New System.Drawing.Size(342, 203)
+        Me.lstvAltTracks.TabIndex = 9
+        Me.lstvAltTracks.UseCompatibleStateImageBehavior = False
+        Me.lstvAltTracks.View = View.Details
         ' 
         ' chAltTrackId
         ' 
-        chAltTrackId.Text = "Id"
-        chAltTrackId.Width = 40
+        Me.chAltTrackId.Text = "Id"
+        Me.chAltTrackId.Width = 40
         ' 
         ' chAltTrackTitle
         ' 
-        chAltTrackTitle.Text = "alt. Track title"
-        chAltTrackTitle.Width = 150
+        Me.chAltTrackTitle.Text = "alt. Track title"
+        Me.chAltTrackTitle.Width = 150
         ' 
         ' ContextMenuStripAltTracks
         ' 
-        ContextMenuStripAltTracks.Items.AddRange(New ToolStripItem() {SetAsCurrentTrackToolStripMenuItem, AltTrackToolStripSeparator1, OpenAltTrackLocationToolStripMenuItem, EditAltTrackToolStripMenuItem, DeleteAltTrackToolStripMenuItem, AltTrackToolStripSeparator2, AddNewAltTrackToolStripMenuItem})
-        ContextMenuStripAltTracks.Name = "ContextMenuStripAltTracks"
-        ContextMenuStripAltTracks.Size = New Drawing.Size(177, 126)
+        Me.ContextMenuStripAltTracks.Items.AddRange(New ToolStripItem() {Me.SetAsCurrentTrackToolStripMenuItem, Me.AltTrackToolStripSeparator1, Me.OpenAltTrackLocationToolStripMenuItem, Me.EditAltTrackToolStripMenuItem, Me.DeleteAltTrackToolStripMenuItem, Me.AltTrackToolStripSeparator2, Me.AddNewAltTrackToolStripMenuItem})
+        Me.ContextMenuStripAltTracks.Name = "ContextMenuStripAltTracks"
+        Me.ContextMenuStripAltTracks.Size = New System.Drawing.Size(177, 126)
         ' 
         ' SetAsCurrentTrackToolStripMenuItem
         ' 
-        SetAsCurrentTrackToolStripMenuItem.Font = New Drawing.Font("Segoe UI", 9F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point)
-        SetAsCurrentTrackToolStripMenuItem.Name = "SetAsCurrentTrackToolStripMenuItem"
-        SetAsCurrentTrackToolStripMenuItem.ShowShortcutKeys = False
-        SetAsCurrentTrackToolStripMenuItem.Size = New Drawing.Size(176, 22)
-        SetAsCurrentTrackToolStripMenuItem.Text = "Switch to this Track"
+        Me.SetAsCurrentTrackToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9F, Drawing.FontStyle.Bold)
+        Me.SetAsCurrentTrackToolStripMenuItem.Name = "SetAsCurrentTrackToolStripMenuItem"
+        Me.SetAsCurrentTrackToolStripMenuItem.ShowShortcutKeys = False
+        Me.SetAsCurrentTrackToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.SetAsCurrentTrackToolStripMenuItem.Text = "Switch to this Track"
         ' 
         ' AltTrackToolStripSeparator1
         ' 
-        AltTrackToolStripSeparator1.Name = "AltTrackToolStripSeparator1"
-        AltTrackToolStripSeparator1.Size = New Drawing.Size(173, 6)
+        Me.AltTrackToolStripSeparator1.Name = "AltTrackToolStripSeparator1"
+        Me.AltTrackToolStripSeparator1.Size = New System.Drawing.Size(173, 6)
         ' 
         ' OpenAltTrackLocationToolStripMenuItem
         ' 
-        OpenAltTrackLocationToolStripMenuItem.Name = "OpenAltTrackLocationToolStripMenuItem"
-        OpenAltTrackLocationToolStripMenuItem.Size = New Drawing.Size(176, 22)
-        OpenAltTrackLocationToolStripMenuItem.Text = "Open Location"
+        Me.OpenAltTrackLocationToolStripMenuItem.Name = "OpenAltTrackLocationToolStripMenuItem"
+        Me.OpenAltTrackLocationToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.OpenAltTrackLocationToolStripMenuItem.Text = "Open Location"
         ' 
         ' EditAltTrackToolStripMenuItem
         ' 
-        EditAltTrackToolStripMenuItem.Name = "EditAltTrackToolStripMenuItem"
-        EditAltTrackToolStripMenuItem.Size = New Drawing.Size(176, 22)
-        EditAltTrackToolStripMenuItem.Text = "Edit"
+        Me.EditAltTrackToolStripMenuItem.Name = "EditAltTrackToolStripMenuItem"
+        Me.EditAltTrackToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.EditAltTrackToolStripMenuItem.Text = "Edit"
         ' 
         ' DeleteAltTrackToolStripMenuItem
         ' 
-        DeleteAltTrackToolStripMenuItem.Name = "DeleteAltTrackToolStripMenuItem"
-        DeleteAltTrackToolStripMenuItem.ShortcutKeys = Keys.Delete
-        DeleteAltTrackToolStripMenuItem.Size = New Drawing.Size(176, 22)
-        DeleteAltTrackToolStripMenuItem.Text = "Delete"
+        Me.DeleteAltTrackToolStripMenuItem.Name = "DeleteAltTrackToolStripMenuItem"
+        Me.DeleteAltTrackToolStripMenuItem.ShortcutKeys = Keys.Delete
+        Me.DeleteAltTrackToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.DeleteAltTrackToolStripMenuItem.Text = "Delete"
         ' 
         ' AltTrackToolStripSeparator2
         ' 
-        AltTrackToolStripSeparator2.Name = "AltTrackToolStripSeparator2"
-        AltTrackToolStripSeparator2.Size = New Drawing.Size(173, 6)
+        Me.AltTrackToolStripSeparator2.Name = "AltTrackToolStripSeparator2"
+        Me.AltTrackToolStripSeparator2.Size = New System.Drawing.Size(173, 6)
         ' 
         ' AddNewAltTrackToolStripMenuItem
         ' 
-        AddNewAltTrackToolStripMenuItem.Name = "AddNewAltTrackToolStripMenuItem"
-        AddNewAltTrackToolStripMenuItem.Size = New Drawing.Size(176, 22)
-        AddNewAltTrackToolStripMenuItem.Text = "Add New"
+        Me.AddNewAltTrackToolStripMenuItem.Name = "AddNewAltTrackToolStripMenuItem"
+        Me.AddNewAltTrackToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.AddNewAltTrackToolStripMenuItem.Text = "Add New"
         ' 
         ' chAltTrackAutoSwitch
         ' 
-        chAltTrackAutoSwitch.Text = "Auto Switch"
-        chAltTrackAutoSwitch.Width = 80
+        Me.chAltTrackAutoSwitch.Text = "Auto Switch"
+        Me.chAltTrackAutoSwitch.Width = 80
         ' 
         ' chAltTrackLoopPoint
         ' 
-        chAltTrackLoopPoint.Text = "Loop Point"
-        chAltTrackLoopPoint.Width = 70
-        chAltTrackLoopPoint.TextAlign = HorizontalAlignment.Right
+        Me.chAltTrackLoopPoint.Text = "Loop Point"
+        Me.chAltTrackLoopPoint.TextAlign = HorizontalAlignment.Right
+        Me.chAltTrackLoopPoint.Width = 70
         ' 
         ' chAltTrackLoopPointConverted
         ' 
-        chAltTrackLoopPointConverted.Text = "Loop Point (Converted)"
-        chAltTrackLoopPointConverted.Width = 136
-        chAltTrackLoopPointConverted.TextAlign = HorizontalAlignment.Right
+        Me.chAltTrackLoopPointConverted.Text = "Loop Point (Converted)"
+        Me.chAltTrackLoopPointConverted.TextAlign = HorizontalAlignment.Right
+        Me.chAltTrackLoopPointConverted.Width = 136
         ' 
         ' scTracks
         ' 
-        scTracks.Dock = DockStyle.Fill
-        scTracks.Location = New Drawing.Point(3, 19)
-        scTracks.Name = "scTracks"
+        Me.scTracks.Dock = DockStyle.Fill
+        Me.scTracks.Location = New System.Drawing.Point(3, 19)
+        Me.scTracks.Name = "scTracks"
         ' 
         ' scTracks.Panel1
         ' 
-        scTracks.Panel1.Controls.Add(lstvTracks)
+        Me.scTracks.Panel1.Controls.Add(Me.lstvTracks)
         ' 
         ' scTracks.Panel2
         ' 
-        scTracks.Panel2.Controls.Add(lstvAltTracks)
-        scTracks.Size = New Drawing.Size(512, 203)
-        scTracks.SplitterDistance = 158
-        scTracks.TabIndex = 0
+        Me.scTracks.Panel2.Controls.Add(Me.lstvAltTracks)
+        Me.scTracks.Size = New System.Drawing.Size(512, 203)
+        Me.scTracks.SplitterDistance = 158
+        Me.scTracks.TabIndex = 0
         ' 
         ' grpPcmConvert
         ' 
-        grpPcmConvert.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
-        grpPcmConvert.Controls.Add(ctrlDisplayCmd)
-        grpPcmConvert.Controls.Add(nudProcessCount)
-        grpPcmConvert.Controls.Add(nudPcmResample)
-        grpPcmConvert.Controls.Add(lblProcessCount)
-        grpPcmConvert.Controls.Add(btnPcmToNormal)
-        grpPcmConvert.Controls.Add(lblHz)
-        grpPcmConvert.Controls.Add(btnConvertPcm)
-        grpPcmConvert.Controls.Add(frameResample)
-        grpPcmConvert.Controls.Add(nudPcmVolume)
-        grpPcmConvert.Controls.Add(lblPcmVolume)
-        grpPcmConvert.Controls.Add(ctrlKeepCmdOpen)
-        grpPcmConvert.Location = New Drawing.Point(0, 225)
-        grpPcmConvert.Name = "grpPcmConvert"
-        grpPcmConvert.Size = New Drawing.Size(365, 96)
-        grpPcmConvert.TabIndex = 10
-        grpPcmConvert.TabStop = False
-        grpPcmConvert.Text = "Convert PCM files"
+        Me.grpPcmConvert.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
+        Me.grpPcmConvert.Controls.Add(Me.ctrlDisplayCmd)
+        Me.grpPcmConvert.Controls.Add(Me.nudProcessCount)
+        Me.grpPcmConvert.Controls.Add(Me.nudPcmResample)
+        Me.grpPcmConvert.Controls.Add(Me.lblProcessCount)
+        Me.grpPcmConvert.Controls.Add(Me.btnPcmToNormal)
+        Me.grpPcmConvert.Controls.Add(Me.lblHz)
+        Me.grpPcmConvert.Controls.Add(Me.btnConvertPcm)
+        Me.grpPcmConvert.Controls.Add(Me.frameResample)
+        Me.grpPcmConvert.Controls.Add(Me.nudPcmVolume)
+        Me.grpPcmConvert.Controls.Add(Me.lblPcmVolume)
+        Me.grpPcmConvert.Controls.Add(Me.ctrlKeepCmdOpen)
+        Me.grpPcmConvert.Location = New System.Drawing.Point(0, 225)
+        Me.grpPcmConvert.Name = "grpPcmConvert"
+        Me.grpPcmConvert.Size = New System.Drawing.Size(365, 96)
+        Me.grpPcmConvert.TabIndex = 10
+        Me.grpPcmConvert.TabStop = False
+        Me.grpPcmConvert.Text = "Convert PCM files"
         ' 
         ' ctrlDisplayCmd
         ' 
-        ctrlDisplayCmd.AutoSize = True
-        ctrlDisplayCmd.Location = New Drawing.Point(6, 71)
-        ctrlDisplayCmd.Name = "ctrlDisplayCmd"
-        ctrlDisplayCmd.Size = New Drawing.Size(137, 19)
-        ctrlDisplayCmd.TabIndex = 17
-        ctrlDisplayCmd.Text = "Show CMD Windows"
-        ctrlDisplayCmd.UseVisualStyleBackColor = True
+        Me.ctrlDisplayCmd.AutoSize = True
+        Me.ctrlDisplayCmd.Location = New System.Drawing.Point(6, 71)
+        Me.ctrlDisplayCmd.Name = "ctrlDisplayCmd"
+        Me.ctrlDisplayCmd.Size = New System.Drawing.Size(137, 19)
+        Me.ctrlDisplayCmd.TabIndex = 17
+        Me.ctrlDisplayCmd.Text = "Show CMD Windows"
+        Me.ctrlDisplayCmd.UseVisualStyleBackColor = True
         ' 
         ' nudProcessCount
         ' 
-        nudProcessCount.BackColor = Drawing.SystemColors.Window
-        nudProcessCount.CausesValidation = False
-        nudProcessCount.Cursor = Cursors.IBeam
-        nudProcessCount.ForeColor = Drawing.SystemColors.WindowText
-        nudProcessCount.Location = New Drawing.Point(91, 19)
-        nudProcessCount.Margin = New Padding(4, 0, 4, 3)
-        nudProcessCount.Maximum = New Decimal(New Integer() {64, 0, 0, 0})
-        nudProcessCount.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        nudProcessCount.Name = "nudProcessCount"
-        nudProcessCount.RightToLeft = RightToLeft.No
-        nudProcessCount.Size = New Drawing.Size(35, 23)
-        nudProcessCount.TabIndex = 13
-        nudProcessCount.TextAlign = HorizontalAlignment.Right
-        nudProcessCount.Value = New Decimal(New Integer() {64, 0, 0, 0})
+        Me.nudProcessCount.BackColor = Drawing.SystemColors.Window
+        Me.nudProcessCount.CausesValidation = False
+        Me.nudProcessCount.Cursor = Cursors.IBeam
+        Me.nudProcessCount.ForeColor = Drawing.SystemColors.WindowText
+        Me.nudProcessCount.Location = New System.Drawing.Point(91, 19)
+        Me.nudProcessCount.Margin = New Padding(4, 0, 4, 3)
+        Me.nudProcessCount.Maximum = New Decimal(New Integer() {64, 0, 0, 0})
+        Me.nudProcessCount.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.nudProcessCount.Name = "nudProcessCount"
+        Me.nudProcessCount.RightToLeft = RightToLeft.No
+        Me.nudProcessCount.Size = New System.Drawing.Size(35, 23)
+        Me.nudProcessCount.TabIndex = 13
+        Me.nudProcessCount.TextAlign = HorizontalAlignment.Right
+        Me.nudProcessCount.Value = New Decimal(New Integer() {64, 0, 0, 0})
         ' 
         ' nudPcmResample
         ' 
-        nudPcmResample.BackColor = Drawing.SystemColors.Window
-        nudPcmResample.CausesValidation = False
-        nudPcmResample.Cursor = Cursors.IBeam
-        nudPcmResample.ForeColor = Drawing.SystemColors.WindowText
-        nudPcmResample.Location = New Drawing.Point(6, 19)
-        nudPcmResample.Margin = New Padding(4, 0, 4, 3)
-        nudPcmResample.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
-        nudPcmResample.Minimum = New Decimal(New Integer() {1000, 0, 0, 0})
-        nudPcmResample.Name = "nudPcmResample"
-        nudPcmResample.RightToLeft = RightToLeft.No
-        nudPcmResample.Size = New Drawing.Size(66, 23)
-        nudPcmResample.TabIndex = 11
-        nudPcmResample.TextAlign = HorizontalAlignment.Right
-        nudPcmResample.Value = New Decimal(New Integer() {44100, 0, 0, 0})
+        Me.nudPcmResample.BackColor = Drawing.SystemColors.Window
+        Me.nudPcmResample.CausesValidation = False
+        Me.nudPcmResample.Cursor = Cursors.IBeam
+        Me.nudPcmResample.ForeColor = Drawing.SystemColors.WindowText
+        Me.nudPcmResample.Location = New System.Drawing.Point(6, 19)
+        Me.nudPcmResample.Margin = New Padding(4, 0, 4, 3)
+        Me.nudPcmResample.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
+        Me.nudPcmResample.Minimum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.nudPcmResample.Name = "nudPcmResample"
+        Me.nudPcmResample.RightToLeft = RightToLeft.No
+        Me.nudPcmResample.Size = New System.Drawing.Size(66, 23)
+        Me.nudPcmResample.TabIndex = 11
+        Me.nudPcmResample.TextAlign = HorizontalAlignment.Right
+        Me.nudPcmResample.Value = New Decimal(New Integer() {44100, 0, 0, 0})
         ' 
         ' lblProcessCount
         ' 
-        lblProcessCount.BackColor = Drawing.Color.Transparent
-        lblProcessCount.ForeColor = Drawing.SystemColors.ControlText
-        lblProcessCount.Location = New Drawing.Point(124, 21)
-        lblProcessCount.Margin = New Padding(4, 0, 4, 0)
-        lblProcessCount.Name = "lblProcessCount"
-        lblProcessCount.RightToLeft = RightToLeft.No
-        lblProcessCount.Size = New Drawing.Size(58, 20)
-        lblProcessCount.TabIndex = 14
-        lblProcessCount.Text = "Processes"
+        Me.lblProcessCount.BackColor = Drawing.Color.Transparent
+        Me.lblProcessCount.ForeColor = Drawing.SystemColors.ControlText
+        Me.lblProcessCount.Location = New System.Drawing.Point(124, 21)
+        Me.lblProcessCount.Margin = New Padding(4, 0, 4, 0)
+        Me.lblProcessCount.Name = "lblProcessCount"
+        Me.lblProcessCount.RightToLeft = RightToLeft.No
+        Me.lblProcessCount.Size = New System.Drawing.Size(58, 20)
+        Me.lblProcessCount.TabIndex = 14
+        Me.lblProcessCount.Text = "Processes"
         ' 
         ' btnPcmToNormal
         ' 
-        btnPcmToNormal.BackColor = Drawing.SystemColors.Control
-        btnPcmToNormal.ForeColor = Drawing.SystemColors.ControlText
-        btnPcmToNormal.Location = New Drawing.Point(194, 19)
-        btnPcmToNormal.Margin = New Padding(4, 0, 4, 3)
-        btnPcmToNormal.Name = "btnPcmToNormal"
-        btnPcmToNormal.RightToLeft = RightToLeft.No
-        btnPcmToNormal.Size = New Drawing.Size(150, 23)
-        btnPcmToNormal.TabIndex = 19
-        btnPcmToNormal.Text = "Change Back to Normal"
-        btnPcmToNormal.UseVisualStyleBackColor = False
+        Me.btnPcmToNormal.BackColor = Drawing.SystemColors.Control
+        Me.btnPcmToNormal.ForeColor = Drawing.SystemColors.ControlText
+        Me.btnPcmToNormal.Location = New System.Drawing.Point(194, 19)
+        Me.btnPcmToNormal.Margin = New Padding(4, 0, 4, 3)
+        Me.btnPcmToNormal.Name = "btnPcmToNormal"
+        Me.btnPcmToNormal.RightToLeft = RightToLeft.No
+        Me.btnPcmToNormal.Size = New System.Drawing.Size(150, 23)
+        Me.btnPcmToNormal.TabIndex = 19
+        Me.btnPcmToNormal.Text = "Change Back to Normal"
+        Me.btnPcmToNormal.UseVisualStyleBackColor = False
         ' 
         ' lblHz
         ' 
-        lblHz.BackColor = Drawing.Color.Transparent
-        lblHz.ForeColor = Drawing.SystemColors.ControlText
-        lblHz.Location = New Drawing.Point(70, 21)
-        lblHz.Margin = New Padding(4, 0, 4, 0)
-        lblHz.Name = "lblHz"
-        lblHz.RightToLeft = RightToLeft.No
-        lblHz.Size = New Drawing.Size(28, 20)
-        lblHz.TabIndex = 12
-        lblHz.Text = "Hz"
+        Me.lblHz.BackColor = Drawing.Color.Transparent
+        Me.lblHz.ForeColor = Drawing.SystemColors.ControlText
+        Me.lblHz.Location = New System.Drawing.Point(70, 21)
+        Me.lblHz.Margin = New Padding(4, 0, 4, 0)
+        Me.lblHz.Name = "lblHz"
+        Me.lblHz.RightToLeft = RightToLeft.No
+        Me.lblHz.Size = New System.Drawing.Size(28, 20)
+        Me.lblHz.TabIndex = 12
+        Me.lblHz.Text = "Hz"
         ' 
         ' btnConvertPcm
         ' 
-        btnConvertPcm.BackColor = Drawing.SystemColors.Control
-        btnConvertPcm.ForeColor = Drawing.SystemColors.ControlText
-        btnConvertPcm.Location = New Drawing.Point(194, 41)
-        btnConvertPcm.Margin = New Padding(4, 3, 4, 3)
-        btnConvertPcm.Name = "btnConvertPcm"
-        btnConvertPcm.RightToLeft = RightToLeft.No
-        btnConvertPcm.Size = New Drawing.Size(150, 23)
-        btnConvertPcm.TabIndex = 20
-        btnConvertPcm.Text = "Change Speed/Volume"
-        btnConvertPcm.UseVisualStyleBackColor = False
+        Me.btnConvertPcm.BackColor = Drawing.SystemColors.Control
+        Me.btnConvertPcm.ForeColor = Drawing.SystemColors.ControlText
+        Me.btnConvertPcm.Location = New System.Drawing.Point(194, 41)
+        Me.btnConvertPcm.Margin = New Padding(4, 3, 4, 3)
+        Me.btnConvertPcm.Name = "btnConvertPcm"
+        Me.btnConvertPcm.RightToLeft = RightToLeft.No
+        Me.btnConvertPcm.Size = New System.Drawing.Size(150, 23)
+        Me.btnConvertPcm.TabIndex = 20
+        Me.btnConvertPcm.Text = "Change Speed/Volume"
+        Me.btnConvertPcm.UseVisualStyleBackColor = False
         ' 
         ' frameResample
         ' 
-        frameResample.BackColor = Drawing.SystemColors.Control
-        frameResample.Controls.Add(optPcmNormal)
-        frameResample.Controls.Add(optPcmConverted)
-        frameResample.ForeColor = Drawing.SystemColors.ControlText
-        frameResample.Location = New Drawing.Point(345, 20)
-        frameResample.Margin = New Padding(4, 0, 4, 3)
-        frameResample.Name = "frameResample"
-        frameResample.RightToLeft = RightToLeft.No
-        frameResample.Size = New Drawing.Size(15, 42)
-        frameResample.TabIndex = 21
+        Me.frameResample.BackColor = Drawing.SystemColors.Control
+        Me.frameResample.Controls.Add(Me.optPcmNormal)
+        Me.frameResample.Controls.Add(Me.optPcmConverted)
+        Me.frameResample.ForeColor = Drawing.SystemColors.ControlText
+        Me.frameResample.Location = New System.Drawing.Point(345, 20)
+        Me.frameResample.Margin = New Padding(4, 0, 4, 3)
+        Me.frameResample.Name = "frameResample"
+        Me.frameResample.RightToLeft = RightToLeft.No
+        Me.frameResample.Size = New System.Drawing.Size(15, 42)
+        Me.frameResample.TabIndex = 21
         ' 
         ' optPcmNormal
         ' 
-        optPcmNormal.BackColor = Drawing.SystemColors.Control
-        optPcmNormal.Enabled = False
-        optPcmNormal.ForeColor = Drawing.SystemColors.ControlText
-        optPcmNormal.Location = New Drawing.Point(0, 3)
-        optPcmNormal.Margin = New Padding(4, 3, 4, 3)
-        optPcmNormal.Name = "optPcmNormal"
-        optPcmNormal.RightToLeft = RightToLeft.No
-        optPcmNormal.Size = New Drawing.Size(15, 15)
-        optPcmNormal.TabIndex = 22
-        optPcmNormal.TabStop = True
-        optPcmNormal.UseVisualStyleBackColor = False
+        Me.optPcmNormal.BackColor = Drawing.SystemColors.Control
+        Me.optPcmNormal.Enabled = False
+        Me.optPcmNormal.ForeColor = Drawing.SystemColors.ControlText
+        Me.optPcmNormal.Location = New System.Drawing.Point(0, 3)
+        Me.optPcmNormal.Margin = New Padding(4, 3, 4, 3)
+        Me.optPcmNormal.Name = "optPcmNormal"
+        Me.optPcmNormal.RightToLeft = RightToLeft.No
+        Me.optPcmNormal.Size = New System.Drawing.Size(15, 15)
+        Me.optPcmNormal.TabIndex = 22
+        Me.optPcmNormal.TabStop = True
+        Me.optPcmNormal.UseVisualStyleBackColor = False
         ' 
         ' optPcmConverted
         ' 
-        optPcmConverted.BackColor = Drawing.SystemColors.Control
-        optPcmConverted.Enabled = False
-        optPcmConverted.ForeColor = Drawing.SystemColors.ControlText
-        optPcmConverted.Location = New Drawing.Point(0, 25)
-        optPcmConverted.Margin = New Padding(4, 3, 4, 3)
-        optPcmConverted.Name = "optPcmConverted"
-        optPcmConverted.RightToLeft = RightToLeft.No
-        optPcmConverted.Size = New Drawing.Size(15, 15)
-        optPcmConverted.TabIndex = 23
-        optPcmConverted.TabStop = True
-        optPcmConverted.UseVisualStyleBackColor = False
+        Me.optPcmConverted.BackColor = Drawing.SystemColors.Control
+        Me.optPcmConverted.Enabled = False
+        Me.optPcmConverted.ForeColor = Drawing.SystemColors.ControlText
+        Me.optPcmConverted.Location = New System.Drawing.Point(0, 25)
+        Me.optPcmConverted.Margin = New Padding(4, 3, 4, 3)
+        Me.optPcmConverted.Name = "optPcmConverted"
+        Me.optPcmConverted.RightToLeft = RightToLeft.No
+        Me.optPcmConverted.Size = New System.Drawing.Size(15, 15)
+        Me.optPcmConverted.TabIndex = 23
+        Me.optPcmConverted.TabStop = True
+        Me.optPcmConverted.UseVisualStyleBackColor = False
         ' 
         ' nudPcmVolume
         ' 
-        nudPcmVolume.BackColor = Drawing.SystemColors.Window
-        nudPcmVolume.CausesValidation = False
-        nudPcmVolume.Cursor = Cursors.IBeam
-        nudPcmVolume.ForeColor = Drawing.SystemColors.WindowText
-        nudPcmVolume.Location = New Drawing.Point(6, 41)
-        nudPcmVolume.Margin = New Padding(4, 3, 4, 3)
-        nudPcmVolume.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
-        nudPcmVolume.Name = "nudPcmVolume"
-        nudPcmVolume.RightToLeft = RightToLeft.No
-        nudPcmVolume.Size = New Drawing.Size(66, 23)
-        nudPcmVolume.TabIndex = 15
-        nudPcmVolume.TextAlign = HorizontalAlignment.Right
-        nudPcmVolume.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.nudPcmVolume.BackColor = Drawing.SystemColors.Window
+        Me.nudPcmVolume.CausesValidation = False
+        Me.nudPcmVolume.Cursor = Cursors.IBeam
+        Me.nudPcmVolume.ForeColor = Drawing.SystemColors.WindowText
+        Me.nudPcmVolume.Location = New System.Drawing.Point(6, 41)
+        Me.nudPcmVolume.Margin = New Padding(4, 3, 4, 3)
+        Me.nudPcmVolume.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
+        Me.nudPcmVolume.Name = "nudPcmVolume"
+        Me.nudPcmVolume.RightToLeft = RightToLeft.No
+        Me.nudPcmVolume.Size = New System.Drawing.Size(66, 23)
+        Me.nudPcmVolume.TabIndex = 15
+        Me.nudPcmVolume.TextAlign = HorizontalAlignment.Right
+        Me.nudPcmVolume.Value = New Decimal(New Integer() {100, 0, 0, 0})
         ' 
         ' lblPcmVolume
         ' 
-        lblPcmVolume.BackColor = Drawing.Color.Transparent
-        lblPcmVolume.ForeColor = Drawing.SystemColors.ControlText
-        lblPcmVolume.Location = New Drawing.Point(70, 43)
-        lblPcmVolume.Margin = New Padding(4, 0, 4, 0)
-        lblPcmVolume.Name = "lblPcmVolume"
-        lblPcmVolume.RightToLeft = RightToLeft.No
-        lblPcmVolume.Size = New Drawing.Size(65, 20)
-        lblPcmVolume.TabIndex = 16
-        lblPcmVolume.Text = "% Volume"
+        Me.lblPcmVolume.BackColor = Drawing.Color.Transparent
+        Me.lblPcmVolume.ForeColor = Drawing.SystemColors.ControlText
+        Me.lblPcmVolume.Location = New System.Drawing.Point(70, 43)
+        Me.lblPcmVolume.Margin = New Padding(4, 0, 4, 0)
+        Me.lblPcmVolume.Name = "lblPcmVolume"
+        Me.lblPcmVolume.RightToLeft = RightToLeft.No
+        Me.lblPcmVolume.Size = New System.Drawing.Size(65, 20)
+        Me.lblPcmVolume.TabIndex = 16
+        Me.lblPcmVolume.Text = "% Volume"
         ' 
         ' ctrlKeepCmdOpen
         ' 
-        ctrlKeepCmdOpen.AutoSize = True
-        ctrlKeepCmdOpen.Location = New Drawing.Point(148, 71)
-        ctrlKeepCmdOpen.Name = "ctrlKeepCmdOpen"
-        ctrlKeepCmdOpen.Size = New Drawing.Size(210, 19)
-        ctrlKeepCmdOpen.TabIndex = 18
-        ctrlKeepCmdOpen.Text = "Keep CMD Windows open (Debug)"
-        ctrlKeepCmdOpen.UseVisualStyleBackColor = True
+        Me.ctrlKeepCmdOpen.AutoSize = True
+        Me.ctrlKeepCmdOpen.Location = New System.Drawing.Point(148, 71)
+        Me.ctrlKeepCmdOpen.Name = "ctrlKeepCmdOpen"
+        Me.ctrlKeepCmdOpen.Size = New System.Drawing.Size(210, 19)
+        Me.ctrlKeepCmdOpen.TabIndex = 18
+        Me.ctrlKeepCmdOpen.Text = "Keep CMD Windows open (Debug)"
+        Me.ctrlKeepCmdOpen.UseVisualStyleBackColor = True
         ' 
         ' btnSaveJson
         ' 
-        btnSaveJson.DialogResult = DialogResult.TryAgain
-        btnSaveJson.Image = My.Resources.Resources.Shell32_1965
-        btnSaveJson.ImageAlign = Drawing.ContentAlignment.TopLeft
-        btnSaveJson.Location = New Drawing.Point(6, 45)
-        btnSaveJson.Name = "btnSaveJson"
-        btnSaveJson.Size = New Drawing.Size(60, 24)
-        btnSaveJson.TabIndex = 2
-        btnSaveJson.Text = "Save"
-        btnSaveJson.TextAlign = Drawing.ContentAlignment.MiddleRight
-        btnSaveJson.UseVisualStyleBackColor = True
+        Me.btnSaveJson.DialogResult = DialogResult.TryAgain
+        Me.btnSaveJson.Image = My.Resources.Resources.Shell32_1965
+        Me.btnSaveJson.ImageAlign = Drawing.ContentAlignment.TopLeft
+        Me.btnSaveJson.Location = New System.Drawing.Point(6, 45)
+        Me.btnSaveJson.Name = "btnSaveJson"
+        Me.btnSaveJson.Size = New System.Drawing.Size(60, 24)
+        Me.btnSaveJson.TabIndex = 2
+        Me.btnSaveJson.Text = "Save"
+        Me.btnSaveJson.TextAlign = Drawing.ContentAlignment.MiddleRight
+        Me.btnSaveJson.UseVisualStyleBackColor = True
         ' 
         ' btnSaveJsonAs
         ' 
-        btnSaveJsonAs.DialogResult = DialogResult.TryAgain
-        btnSaveJsonAs.Image = My.Resources.Resources.Shell32_1965
-        btnSaveJsonAs.ImageAlign = Drawing.ContentAlignment.TopLeft
-        btnSaveJsonAs.Location = New Drawing.Point(73, 45)
-        btnSaveJsonAs.Name = "btnSaveJsonAs"
-        btnSaveJsonAs.Size = New Drawing.Size(76, 24)
-        btnSaveJsonAs.TabIndex = 3
-        btnSaveJsonAs.Text = "Save As"
-        btnSaveJsonAs.TextAlign = Drawing.ContentAlignment.MiddleRight
-        btnSaveJsonAs.UseVisualStyleBackColor = True
+        Me.btnSaveJsonAs.DialogResult = DialogResult.TryAgain
+        Me.btnSaveJsonAs.Image = My.Resources.Resources.Shell32_1965
+        Me.btnSaveJsonAs.ImageAlign = Drawing.ContentAlignment.TopLeft
+        Me.btnSaveJsonAs.Location = New System.Drawing.Point(73, 45)
+        Me.btnSaveJsonAs.Name = "btnSaveJsonAs"
+        Me.btnSaveJsonAs.Size = New System.Drawing.Size(76, 24)
+        Me.btnSaveJsonAs.TabIndex = 3
+        Me.btnSaveJsonAs.Text = "Save As"
+        Me.btnSaveJsonAs.TextAlign = Drawing.ContentAlignment.MiddleRight
+        Me.btnSaveJsonAs.UseVisualStyleBackColor = True
         ' 
         ' grpMsuTracks
         ' 
-        grpMsuTracks.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        grpMsuTracks.AutoSizeMode = AutoSizeMode.GrowAndShrink
-        grpMsuTracks.Controls.Add(scTracks)
-        grpMsuTracks.Location = New Drawing.Point(0, 0)
-        grpMsuTracks.Name = "grpMsuTracks"
-        grpMsuTracks.Size = New Drawing.Size(518, 225)
-        grpMsuTracks.TabIndex = 7
-        grpMsuTracks.TabStop = False
-        grpMsuTracks.Text = "Tracks"
+        Me.grpMsuTracks.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.grpMsuTracks.AutoSizeMode = AutoSizeMode.GrowAndShrink
+        Me.grpMsuTracks.Controls.Add(Me.scTracks)
+        Me.grpMsuTracks.Location = New System.Drawing.Point(0, 0)
+        Me.grpMsuTracks.Name = "grpMsuTracks"
+        Me.grpMsuTracks.Size = New System.Drawing.Size(518, 225)
+        Me.grpMsuTracks.TabIndex = 7
+        Me.grpMsuTracks.TabStop = False
+        Me.grpMsuTracks.Text = "Tracks"
         ' 
         ' grpAutoSwitch
         ' 
-        grpAutoSwitch.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        grpAutoSwitch.Controls.Add(lblAutoSwitchInterval)
-        grpAutoSwitch.Controls.Add(lblAutoSwitchIntervalUnit)
-        grpAutoSwitch.Controls.Add(nudAutoSwitchInterval)
-        grpAutoSwitch.Controls.Add(ctrlEnableAutoSwitch)
-        grpAutoSwitch.Location = New Drawing.Point(368, 225)
-        grpAutoSwitch.Name = "grpAutoSwitch"
-        grpAutoSwitch.Size = New Drawing.Size(150, 82)
-        grpAutoSwitch.TabIndex = 24
-        grpAutoSwitch.TabStop = False
-        grpAutoSwitch.Text = "AutoSwitch"
+        Me.grpAutoSwitch.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        Me.grpAutoSwitch.Controls.Add(Me.lblAutoSwitchInterval)
+        Me.grpAutoSwitch.Controls.Add(Me.lblAutoSwitchIntervalUnit)
+        Me.grpAutoSwitch.Controls.Add(Me.nudAutoSwitchInterval)
+        Me.grpAutoSwitch.Controls.Add(Me.ctrlEnableAutoSwitch)
+        Me.grpAutoSwitch.Location = New System.Drawing.Point(368, 225)
+        Me.grpAutoSwitch.Name = "grpAutoSwitch"
+        Me.grpAutoSwitch.Size = New System.Drawing.Size(150, 82)
+        Me.grpAutoSwitch.TabIndex = 24
+        Me.grpAutoSwitch.TabStop = False
+        Me.grpAutoSwitch.Text = "AutoSwitch"
         ' 
         ' lblAutoSwitchInterval
         ' 
-        lblAutoSwitchInterval.AutoSize = True
-        lblAutoSwitchInterval.Location = New Drawing.Point(9, 55)
-        lblAutoSwitchInterval.Name = "lblAutoSwitchInterval"
-        lblAutoSwitchInterval.Size = New Drawing.Size(49, 15)
-        lblAutoSwitchInterval.TabIndex = 26
-        lblAutoSwitchInterval.Text = "Interval:"
+        Me.lblAutoSwitchInterval.AutoSize = True
+        Me.lblAutoSwitchInterval.Location = New System.Drawing.Point(9, 55)
+        Me.lblAutoSwitchInterval.Name = "lblAutoSwitchInterval"
+        Me.lblAutoSwitchInterval.Size = New System.Drawing.Size(49, 15)
+        Me.lblAutoSwitchInterval.TabIndex = 26
+        Me.lblAutoSwitchInterval.Text = "Interval:"
         ' 
         ' lblAutoSwitchIntervalUnit
         ' 
-        lblAutoSwitchIntervalUnit.AutoSize = True
-        lblAutoSwitchIntervalUnit.Location = New Drawing.Point(125, 55)
-        lblAutoSwitchIntervalUnit.Name = "lblAutoSwitchIntervalUnit"
-        lblAutoSwitchIntervalUnit.Size = New Drawing.Size(23, 15)
-        lblAutoSwitchIntervalUnit.TabIndex = 28
-        lblAutoSwitchIntervalUnit.Text = "ms"
+        Me.lblAutoSwitchIntervalUnit.AutoSize = True
+        Me.lblAutoSwitchIntervalUnit.Location = New System.Drawing.Point(125, 55)
+        Me.lblAutoSwitchIntervalUnit.Name = "lblAutoSwitchIntervalUnit"
+        Me.lblAutoSwitchIntervalUnit.Size = New System.Drawing.Size(23, 15)
+        Me.lblAutoSwitchIntervalUnit.TabIndex = 28
+        Me.lblAutoSwitchIntervalUnit.Text = "ms"
         ' 
         ' nudAutoSwitchInterval
         ' 
-        nudAutoSwitchInterval.Location = New Drawing.Point(64, 53)
-        nudAutoSwitchInterval.Maximum = New Decimal(New Integer() {Integer.MaxValue, 0, 0, 0})
-        nudAutoSwitchInterval.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        nudAutoSwitchInterval.Name = "nudAutoSwitchInterval"
-        nudAutoSwitchInterval.Size = New Drawing.Size(61, 23)
-        nudAutoSwitchInterval.TabIndex = 27
-        nudAutoSwitchInterval.TextAlign = HorizontalAlignment.Right
-        nudAutoSwitchInterval.Value = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.nudAutoSwitchInterval.Location = New System.Drawing.Point(64, 53)
+        Me.nudAutoSwitchInterval.Maximum = New Decimal(New Integer() {Integer.MaxValue, 0, 0, 0})
+        Me.nudAutoSwitchInterval.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.nudAutoSwitchInterval.Name = "nudAutoSwitchInterval"
+        Me.nudAutoSwitchInterval.Size = New System.Drawing.Size(61, 23)
+        Me.nudAutoSwitchInterval.TabIndex = 27
+        Me.nudAutoSwitchInterval.TextAlign = HorizontalAlignment.Right
+        Me.nudAutoSwitchInterval.Value = New Decimal(New Integer() {1000, 0, 0, 0})
         ' 
         ' ctrlEnableAutoSwitch
         ' 
-        ctrlEnableAutoSwitch.AutoSize = True
-        ctrlEnableAutoSwitch.Location = New Drawing.Point(9, 22)
-        ctrlEnableAutoSwitch.Name = "ctrlEnableAutoSwitch"
-        ctrlEnableAutoSwitch.Size = New Drawing.Size(125, 19)
-        ctrlEnableAutoSwitch.TabIndex = 25
-        ctrlEnableAutoSwitch.Text = "Enable AutoSwitch"
-        ctrlEnableAutoSwitch.UseVisualStyleBackColor = True
+        Me.ctrlEnableAutoSwitch.AutoSize = True
+        Me.ctrlEnableAutoSwitch.Location = New System.Drawing.Point(9, 22)
+        Me.ctrlEnableAutoSwitch.Name = "ctrlEnableAutoSwitch"
+        Me.ctrlEnableAutoSwitch.Size = New System.Drawing.Size(125, 19)
+        Me.ctrlEnableAutoSwitch.TabIndex = 25
+        Me.ctrlEnableAutoSwitch.Text = "Enable AutoSwitch"
+        Me.ctrlEnableAutoSwitch.UseVisualStyleBackColor = True
         ' 
         ' tmrAutoSwitch
         ' 
-        tmrAutoSwitch.Interval = 1000
+        Me.tmrAutoSwitch.Interval = 1000
         ' 
         ' ctrlDisplayOnlyTracksWithAlts
         ' 
-        ctrlDisplayOnlyTracksWithAlts.AutoSize = True
-        ctrlDisplayOnlyTracksWithAlts.Location = New Drawing.Point(8, 75)
-        ctrlDisplayOnlyTracksWithAlts.Name = "ctrlDisplayOnlyTracksWithAlts"
-        ctrlDisplayOnlyTracksWithAlts.Size = New Drawing.Size(220, 19)
-        ctrlDisplayOnlyTracksWithAlts.TabIndex = 6
-        ctrlDisplayOnlyTracksWithAlts.Text = "Hide tracks with no alternative tracks"
-        ctrlDisplayOnlyTracksWithAlts.UseVisualStyleBackColor = True
+        Me.ctrlDisplayOnlyTracksWithAlts.AutoSize = True
+        Me.ctrlDisplayOnlyTracksWithAlts.Location = New System.Drawing.Point(8, 75)
+        Me.ctrlDisplayOnlyTracksWithAlts.Name = "ctrlDisplayOnlyTracksWithAlts"
+        Me.ctrlDisplayOnlyTracksWithAlts.Size = New System.Drawing.Size(220, 19)
+        Me.ctrlDisplayOnlyTracksWithAlts.TabIndex = 6
+        Me.ctrlDisplayOnlyTracksWithAlts.Text = "Hide tracks with no alternative tracks"
+        Me.ctrlDisplayOnlyTracksWithAlts.UseVisualStyleBackColor = True
         ' 
         ' scVerticalHalf
         ' 
-        scVerticalHalf.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        scVerticalHalf.Location = New Drawing.Point(5, 95)
-        scVerticalHalf.Name = "scVerticalHalf"
-        scVerticalHalf.Orientation = Orientation.Horizontal
+        Me.scVerticalHalf.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.scVerticalHalf.Location = New System.Drawing.Point(5, 95)
+        Me.scVerticalHalf.Name = "scVerticalHalf"
+        Me.scVerticalHalf.Orientation = Orientation.Horizontal
         ' 
         ' scVerticalHalf.Panel1
         ' 
-        scVerticalHalf.Panel1.Controls.Add(grpMsuTracks)
-        scVerticalHalf.Panel1.Controls.Add(grpPcmConvert)
-        scVerticalHalf.Panel1.Controls.Add(grpAutoSwitch)
+        Me.scVerticalHalf.Panel1.Controls.Add(Me.grpMsuTracks)
+        Me.scVerticalHalf.Panel1.Controls.Add(Me.grpPcmConvert)
+        Me.scVerticalHalf.Panel1.Controls.Add(Me.grpAutoSwitch)
         ' 
         ' scVerticalHalf.Panel2
         ' 
-        scVerticalHalf.Panel2.Controls.Add(Me.rtbLog)
-        scVerticalHalf.Panel2.Controls.Add(grpLogSettings)
-        scVerticalHalf.Size = New Drawing.Size(524, 441)
-        scVerticalHalf.SplitterDistance = 322
-        scVerticalHalf.TabIndex = 82
+        Me.scVerticalHalf.Panel2.Controls.Add(Me.rtbLog)
+        Me.scVerticalHalf.Panel2.Controls.Add(Me.grpLogSettings)
+        Me.scVerticalHalf.Size = New System.Drawing.Size(524, 441)
+        Me.scVerticalHalf.SplitterDistance = 322
+        Me.scVerticalHalf.TabIndex = 82
         ' 
         ' rtbLog
         ' 
         Me.rtbLog.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        Me.rtbLog.Location = New Drawing.Point(0, 0)
+        Me.rtbLog.Location = New System.Drawing.Point(0, 0)
         Me.rtbLog.Margin = New Padding(0)
         Me.rtbLog.Name = "rtbLog"
-        Me.rtbLog.Size = New Drawing.Size(400, 113)
+        Me.rtbLog.Size = New System.Drawing.Size(400, 113)
         Me.rtbLog.TabIndex = 29
         Me.rtbLog.Text = ""
         ' 
         ' grpLogSettings
         ' 
-        grpLogSettings.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
-        grpLogSettings.Controls.Add(ctrlLogAutoScroll)
-        grpLogSettings.Controls.Add(scLogSettingButtons)
-        grpLogSettings.Controls.Add(lblLogEntries)
-        grpLogSettings.Controls.Add(nudLogEntries)
-        grpLogSettings.Location = New Drawing.Point(402, -8)
-        grpLogSettings.Margin = New Padding(3, 0, 3, 3)
-        grpLogSettings.Name = "grpLogSettings"
-        grpLogSettings.Size = New Drawing.Size(116, 121)
-        grpLogSettings.TabIndex = 1
-        grpLogSettings.TabStop = False
+        Me.grpLogSettings.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
+        Me.grpLogSettings.Controls.Add(Me.ctrlLogAutoScroll)
+        Me.grpLogSettings.Controls.Add(Me.scLogSettingButtons)
+        Me.grpLogSettings.Controls.Add(Me.lblLogEntries)
+        Me.grpLogSettings.Controls.Add(Me.nudLogEntries)
+        Me.grpLogSettings.Location = New System.Drawing.Point(402, -8)
+        Me.grpLogSettings.Margin = New Padding(3, 0, 3, 3)
+        Me.grpLogSettings.Name = "grpLogSettings"
+        Me.grpLogSettings.Size = New System.Drawing.Size(116, 121)
+        Me.grpLogSettings.TabIndex = 1
+        Me.grpLogSettings.TabStop = False
         ' 
         ' ctrlLogAutoScroll
         ' 
-        ctrlLogAutoScroll.AutoSize = True
-        ctrlLogAutoScroll.Checked = True
-        ctrlLogAutoScroll.CheckState = CheckState.Checked
-        ctrlLogAutoScroll.Location = New Drawing.Point(7, 42)
-        ctrlLogAutoScroll.Name = "ctrlLogAutoScroll"
-        ctrlLogAutoScroll.Size = New Drawing.Size(84, 19)
-        ctrlLogAutoScroll.TabIndex = 32
-        ctrlLogAutoScroll.Text = "Auto Scroll"
-        ctrlLogAutoScroll.UseVisualStyleBackColor = True
+        Me.ctrlLogAutoScroll.AutoSize = True
+        Me.ctrlLogAutoScroll.Checked = True
+        Me.ctrlLogAutoScroll.CheckState = CheckState.Checked
+        Me.ctrlLogAutoScroll.Location = New System.Drawing.Point(7, 42)
+        Me.ctrlLogAutoScroll.Name = "ctrlLogAutoScroll"
+        Me.ctrlLogAutoScroll.Size = New System.Drawing.Size(84, 19)
+        Me.ctrlLogAutoScroll.TabIndex = 32
+        Me.ctrlLogAutoScroll.Text = "Auto Scroll"
+        Me.ctrlLogAutoScroll.UseVisualStyleBackColor = True
         ' 
         ' scLogSettingButtons
         ' 
-        scLogSettingButtons.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
-        scLogSettingButtons.Location = New Drawing.Point(1, 63)
-        scLogSettingButtons.Name = "scLogSettingButtons"
-        scLogSettingButtons.Orientation = Orientation.Horizontal
+        Me.scLogSettingButtons.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
+        Me.scLogSettingButtons.Location = New System.Drawing.Point(1, 63)
+        Me.scLogSettingButtons.Name = "scLogSettingButtons"
+        Me.scLogSettingButtons.Orientation = Orientation.Horizontal
         ' 
         ' scLogSettingButtons.Panel1
         ' 
-        scLogSettingButtons.Panel1.Controls.Add(btnLogClear)
+        Me.scLogSettingButtons.Panel1.Controls.Add(Me.btnLogClear)
         ' 
         ' scLogSettingButtons.Panel2
         ' 
-        scLogSettingButtons.Panel2.Controls.Add(btnLogExport)
-        scLogSettingButtons.Size = New Drawing.Size(114, 54)
-        scLogSettingButtons.SplitterDistance = 25
-        scLogSettingButtons.TabIndex = 33
+        Me.scLogSettingButtons.Panel2.Controls.Add(Me.btnLogExport)
+        Me.scLogSettingButtons.Size = New System.Drawing.Size(114, 54)
+        Me.scLogSettingButtons.SplitterDistance = 25
+        Me.scLogSettingButtons.TabIndex = 33
         ' 
         ' btnLogClear
         ' 
-        btnLogClear.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left
-        btnLogClear.BackColor = Drawing.SystemColors.Control
-        btnLogClear.ForeColor = Drawing.SystemColors.ControlText
-        btnLogClear.Location = New Drawing.Point(4, 0)
-        btnLogClear.Margin = New Padding(4, 0, 4, 3)
-        btnLogClear.Name = "btnLogClear"
-        btnLogClear.RightToLeft = RightToLeft.No
-        btnLogClear.Size = New Drawing.Size(106, 25)
-        btnLogClear.TabIndex = 34
-        btnLogClear.Text = "Clear"
-        btnLogClear.UseVisualStyleBackColor = False
+        Me.btnLogClear.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left
+        Me.btnLogClear.BackColor = Drawing.SystemColors.Control
+        Me.btnLogClear.ForeColor = Drawing.SystemColors.ControlText
+        Me.btnLogClear.Location = New System.Drawing.Point(4, 0)
+        Me.btnLogClear.Margin = New Padding(4, 0, 4, 3)
+        Me.btnLogClear.Name = "btnLogClear"
+        Me.btnLogClear.RightToLeft = RightToLeft.No
+        Me.btnLogClear.Size = New System.Drawing.Size(106, 25)
+        Me.btnLogClear.TabIndex = 34
+        Me.btnLogClear.Text = "Clear"
+        Me.btnLogClear.UseVisualStyleBackColor = False
         ' 
         ' btnLogExport
         ' 
-        btnLogExport.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left
-        btnLogExport.BackColor = Drawing.SystemColors.Control
-        btnLogExport.ForeColor = Drawing.SystemColors.ControlText
-        btnLogExport.Location = New Drawing.Point(4, 0)
-        btnLogExport.Margin = New Padding(4, 0, 4, 3)
-        btnLogExport.Name = "btnLogExport"
-        btnLogExport.RightToLeft = RightToLeft.No
-        btnLogExport.Size = New Drawing.Size(106, 25)
-        btnLogExport.TabIndex = 35
-        btnLogExport.Text = "Export"
-        btnLogExport.UseVisualStyleBackColor = False
+        Me.btnLogExport.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left
+        Me.btnLogExport.BackColor = Drawing.SystemColors.Control
+        Me.btnLogExport.ForeColor = Drawing.SystemColors.ControlText
+        Me.btnLogExport.Location = New System.Drawing.Point(4, 0)
+        Me.btnLogExport.Margin = New Padding(4, 0, 4, 3)
+        Me.btnLogExport.Name = "btnLogExport"
+        Me.btnLogExport.RightToLeft = RightToLeft.No
+        Me.btnLogExport.Size = New System.Drawing.Size(106, 25)
+        Me.btnLogExport.TabIndex = 35
+        Me.btnLogExport.Text = "Export"
+        Me.btnLogExport.UseVisualStyleBackColor = False
         ' 
         ' lblLogEntries
         ' 
-        lblLogEntries.AutoSize = True
-        lblLogEntries.Location = New Drawing.Point(5, 19)
-        lblLogEntries.Name = "lblLogEntries"
-        lblLogEntries.Size = New Drawing.Size(45, 15)
-        lblLogEntries.TabIndex = 30
-        lblLogEntries.Text = "Entries:"
+        Me.lblLogEntries.AutoSize = True
+        Me.lblLogEntries.Location = New System.Drawing.Point(5, 19)
+        Me.lblLogEntries.Name = "lblLogEntries"
+        Me.lblLogEntries.Size = New System.Drawing.Size(45, 15)
+        Me.lblLogEntries.TabIndex = 30
+        Me.lblLogEntries.Text = "Entries:"
         ' 
         ' nudLogEntries
         ' 
-        nudLogEntries.Location = New Drawing.Point(51, 17)
-        nudLogEntries.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
-        nudLogEntries.Name = "nudLogEntries"
-        nudLogEntries.Size = New Drawing.Size(57, 23)
-        nudLogEntries.TabIndex = 31
-        nudLogEntries.TextAlign = HorizontalAlignment.Right
-        nudLogEntries.Value = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.nudLogEntries.Location = New System.Drawing.Point(51, 17)
+        Me.nudLogEntries.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
+        Me.nudLogEntries.Name = "nudLogEntries"
+        Me.nudLogEntries.Size = New System.Drawing.Size(57, 23)
+        Me.nudLogEntries.TabIndex = 31
+        Me.nudLogEntries.TextAlign = HorizontalAlignment.Right
+        Me.nudLogEntries.Value = New Decimal(New Integer() {1000, 0, 0, 0})
         ' 
         ' btnSettings
         ' 
-        btnSettings.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        btnSettings.DialogResult = DialogResult.TryAgain
-        btnSettings.Image = My.Resources.Resources.logo_contrast_white_scale_20
-        btnSettings.ImageAlign = Drawing.ContentAlignment.MiddleLeft
-        btnSettings.Location = New Drawing.Point(447, 45)
-        btnSettings.Name = "btnSettings"
-        btnSettings.Size = New Drawing.Size(75, 24)
-        btnSettings.TabIndex = 5
-        btnSettings.Text = "Settings"
-        btnSettings.TextAlign = Drawing.ContentAlignment.MiddleRight
-        btnSettings.UseVisualStyleBackColor = True
+        Me.btnSettings.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Me.btnSettings.DialogResult = DialogResult.TryAgain
+        Me.btnSettings.Image = My.Resources.Resources.logo_contrast_white_scale_20
+        Me.btnSettings.ImageAlign = Drawing.ContentAlignment.MiddleLeft
+        Me.btnSettings.Location = New System.Drawing.Point(447, 45)
+        Me.btnSettings.Name = "btnSettings"
+        Me.btnSettings.Size = New System.Drawing.Size(75, 24)
+        Me.btnSettings.TabIndex = 5
+        Me.btnSettings.Text = "Settings"
+        Me.btnSettings.TextAlign = Drawing.ContentAlignment.MiddleRight
+        Me.btnSettings.UseVisualStyleBackColor = True
         ' 
         ' btnScanMsuDirectory
         ' 
-        btnScanMsuDirectory.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        btnScanMsuDirectory.DialogResult = DialogResult.TryAgain
-        btnScanMsuDirectory.Image = My.Resources.Resources.SyncCenter_1223_16px_bw
-        btnScanMsuDirectory.ImageAlign = Drawing.ContentAlignment.MiddleLeft
-        btnScanMsuDirectory.Location = New Drawing.Point(285, 45)
-        btnScanMsuDirectory.Name = "btnScanMsuDirectory"
-        btnScanMsuDirectory.Size = New Drawing.Size(156, 24)
-        btnScanMsuDirectory.TabIndex = 4
-        btnScanMsuDirectory.Text = "Scan for new PCM Files"
-        btnScanMsuDirectory.TextAlign = Drawing.ContentAlignment.MiddleRight
-        btnScanMsuDirectory.UseVisualStyleBackColor = True
+        Me.btnScanMsuDirectory.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Me.btnScanMsuDirectory.DialogResult = DialogResult.TryAgain
+        Me.btnScanMsuDirectory.Image = My.Resources.Resources.SyncCenter_1223_16px_bw
+        Me.btnScanMsuDirectory.ImageAlign = Drawing.ContentAlignment.MiddleLeft
+        Me.btnScanMsuDirectory.Location = New System.Drawing.Point(285, 45)
+        Me.btnScanMsuDirectory.Name = "btnScanMsuDirectory"
+        Me.btnScanMsuDirectory.Size = New System.Drawing.Size(156, 24)
+        Me.btnScanMsuDirectory.TabIndex = 4
+        Me.btnScanMsuDirectory.Text = "Scan for new PCM Files"
+        Me.btnScanMsuDirectory.TextAlign = Drawing.ContentAlignment.MiddleRight
+        Me.btnScanMsuDirectory.UseVisualStyleBackColor = True
         ' 
         ' BackgroundWorkerDelegate
         ' 
         ' 
         ' ttpMsuAltSel
         ' 
-        ttpMsuAltSel.AutoPopDelay = Integer.MaxValue
-        ttpMsuAltSel.InitialDelay = 250
-        ttpMsuAltSel.ReshowDelay = 50
+        Me.ttpMsuAltSel.AutoPopDelay = Integer.MaxValue
+        Me.ttpMsuAltSel.InitialDelay = 250
+        Me.ttpMsuAltSel.ReshowDelay = 50
         ' 
         ' ctrlDisplayLoopPoints
         ' 
-        ctrlDisplayLoopPoints.AutoSize = True
-        ctrlDisplayLoopPoints.Location = New System.Drawing.Point(237, 75)
-        ctrlDisplayLoopPoints.Name = "ctrlDisplayLoopPoints"
-        ctrlDisplayLoopPoints.Size = New System.Drawing.Size(118, 19)
-        ctrlDisplayLoopPoints.TabIndex = 83
-        ctrlDisplayLoopPoints.Text = "Show loop points"
-        ctrlDisplayLoopPoints.UseVisualStyleBackColor = True
+        Me.ctrlDisplayLoopPoints.AutoSize = True
+        Me.ctrlDisplayLoopPoints.Location = New System.Drawing.Point(237, 75)
+        Me.ctrlDisplayLoopPoints.Name = "ctrlDisplayLoopPoints"
+        Me.ctrlDisplayLoopPoints.Size = New System.Drawing.Size(118, 19)
+        Me.ctrlDisplayLoopPoints.TabIndex = 83
+        Me.ctrlDisplayLoopPoints.Text = "Show loop points"
+        Me.ctrlDisplayLoopPoints.UseVisualStyleBackColor = True
         ' 
         ' Msu1AltSelectMainForm
         ' 
-        Me.AutoScaleDimensions = New Drawing.SizeF(7F, 15F)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
         Me.AutoScaleMode = AutoScaleMode.Font
-        Me.ClientSize = New Drawing.Size(528, 536)
-        Me.Controls.Add(btnScanMsuDirectory)
-        Me.Controls.Add(btnSettings)
-        Me.Controls.Add(txtPathMsu)
-        Me.Controls.Add(btnSelPathMsu)
-        Me.Controls.Add(ctrlDisplayOnlyTracksWithAlts)
-        Me.Controls.Add(ctrlDisplayLoopPoints)
-        Me.Controls.Add(btnSaveJsonAs)
-        Me.Controls.Add(btnSaveJson)
-        Me.Controls.Add(scVerticalHalf)
+        Me.ClientSize = New System.Drawing.Size(528, 536)
+        Me.Controls.Add(Me.btnScanMsuDirectory)
+        Me.Controls.Add(Me.btnSettings)
+        Me.Controls.Add(Me.txtPathMsu)
+        Me.Controls.Add(Me.btnSelPathMsu)
+        Me.Controls.Add(Me.ctrlDisplayOnlyTracksWithAlts)
+        Me.Controls.Add(Me.ctrlDisplayLoopPoints)
+        Me.Controls.Add(Me.btnSaveJsonAs)
+        Me.Controls.Add(Me.btnSaveJson)
+        Me.Controls.Add(Me.scVerticalHalf)
         Me.Icon = CType(resources.GetObject("$this.Icon"), Drawing.Icon)
         Me.Name = "Msu1AltSelectMainForm"
         Me.Text = "frmMSU1altSel"
-        ContextMenuStripMsuConfig.ResumeLayout(False)
-        ContextMenuStripTracks.ResumeLayout(False)
-        ContextMenuStripAltTracks.ResumeLayout(False)
-        scTracks.Panel1.ResumeLayout(False)
-        scTracks.Panel2.ResumeLayout(False)
-        CType(scTracks, ComponentModel.ISupportInitialize).EndInit()
-        scTracks.ResumeLayout(False)
-        grpPcmConvert.ResumeLayout(False)
-        grpPcmConvert.PerformLayout()
-        CType(nudProcessCount, ComponentModel.ISupportInitialize).EndInit()
-        CType(nudPcmResample, ComponentModel.ISupportInitialize).EndInit()
-        frameResample.ResumeLayout(False)
-        CType(nudPcmVolume, ComponentModel.ISupportInitialize).EndInit()
-        grpMsuTracks.ResumeLayout(False)
-        grpAutoSwitch.ResumeLayout(False)
-        grpAutoSwitch.PerformLayout()
-        CType(nudAutoSwitchInterval, ComponentModel.ISupportInitialize).EndInit()
-        scVerticalHalf.Panel1.ResumeLayout(False)
-        scVerticalHalf.Panel2.ResumeLayout(False)
-        CType(scVerticalHalf, ComponentModel.ISupportInitialize).EndInit()
-        scVerticalHalf.ResumeLayout(False)
-        grpLogSettings.ResumeLayout(False)
-        grpLogSettings.PerformLayout()
-        scLogSettingButtons.Panel1.ResumeLayout(False)
-        scLogSettingButtons.Panel2.ResumeLayout(False)
-        CType(scLogSettingButtons, ComponentModel.ISupportInitialize).EndInit()
-        scLogSettingButtons.ResumeLayout(False)
-        CType(nudLogEntries, ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStripMsuConfig.ResumeLayout(False)
+        Me.ContextMenuStripTracks.ResumeLayout(False)
+        Me.ContextMenuStripAltTracks.ResumeLayout(False)
+        Me.scTracks.Panel1.ResumeLayout(False)
+        Me.scTracks.Panel2.ResumeLayout(False)
+        CType(Me.scTracks, ComponentModel.ISupportInitialize).EndInit()
+        Me.scTracks.ResumeLayout(False)
+        Me.grpPcmConvert.ResumeLayout(False)
+        Me.grpPcmConvert.PerformLayout()
+        CType(Me.nudProcessCount, ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudPcmResample, ComponentModel.ISupportInitialize).EndInit()
+        Me.frameResample.ResumeLayout(False)
+        CType(Me.nudPcmVolume, ComponentModel.ISupportInitialize).EndInit()
+        Me.grpMsuTracks.ResumeLayout(False)
+        Me.grpAutoSwitch.ResumeLayout(False)
+        Me.grpAutoSwitch.PerformLayout()
+        CType(Me.nudAutoSwitchInterval, ComponentModel.ISupportInitialize).EndInit()
+        Me.scVerticalHalf.Panel1.ResumeLayout(False)
+        Me.scVerticalHalf.Panel2.ResumeLayout(False)
+        CType(Me.scVerticalHalf, ComponentModel.ISupportInitialize).EndInit()
+        Me.scVerticalHalf.ResumeLayout(False)
+        Me.grpLogSettings.ResumeLayout(False)
+        Me.grpLogSettings.PerformLayout()
+        Me.scLogSettingButtons.Panel1.ResumeLayout(False)
+        Me.scLogSettingButtons.Panel2.ResumeLayout(False)
+        CType(Me.scLogSettingButtons, ComponentModel.ISupportInitialize).EndInit()
+        Me.scLogSettingButtons.ResumeLayout(False)
+        CType(Me.nudLogEntries, ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
     End Sub

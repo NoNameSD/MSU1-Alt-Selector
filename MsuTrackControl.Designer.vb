@@ -22,72 +22,72 @@ Partial Class MsuTrackControl
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        lblMsuTitle = New Label()
-        txtMsuTitle = New TextBox()
-        lblMsuTrackId = New Label()
-        txtMsuFileName = New TextBox()
-        nudMsuTrackId = New NumericUpDown()
-        CType(nudMsuTrackId, ComponentModel.ISupportInitialize).BeginInit()
-        SuspendLayout()
+        Me.lblMsuTitle = New Label()
+        Me.txtMsuTitle = New TextBox()
+        Me.lblMsuTrackId = New Label()
+        Me.txtMsuFileName = New TextBox()
+        Me.nudMsuTrackId = New NumericUpDown()
+        CType(Me.nudMsuTrackId, ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
         ' 
         ' lblMsuTitle
         ' 
-        lblMsuTitle.AutoSize = True
-        lblMsuTitle.Location = New System.Drawing.Point(3, 14)
-        lblMsuTitle.Name = "lblMsuTitle"
-        lblMsuTitle.Size = New System.Drawing.Size(32, 15)
-        lblMsuTitle.TabIndex = 0
-        lblMsuTitle.Text = "Title:"
+        Me.lblMsuTitle.AutoSize = True
+        Me.lblMsuTitle.Location = New System.Drawing.Point(3, 14)
+        Me.lblMsuTitle.Name = "lblMsuTitle"
+        Me.lblMsuTitle.Size = New System.Drawing.Size(32, 15)
+        Me.lblMsuTitle.TabIndex = 0
+        Me.lblMsuTitle.Text = "Title:"
         ' 
         ' txtMsuTitle
         ' 
-        txtMsuTitle.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        txtMsuTitle.Location = New System.Drawing.Point(41, 11)
-        txtMsuTitle.Name = "txtMsuTitle"
-        txtMsuTitle.Size = New System.Drawing.Size(136, 23)
-        txtMsuTitle.TabIndex = 1
+        Me.txtMsuTitle.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.txtMsuTitle.Location = New System.Drawing.Point(41, 11)
+        Me.txtMsuTitle.Name = "txtMsuTitle"
+        Me.txtMsuTitle.Size = New System.Drawing.Size(136, 23)
+        Me.txtMsuTitle.TabIndex = 1
         ' 
         ' lblMsuTrackId
         ' 
-        lblMsuTrackId.AutoSize = True
-        lblMsuTrackId.Location = New System.Drawing.Point(3, 46)
-        lblMsuTrackId.Name = "lblMsuTrackId"
-        lblMsuTrackId.Size = New System.Drawing.Size(82, 15)
-        lblMsuTrackId.TabIndex = 2
-        lblMsuTrackId.Text = "Track number:"
+        Me.lblMsuTrackId.AutoSize = True
+        Me.lblMsuTrackId.Location = New System.Drawing.Point(3, 46)
+        Me.lblMsuTrackId.Name = "lblMsuTrackId"
+        Me.lblMsuTrackId.Size = New System.Drawing.Size(82, 15)
+        Me.lblMsuTrackId.TabIndex = 2
+        Me.lblMsuTrackId.Text = "Track number:"
         ' 
         ' txtMsuFileName
         ' 
-        txtMsuFileName.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        txtMsuFileName.Location = New System.Drawing.Point(137, 43)
-        txtMsuFileName.MaxLength = 3
-        txtMsuFileName.Name = "txtMsuFileName"
-        txtMsuFileName.ReadOnly = True
-        txtMsuFileName.Size = New System.Drawing.Size(40, 23)
-        txtMsuFileName.TabIndex = 3
+        Me.txtMsuFileName.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.txtMsuFileName.Location = New System.Drawing.Point(137, 43)
+        Me.txtMsuFileName.MaxLength = 3
+        Me.txtMsuFileName.Name = "txtMsuFileName"
+        Me.txtMsuFileName.ReadOnly = True
+        Me.txtMsuFileName.Size = New System.Drawing.Size(40, 23)
+        Me.txtMsuFileName.TabIndex = 3
         ' 
         ' nudMsuTrackId
         ' 
-        nudMsuTrackId.Location = New System.Drawing.Point(90, 43)
-        nudMsuTrackId.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
-        nudMsuTrackId.Name = "nudMsuTrackId"
-        nudMsuTrackId.Size = New System.Drawing.Size(41, 23)
-        nudMsuTrackId.TabIndex = 2
+        Me.nudMsuTrackId.Location = New System.Drawing.Point(90, 43)
+        Me.nudMsuTrackId.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
+        Me.nudMsuTrackId.Name = "nudMsuTrackId"
+        Me.nudMsuTrackId.Size = New System.Drawing.Size(41, 23)
+        Me.nudMsuTrackId.TabIndex = 2
         ' 
         ' MsuTrackControl
         ' 
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0F, 15.0F)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
         Me.AutoScaleMode = AutoScaleMode.Font
-        Me.Controls.Add(nudMsuTrackId)
-        Me.Controls.Add(txtMsuFileName)
-        Me.Controls.Add(lblMsuTrackId)
-        Me.Controls.Add(txtMsuTitle)
-        Me.Controls.Add(lblMsuTitle)
+        Me.Controls.Add(Me.nudMsuTrackId)
+        Me.Controls.Add(Me.txtMsuFileName)
+        Me.Controls.Add(Me.lblMsuTrackId)
+        Me.Controls.Add(Me.txtMsuTitle)
+        Me.Controls.Add(Me.lblMsuTitle)
         Me.Name = "MsuTrackControl"
         Me.Size = New System.Drawing.Size(188, 75)
-        CType(nudMsuTrackId, ComponentModel.ISupportInitialize).EndInit()
-        ResumeLayout(False)
-        PerformLayout()
+        CType(Me.nudMsuTrackId, ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
     End Sub
 
     Friend WithEvents lblMsuTitle As Label

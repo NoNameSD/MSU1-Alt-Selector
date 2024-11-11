@@ -22,73 +22,74 @@ Partial Class MsuTrackAltEditForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        ucMsuTrack = New MsuTrackAltControl()
-        btnOk = New Button()
-        btnCancel = New Button()
-        btnApply = New Button()
-        SuspendLayout()
+        Me.ucMsuTrack = New MsuTrackAltControl()
+        Me.btnOk = New Button()
+        Me.btnCancel = New Button()
+        Me.btnApply = New Button()
+        Me.SuspendLayout()
         ' 
         ' ucMsuTrack
         ' 
-        ucMsuTrack.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        ucMsuTrack.Dirty = False
-        ucMsuTrack.Location = New System.Drawing.Point(0, 0)
-        ucMsuTrack.Margin = New Padding(3, 3, 3, 0)
-        ucMsuTrack.Name = "ucMsuTrack"
-        ucMsuTrack.Size = New System.Drawing.Size(500, 267)
-        ucMsuTrack.TabIndex = 0
+        Me.ucMsuTrack.AllowDrop = True
+        Me.ucMsuTrack.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.ucMsuTrack.Dirty = False
+        Me.ucMsuTrack.Location = New System.Drawing.Point(0, 0)
+        Me.ucMsuTrack.Margin = New Padding(3, 3, 3, 0)
+        Me.ucMsuTrack.Name = "ucMsuTrack"
+        Me.ucMsuTrack.Size = New System.Drawing.Size(500, 267)
+        Me.ucMsuTrack.TabIndex = 0
         ' 
         ' btnOk
         ' 
-        btnOk.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        btnOk.BackgroundImageLayout = ImageLayout.None
-        btnOk.DialogResult = DialogResult.TryAgain
-        btnOk.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        btnOk.Location = New System.Drawing.Point(322, 270)
-        btnOk.Name = "btnOk"
-        btnOk.Size = New System.Drawing.Size(54, 24)
-        btnOk.TabIndex = 1
-        btnOk.Text = "Ok"
-        btnOk.UseVisualStyleBackColor = True
+        Me.btnOk.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        Me.btnOk.BackgroundImageLayout = ImageLayout.None
+        Me.btnOk.DialogResult = DialogResult.TryAgain
+        Me.btnOk.ImageAlign = Drawing.ContentAlignment.TopLeft
+        Me.btnOk.Location = New System.Drawing.Point(322, 270)
+        Me.btnOk.Name = "btnOk"
+        Me.btnOk.Size = New System.Drawing.Size(54, 24)
+        Me.btnOk.TabIndex = 1
+        Me.btnOk.Text = "Ok"
+        Me.btnOk.UseVisualStyleBackColor = True
         ' 
         ' btnCancel
         ' 
-        btnCancel.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        btnCancel.DialogResult = DialogResult.TryAgain
-        btnCancel.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        btnCancel.Location = New System.Drawing.Point(382, 270)
-        btnCancel.Name = "btnCancel"
-        btnCancel.Size = New System.Drawing.Size(54, 24)
-        btnCancel.TabIndex = 2
-        btnCancel.Text = "Cancel"
-        btnCancel.UseVisualStyleBackColor = True
+        Me.btnCancel.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        Me.btnCancel.DialogResult = DialogResult.TryAgain
+        Me.btnCancel.ImageAlign = Drawing.ContentAlignment.TopLeft
+        Me.btnCancel.Location = New System.Drawing.Point(382, 270)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(54, 24)
+        Me.btnCancel.TabIndex = 2
+        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = True
         ' 
         ' btnApply
         ' 
-        btnApply.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        btnApply.DialogResult = DialogResult.TryAgain
-        btnApply.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        btnApply.Location = New System.Drawing.Point(442, 270)
-        btnApply.Margin = New Padding(3, 3, 3, 0)
-        btnApply.Name = "btnApply"
-        btnApply.Size = New System.Drawing.Size(54, 24)
-        btnApply.TabIndex = 3
-        btnApply.Text = "Apply"
-        btnApply.UseVisualStyleBackColor = True
+        Me.btnApply.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        Me.btnApply.DialogResult = DialogResult.TryAgain
+        Me.btnApply.ImageAlign = Drawing.ContentAlignment.TopLeft
+        Me.btnApply.Location = New System.Drawing.Point(442, 270)
+        Me.btnApply.Margin = New Padding(3, 3, 3, 0)
+        Me.btnApply.Name = "btnApply"
+        Me.btnApply.Size = New System.Drawing.Size(54, 24)
+        Me.btnApply.TabIndex = 3
+        Me.btnApply.Text = "Apply"
+        Me.btnApply.UseVisualStyleBackColor = True
         ' 
-        ' frmMsuTrackAltEdit
+        ' MsuTrackAltEditForm
         ' 
-        AutoScaleDimensions = New System.Drawing.SizeF(7.0F, 15.0F)
-        AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New System.Drawing.Size(499, 297)
-        Controls.Add(btnApply)
-        Controls.Add(btnCancel)
-        Controls.Add(btnOk)
-        Controls.Add(ucMsuTrack)
-        FormBorderStyle = FormBorderStyle.SizableToolWindow
-        Name = "frmMsuTrackAltEdit"
-        Text = "MSU1 Track Edit"
-        ResumeLayout(False)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
+        Me.AutoScaleMode = AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(499, 297)
+        Me.Controls.Add(Me.btnApply)
+        Me.Controls.Add(Me.btnCancel)
+        Me.Controls.Add(Me.btnOk)
+        Me.Controls.Add(Me.ucMsuTrack)
+        Me.FormBorderStyle = FormBorderStyle.SizableToolWindow
+        Me.Name = "MsuTrackAltEditForm"
+        Me.Text = "MSU1 Track Edit"
+        Me.ResumeLayout(False)
     End Sub
 
     Private WithEvents ucMsuTrack As MsuTrackAltControl
