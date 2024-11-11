@@ -23,7 +23,7 @@ Namespace Msu
             Dim oHash = System.Security.Cryptography.SHA1.Create
             Dim sFilePath = System.Reflection.Assembly.GetEntryAssembly().Location ' File of compiled dll
 
-            If String.IsNullOrEmpty(System.Environment.ProcessPath) Then
+            If String.IsNullOrEmpty(sFilePath) Then
                 sFilePath = System.Environment.ProcessPath ' Path of exe
             End If
 
