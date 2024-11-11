@@ -244,7 +244,7 @@ Namespace Msu
             ''' Return if this Track is currently being played (File at <see cref="FilePath"/> is open.)
             ''' </summary>
             Public Overridable Function IsOpen() As Boolean
-                Return Msu.MsuHelper.FileIsLocked(Me.FilePath, fileAccess:=FileAccess.Write, fileShare:=FileShare.None)
+                Return Msu.MsuHelper.FileIsLocked(Me.FilePath, fileAccess:=System.IO.FileAccess.Write, fileShare:=System.IO.FileShare.None)
             End Function
 
             ''' <exception cref="System.ArgumentNullException">
