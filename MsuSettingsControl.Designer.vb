@@ -23,198 +23,212 @@ Partial Class MsuSettingsControl
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New ComponentModel.Container()
-        lblMsuPcmPath = New Label()
-        txtMsuPcmPath = New TextBox()
-        btnSelPathMsuPcm = New Button()
-        ttpMsuSettings = New ToolTip(Me.components)
-        lblMsuTrackMainVersionTitle = New Label()
-        txtMsuTrackMainVersionTitle = New TextBox()
-        txtMsuTrackMainVersionLocation = New TextBox()
-        lblMsuTrackMainVersionLocation = New Label()
-        ctrlAutoSetDisplayOnlyTracksWithAlts = New CheckBox()
-        ctrlAutoSetAutoSwitch = New CheckBox()
-        ctrlDisplayLoopPointInHexadecimal = New CheckBox()
-        ctrlSaveMsuLocation = New CheckBox()
-        btnDownloadMsuPcm = New Button()
-        ofdPathMsuPcm = New OpenFileDialog()
-        lblLogEntries = New Label()
-        nudLogEntries = New NumericUpDown()
-        CType(nudLogEntries, ComponentModel.ISupportInitialize).BeginInit()
+        Me.lblMsuPcmPath = New Label()
+        Me.txtMsuPcmPath = New TextBox()
+        Me.btnSelPathMsuPcm = New Button()
+        Me.ttpMsuSettings = New ToolTip(Me.components)
+        Me.lblMsuTrackMainVersionTitle = New Label()
+        Me.txtMsuTrackMainVersionTitle = New TextBox()
+        Me.txtMsuTrackMainVersionLocation = New TextBox()
+        Me.lblMsuTrackMainVersionLocation = New Label()
+        Me.ctrlAutoSetDisplayOnlyTracksWithAlts = New CheckBox()
+        Me.ctrlAutoSetAutoSwitch = New CheckBox()
+        Me.ctrlDisplayLoopPointInHexadecimal = New CheckBox()
+        Me.ctrlSaveMsuLocation = New CheckBox()
+        Me.btnDownloadMsuPcm = New Button()
+        Me.ofdPathMsuPcm = New OpenFileDialog()
+        Me.lblLogEntries = New Label()
+        Me.nudLogEntries = New NumericUpDown()
+        Me.ctrlSaveMsuLocationAuto = New CheckBox()
+        CType(Me.nudLogEntries, ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         ' 
         ' lblMsuPcmPath
         ' 
-        lblMsuPcmPath.AutoSize = True
-        lblMsuPcmPath.Location = New Drawing.Point(3, 14)
-        lblMsuPcmPath.Name = "lblMsuPcmPath"
-        lblMsuPcmPath.Size = New Drawing.Size(118, 15)
-        lblMsuPcmPath.TabIndex = 0
-        lblMsuPcmPath.Text = "Path of MSUPCM++:"
+        Me.lblMsuPcmPath.AutoSize = True
+        Me.lblMsuPcmPath.Location = New System.Drawing.Point(3, 14)
+        Me.lblMsuPcmPath.Name = "lblMsuPcmPath"
+        Me.lblMsuPcmPath.Size = New System.Drawing.Size(118, 15)
+        Me.lblMsuPcmPath.TabIndex = 0
+        Me.lblMsuPcmPath.Text = "Path of MSUPCM++:"
         ' 
         ' txtMsuPcmPath
         ' 
-        txtMsuPcmPath.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        txtMsuPcmPath.Location = New Drawing.Point(123, 11)
-        txtMsuPcmPath.Name = "txtMsuPcmPath"
-        txtMsuPcmPath.PlaceholderText = "...\msupcm.exe"
-        txtMsuPcmPath.Size = New Drawing.Size(176, 23)
-        txtMsuPcmPath.TabIndex = 1
+        Me.txtMsuPcmPath.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.txtMsuPcmPath.Location = New System.Drawing.Point(123, 11)
+        Me.txtMsuPcmPath.Name = "txtMsuPcmPath"
+        Me.txtMsuPcmPath.PlaceholderText = "...\msupcm.exe"
+        Me.txtMsuPcmPath.Size = New System.Drawing.Size(176, 23)
+        Me.txtMsuPcmPath.TabIndex = 1
         ' 
         ' btnSelPathMsuPcm
         ' 
-        btnSelPathMsuPcm.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        btnSelPathMsuPcm.Location = New Drawing.Point(305, 10)
-        btnSelPathMsuPcm.Name = "btnSelPathMsuPcm"
-        btnSelPathMsuPcm.Size = New Drawing.Size(50, 25)
-        btnSelPathMsuPcm.TabIndex = 2
-        btnSelPathMsuPcm.Text = "Select"
-        btnSelPathMsuPcm.UseVisualStyleBackColor = True
+        Me.btnSelPathMsuPcm.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Me.btnSelPathMsuPcm.Location = New System.Drawing.Point(305, 10)
+        Me.btnSelPathMsuPcm.Name = "btnSelPathMsuPcm"
+        Me.btnSelPathMsuPcm.Size = New System.Drawing.Size(50, 25)
+        Me.btnSelPathMsuPcm.TabIndex = 2
+        Me.btnSelPathMsuPcm.Text = "Select"
+        Me.btnSelPathMsuPcm.UseVisualStyleBackColor = True
         ' 
         ' ttpMsuSettings
         ' 
-        ttpMsuSettings.AutoPopDelay = Integer.MaxValue
-        ttpMsuSettings.InitialDelay = 250
-        ttpMsuSettings.ReshowDelay = 50
+        Me.ttpMsuSettings.AutoPopDelay = Integer.MaxValue
+        Me.ttpMsuSettings.InitialDelay = 250
+        Me.ttpMsuSettings.ReshowDelay = 50
         ' 
         ' lblMsuTrackMainVersionTitle
         ' 
-        lblMsuTrackMainVersionTitle.AutoSize = True
-        lblMsuTrackMainVersionTitle.Location = New Drawing.Point(3, 43)
-        lblMsuTrackMainVersionTitle.Name = "lblMsuTrackMainVersionTitle"
-        lblMsuTrackMainVersionTitle.Size = New Drawing.Size(172, 15)
-        lblMsuTrackMainVersionTitle.TabIndex = 4
-        lblMsuTrackMainVersionTitle.Text = "Title for Main/Default alt. Track:"
+        Me.lblMsuTrackMainVersionTitle.AutoSize = True
+        Me.lblMsuTrackMainVersionTitle.Location = New System.Drawing.Point(3, 43)
+        Me.lblMsuTrackMainVersionTitle.Name = "lblMsuTrackMainVersionTitle"
+        Me.lblMsuTrackMainVersionTitle.Size = New System.Drawing.Size(172, 15)
+        Me.lblMsuTrackMainVersionTitle.TabIndex = 4
+        Me.lblMsuTrackMainVersionTitle.Text = "Title for Main/Default alt. Track:"
         ' 
         ' txtMsuTrackMainVersionTitle
         ' 
-        txtMsuTrackMainVersionTitle.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        txtMsuTrackMainVersionTitle.Location = New Drawing.Point(181, 40)
-        txtMsuTrackMainVersionTitle.Name = "txtMsuTrackMainVersionTitle"
-        txtMsuTrackMainVersionTitle.Size = New Drawing.Size(246, 23)
-        txtMsuTrackMainVersionTitle.TabIndex = 5
+        Me.txtMsuTrackMainVersionTitle.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.txtMsuTrackMainVersionTitle.Location = New System.Drawing.Point(181, 40)
+        Me.txtMsuTrackMainVersionTitle.Name = "txtMsuTrackMainVersionTitle"
+        Me.txtMsuTrackMainVersionTitle.Size = New System.Drawing.Size(246, 23)
+        Me.txtMsuTrackMainVersionTitle.TabIndex = 5
         ' 
         ' txtMsuTrackMainVersionLocation
         ' 
-        txtMsuTrackMainVersionLocation.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        txtMsuTrackMainVersionLocation.Location = New Drawing.Point(181, 69)
-        txtMsuTrackMainVersionLocation.Name = "txtMsuTrackMainVersionLocation"
-        txtMsuTrackMainVersionLocation.Size = New Drawing.Size(246, 23)
-        txtMsuTrackMainVersionLocation.TabIndex = 7
+        Me.txtMsuTrackMainVersionLocation.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.txtMsuTrackMainVersionLocation.Location = New System.Drawing.Point(181, 69)
+        Me.txtMsuTrackMainVersionLocation.Name = "txtMsuTrackMainVersionLocation"
+        Me.txtMsuTrackMainVersionLocation.Size = New System.Drawing.Size(246, 23)
+        Me.txtMsuTrackMainVersionLocation.TabIndex = 7
         ' 
         ' lblMsuTrackMainVersionLocation
         ' 
-        lblMsuTrackMainVersionLocation.AutoSize = True
-        lblMsuTrackMainVersionLocation.Location = New Drawing.Point(3, 72)
-        lblMsuTrackMainVersionLocation.Name = "lblMsuTrackMainVersionLocation"
-        lblMsuTrackMainVersionLocation.Size = New Drawing.Size(174, 15)
-        lblMsuTrackMainVersionLocation.TabIndex = 6
-        lblMsuTrackMainVersionLocation.Text = "Path for Main/Default alt. Track:"
+        Me.lblMsuTrackMainVersionLocation.AutoSize = True
+        Me.lblMsuTrackMainVersionLocation.Location = New System.Drawing.Point(3, 72)
+        Me.lblMsuTrackMainVersionLocation.Name = "lblMsuTrackMainVersionLocation"
+        Me.lblMsuTrackMainVersionLocation.Size = New System.Drawing.Size(174, 15)
+        Me.lblMsuTrackMainVersionLocation.TabIndex = 6
+        Me.lblMsuTrackMainVersionLocation.Text = "Path for Main/Default alt. Track:"
         ' 
         ' ctrlAutoSetDisplayOnlyTracksWithAlts
         ' 
-        ctrlAutoSetDisplayOnlyTracksWithAlts.AutoSize = True
-        ctrlAutoSetDisplayOnlyTracksWithAlts.CheckAlign = Drawing.ContentAlignment.MiddleRight
-        ctrlAutoSetDisplayOnlyTracksWithAlts.Location = New Drawing.Point(2, 98)
-        ctrlAutoSetDisplayOnlyTracksWithAlts.Margin = New Padding(2, 3, 3, 3)
-        ctrlAutoSetDisplayOnlyTracksWithAlts.Name = "ctrlAutoSetDisplayOnlyTracksWithAlts"
-        ctrlAutoSetDisplayOnlyTracksWithAlts.RightToLeft = RightToLeft.No
-        ctrlAutoSetDisplayOnlyTracksWithAlts.Size = New Drawing.Size(298, 19)
-        ctrlAutoSetDisplayOnlyTracksWithAlts.TabIndex = 8
-        ctrlAutoSetDisplayOnlyTracksWithAlts.Text = "Hide tracks with no alternative tracks automatically:"
-        ctrlAutoSetDisplayOnlyTracksWithAlts.UseVisualStyleBackColor = True
+        Me.ctrlAutoSetDisplayOnlyTracksWithAlts.AutoSize = True
+        Me.ctrlAutoSetDisplayOnlyTracksWithAlts.CheckAlign = Drawing.ContentAlignment.MiddleRight
+        Me.ctrlAutoSetDisplayOnlyTracksWithAlts.Location = New System.Drawing.Point(2, 98)
+        Me.ctrlAutoSetDisplayOnlyTracksWithAlts.Margin = New Padding(2, 3, 3, 3)
+        Me.ctrlAutoSetDisplayOnlyTracksWithAlts.Name = "ctrlAutoSetDisplayOnlyTracksWithAlts"
+        Me.ctrlAutoSetDisplayOnlyTracksWithAlts.RightToLeft = RightToLeft.No
+        Me.ctrlAutoSetDisplayOnlyTracksWithAlts.Size = New System.Drawing.Size(298, 19)
+        Me.ctrlAutoSetDisplayOnlyTracksWithAlts.TabIndex = 8
+        Me.ctrlAutoSetDisplayOnlyTracksWithAlts.Text = "Hide tracks with no alternative tracks automatically:"
+        Me.ctrlAutoSetDisplayOnlyTracksWithAlts.UseVisualStyleBackColor = True
         ' 
         ' ctrlAutoSetAutoSwitch
         ' 
-        ctrlAutoSetAutoSwitch.AutoSize = True
-        ctrlAutoSetAutoSwitch.CheckAlign = Drawing.ContentAlignment.MiddleRight
-        ctrlAutoSetAutoSwitch.Location = New Drawing.Point(2, 127)
-        ctrlAutoSetAutoSwitch.Margin = New Padding(2, 3, 3, 3)
-        ctrlAutoSetAutoSwitch.Name = "ctrlAutoSetAutoSwitch"
-        ctrlAutoSetAutoSwitch.Size = New Drawing.Size(246, 19)
-        ctrlAutoSetAutoSwitch.TabIndex = 9
-        ctrlAutoSetAutoSwitch.Text = "Enable/Disable AutoSwitch automatically:"
-        ctrlAutoSetAutoSwitch.UseVisualStyleBackColor = True
+        Me.ctrlAutoSetAutoSwitch.AutoSize = True
+        Me.ctrlAutoSetAutoSwitch.CheckAlign = Drawing.ContentAlignment.MiddleRight
+        Me.ctrlAutoSetAutoSwitch.Location = New System.Drawing.Point(2, 127)
+        Me.ctrlAutoSetAutoSwitch.Margin = New Padding(2, 3, 3, 3)
+        Me.ctrlAutoSetAutoSwitch.Name = "ctrlAutoSetAutoSwitch"
+        Me.ctrlAutoSetAutoSwitch.Size = New System.Drawing.Size(246, 19)
+        Me.ctrlAutoSetAutoSwitch.TabIndex = 9
+        Me.ctrlAutoSetAutoSwitch.Text = "Enable/Disable AutoSwitch automatically:"
+        Me.ctrlAutoSetAutoSwitch.UseVisualStyleBackColor = True
         ' 
         ' ctrlDisplayLoopPointInHexadecimal
         ' 
-        ctrlDisplayLoopPointInHexadecimal.AutoSize = True
-        ctrlDisplayLoopPointInHexadecimal.CheckAlign = Drawing.ContentAlignment.MiddleRight
-        ctrlDisplayLoopPointInHexadecimal.Location = New Drawing.Point(2, 156)
-        ctrlDisplayLoopPointInHexadecimal.Margin = New Padding(2, 3, 3, 3)
-        ctrlDisplayLoopPointInHexadecimal.Name = "ctrlDisplayLoopPointInHexadecimal"
-        ctrlDisplayLoopPointInHexadecimal.Size = New Drawing.Size(246, 19)
-        ctrlDisplayLoopPointInHexadecimal.TabIndex = 9
-        ctrlDisplayLoopPointInHexadecimal.Text = "Display loop point in Hexadecimal:"
-        ctrlDisplayLoopPointInHexadecimal.UseVisualStyleBackColor = True
+        Me.ctrlDisplayLoopPointInHexadecimal.AutoSize = True
+        Me.ctrlDisplayLoopPointInHexadecimal.CheckAlign = Drawing.ContentAlignment.MiddleRight
+        Me.ctrlDisplayLoopPointInHexadecimal.Location = New System.Drawing.Point(2, 156)
+        Me.ctrlDisplayLoopPointInHexadecimal.Margin = New Padding(2, 3, 3, 3)
+        Me.ctrlDisplayLoopPointInHexadecimal.Name = "ctrlDisplayLoopPointInHexadecimal"
+        Me.ctrlDisplayLoopPointInHexadecimal.Size = New System.Drawing.Size(210, 19)
+        Me.ctrlDisplayLoopPointInHexadecimal.TabIndex = 9
+        Me.ctrlDisplayLoopPointInHexadecimal.Text = "Display loop point in Hexadecimal:"
+        Me.ctrlDisplayLoopPointInHexadecimal.UseVisualStyleBackColor = True
         ' 
         ' ctrlSaveMsuLocation
         ' 
-        ctrlSaveMsuLocation.AutoSize = True
-        ctrlSaveMsuLocation.CheckAlign = Drawing.ContentAlignment.MiddleRight
-        ctrlSaveMsuLocation.Location = New Drawing.Point(2, 185)
-        ctrlSaveMsuLocation.Margin = New Padding(2, 3, 3, 3)
-        ctrlSaveMsuLocation.Name = "ctrlSaveMsuLocation"
-        ctrlSaveMsuLocation.Size = New Drawing.Size(246, 19)
-        ctrlSaveMsuLocation.TabIndex = 9
-        ctrlSaveMsuLocation.Text = "Save location of msu in configuration:"
-        ctrlSaveMsuLocation.UseVisualStyleBackColor = True
+        Me.ctrlSaveMsuLocation.AutoSize = True
+        Me.ctrlSaveMsuLocation.CheckAlign = Drawing.ContentAlignment.MiddleRight
+        Me.ctrlSaveMsuLocation.Location = New System.Drawing.Point(2, 185)
+        Me.ctrlSaveMsuLocation.Margin = New Padding(2, 3, 3, 3)
+        Me.ctrlSaveMsuLocation.Name = "ctrlSaveMsuLocation"
+        Me.ctrlSaveMsuLocation.Size = New System.Drawing.Size(227, 19)
+        Me.ctrlSaveMsuLocation.TabIndex = 9
+        Me.ctrlSaveMsuLocation.Text = "Save location of msu in configuration:"
+        Me.ctrlSaveMsuLocation.UseVisualStyleBackColor = True
         ' 
         ' btnDownloadMsuPcm
         ' 
-        btnDownloadMsuPcm.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        btnDownloadMsuPcm.Location = New Drawing.Point(358, 10)
-        btnDownloadMsuPcm.Name = "btnDownloadMsuPcm"
-        btnDownloadMsuPcm.Size = New Drawing.Size(70, 25)
-        btnDownloadMsuPcm.TabIndex = 3
-        btnDownloadMsuPcm.Text = "Download"
-        btnDownloadMsuPcm.UseVisualStyleBackColor = True
+        Me.btnDownloadMsuPcm.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Me.btnDownloadMsuPcm.Location = New System.Drawing.Point(358, 10)
+        Me.btnDownloadMsuPcm.Name = "btnDownloadMsuPcm"
+        Me.btnDownloadMsuPcm.Size = New System.Drawing.Size(70, 25)
+        Me.btnDownloadMsuPcm.TabIndex = 3
+        Me.btnDownloadMsuPcm.Text = "Download"
+        Me.btnDownloadMsuPcm.UseVisualStyleBackColor = True
         ' 
         ' ofdPathMsuPcm
         ' 
-        ofdPathMsuPcm.Filter = "All Files|*.*|MSUPCM++|*msupcm.exe"
-        ofdPathMsuPcm.FilterIndex = 2
-        ofdPathMsuPcm.Title = "Select executable for msupcm++"
+        Me.ofdPathMsuPcm.Filter = "All Files|*.*|MSUPCM++|*msupcm.exe"
+        Me.ofdPathMsuPcm.FilterIndex = 2
+        Me.ofdPathMsuPcm.Title = "Select executable for msupcm++"
         ' 
         ' lblLogEntries
         ' 
-        lblLogEntries.AutoSize = True
-        lblLogEntries.Location = New Drawing.Point(3, 214)
-        lblLogEntries.Name = "lblLogEntries"
-        lblLogEntries.Size = New Drawing.Size(128, 15)
-        lblLogEntries.TabIndex = 10
-        lblLogEntries.Text = "Maximum Log-Entries:"
+        Me.lblLogEntries.AutoSize = True
+        Me.lblLogEntries.Location = New System.Drawing.Point(3, 214)
+        Me.lblLogEntries.Name = "lblLogEntries"
+        Me.lblLogEntries.Size = New System.Drawing.Size(128, 15)
+        Me.lblLogEntries.TabIndex = 10
+        Me.lblLogEntries.Text = "Maximum Log-Entries:"
         ' 
         ' nudLogEntries
         ' 
-        nudLogEntries.Location = New Drawing.Point(137, 214)
-        nudLogEntries.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
-        nudLogEntries.Name = "nudLogEntries"
-        nudLogEntries.Size = New Drawing.Size(57, 23)
-        nudLogEntries.TabIndex = 11
-        nudLogEntries.TextAlign = HorizontalAlignment.Right
-        nudLogEntries.Value = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.nudLogEntries.Location = New System.Drawing.Point(137, 214)
+        Me.nudLogEntries.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
+        Me.nudLogEntries.Name = "nudLogEntries"
+        Me.nudLogEntries.Size = New System.Drawing.Size(57, 23)
+        Me.nudLogEntries.TabIndex = 11
+        Me.nudLogEntries.TextAlign = HorizontalAlignment.Right
+        Me.nudLogEntries.Value = New Decimal(New Integer() {1000, 0, 0, 0})
+        ' 
+        ' ctrlSaveMsuLocationAuto
+        ' 
+        Me.ctrlSaveMsuLocationAuto.AutoSize = True
+        Me.ctrlSaveMsuLocationAuto.CheckAlign = Drawing.ContentAlignment.MiddleRight
+        Me.ctrlSaveMsuLocationAuto.Location = New System.Drawing.Point(240, 185)
+        Me.ctrlSaveMsuLocationAuto.Margin = New Padding(2, 3, 3, 3)
+        Me.ctrlSaveMsuLocationAuto.Name = "ctrlSaveMsuLocationAuto"
+        Me.ctrlSaveMsuLocationAuto.Size = New System.Drawing.Size(85, 19)
+        Me.ctrlSaveMsuLocationAuto.TabIndex = 12
+        Me.ctrlSaveMsuLocationAuto.Text = "Autodetect"
+        Me.ctrlSaveMsuLocationAuto.UseVisualStyleBackColor = True
         ' 
         ' MsuSettingsControl
         ' 
-        Me.AutoScaleDimensions = New Drawing.SizeF(7F, 15F)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
         Me.AutoScaleMode = AutoScaleMode.Font
-        Me.Controls.Add(lblLogEntries)
-        Me.Controls.Add(nudLogEntries)
-        Me.Controls.Add(btnDownloadMsuPcm)
-        Me.Controls.Add(ctrlAutoSetAutoSwitch)
-        Me.Controls.Add(ctrlAutoSetDisplayOnlyTracksWithAlts)
-        Me.Controls.Add(ctrlDisplayLoopPointInHexadecimal)
-        Me.Controls.Add(ctrlSaveMsuLocation)
-        Me.Controls.Add(txtMsuTrackMainVersionLocation)
-        Me.Controls.Add(lblMsuTrackMainVersionLocation)
-        Me.Controls.Add(txtMsuTrackMainVersionTitle)
-        Me.Controls.Add(lblMsuTrackMainVersionTitle)
-        Me.Controls.Add(btnSelPathMsuPcm)
-        Me.Controls.Add(txtMsuPcmPath)
-        Me.Controls.Add(lblMsuPcmPath)
+        Me.Controls.Add(Me.ctrlSaveMsuLocationAuto)
+        Me.Controls.Add(Me.lblLogEntries)
+        Me.Controls.Add(Me.nudLogEntries)
+        Me.Controls.Add(Me.btnDownloadMsuPcm)
+        Me.Controls.Add(Me.ctrlAutoSetAutoSwitch)
+        Me.Controls.Add(Me.ctrlAutoSetDisplayOnlyTracksWithAlts)
+        Me.Controls.Add(Me.ctrlDisplayLoopPointInHexadecimal)
+        Me.Controls.Add(Me.ctrlSaveMsuLocation)
+        Me.Controls.Add(Me.txtMsuTrackMainVersionLocation)
+        Me.Controls.Add(Me.lblMsuTrackMainVersionLocation)
+        Me.Controls.Add(Me.txtMsuTrackMainVersionTitle)
+        Me.Controls.Add(Me.lblMsuTrackMainVersionTitle)
+        Me.Controls.Add(Me.btnSelPathMsuPcm)
+        Me.Controls.Add(Me.txtMsuPcmPath)
+        Me.Controls.Add(Me.lblMsuPcmPath)
         Me.Name = "MsuSettingsControl"
-        Me.Size = New Drawing.Size(430, 244)
-        CType(nudLogEntries, ComponentModel.ISupportInitialize).EndInit()
+        Me.Size = New System.Drawing.Size(430, 244)
+        CType(Me.nudLogEntries, ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
     End Sub
@@ -236,4 +250,5 @@ Partial Class MsuSettingsControl
     Friend WithEvents ofdPathMsuPcm As OpenFileDialog
     Private WithEvents lblLogEntries As Label
     Private WithEvents nudLogEntries As NumericUpDown
+    Friend WithEvents ctrlSaveMsuLocationAuto As CheckBox
 End Class

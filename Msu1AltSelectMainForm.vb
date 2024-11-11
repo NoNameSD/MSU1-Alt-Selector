@@ -935,7 +935,7 @@ Public Class Msu1AltSelectMainForm
 
         Me.sfdJson.FileName = Me.MsuTracks.MsuName & Msu.MsuHelper.JsonExtL
 
-        Call Me.sfdJson.ShowDialog(owner:=Me)
+        Dim dialogResult = Me.sfdJson.ShowDialog(owner:=Me)
 
         Dim ret As String = Me.sfdJson.FileName
 
@@ -945,8 +945,11 @@ Public Class Msu1AltSelectMainForm
             Return
         End If
 
-        Me.JsonFilePath = ret
-        Call SaveJson()
+        Select Case dialogResult
+            Case DialogResult.OK
+                Me.JsonFilePath = ret
+                Call SaveJson()
+        End Select
     End Sub
 
     Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click

@@ -60,7 +60,7 @@ Public Class MsuSettingsControl
 
         Call RefreshTextFields()
     End Sub
-    Private Sub Form_UserChangedValue(sender As Object, e As EventArgs)
+    Private Sub Form_UserChangedValue(sender As Object, e As EventArgs) Handles Me.UserChangedValue
         Call Me.RefreshTextFields()
         RaiseEvent FormDirty(sender, e)
     End Sub
@@ -73,7 +73,9 @@ Public Class MsuSettingsControl
         Me.ctrlAutoSetDisplayOnlyTracksWithAlts.Checked = Me.SettingsTmp.TrackAltSettings.AutoSetDisplayOnlyTracksWithAlts
         Me.ctrlAutoSetAutoSwitch.Checked = Me.SettingsTmp.TrackAltSettings.AutoSetAutoSwitch
         Me.ctrlDisplayLoopPointInHexadecimal.Checked = Me.SettingsTmp.TrackAltSettings.DisplayLoopPointInHexadecimal
-        Me.ctrlSaveMsuLocation.Checked = Me.SettingsTmp.TrackAltSettings.SaveMsuLocation
+        Me.ctrlSaveMsuLocation.CheckState = Me.SettingsTmp.TrackAltSettings.SaveMsuLocation
+        Me.ctrlSaveMsuLocation.Enabled = Me.ctrlSaveMsuLocation.CheckState <> CheckState.Indeterminate
+        Me.ctrlSaveMsuLocationAuto.Checked = Me.ctrlSaveMsuLocation.CheckState = CheckState.Indeterminate
         Me.nudLogEntries.Value = Me.SettingsTmp.LoggerSettings.MaxEntries
 
     End Sub
@@ -186,24 +188,33 @@ Public Class MsuSettingsControl
     Private Sub ctrlAutoSetAutoSwitch_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ctrlAutoSetAutoSwitch.Validating
         Me.SettingsTmp.TrackAltSettings.AutoSetAutoSwitch = Me.ctrlAutoSetAutoSwitch.Checked()
     End Sub
-
     Private Sub ctrlAutoSetAutoSwitch_Validated(sender As Object, e As EventArgs) Handles ctrlAutoSetAutoSwitch.Validated
         RaiseEvent UserChangedValue(sender, e)
     End Sub
+
     Private Sub ctrlDisplayLoopPointInHexadecimal_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ctrlDisplayLoopPointInHexadecimal.Validating
         Me.SettingsTmp.TrackAltSettings.DisplayLoopPointInHexadecimal = Me.ctrlDisplayLoopPointInHexadecimal.Checked()
     End Sub
-
     Private Sub ctrlDisplayLoopPointInHexadecimal_Validated(sender As Object, e As EventArgs) Handles ctrlDisplayLoopPointInHexadecimal.Validated
         RaiseEvent UserChangedValue(sender, e)
     End Sub
-    Private Sub ctrlSaveMsuLocation_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ctrlSaveMsuLocation.Validating
-        Me.SettingsTmp.TrackAltSettings.SaveMsuLocation = Me.ctrlSaveMsuLocation.Checked()
-    End Sub
 
+    Private Sub ctrlSaveMsuLocation_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ctrlSaveMsuLocation.Validating
+        Me.SettingsTmp.TrackAltSettings.SaveMsuLocation = Me.ctrlSaveMsuLocation.CheckState
+    End Sub
     Private Sub ctrlSaveMsuLocation_Validated(sender As Object, e As EventArgs) Handles ctrlSaveMsuLocation.Validated
         RaiseEvent UserChangedValue(sender, e)
     End Sub
+
+    Private Sub ctrlSaveMsuLocationAuto_CheckedChanged(sender As Object, e As EventArgs) Handles ctrlSaveMsuLocationAuto.CheckedChanged
+        If Me.ctrlSaveMsuLocationAuto.Checked Then
+            Me.SettingsTmp.TrackAltSettings.SaveMsuLocation = CheckState.Indeterminate
+        Else
+            Me.SettingsTmp.TrackAltSettings.SaveMsuLocation = CheckState.Unchecked
+        End If
+        RaiseEvent UserChangedValue(sender, e)
+    End Sub
+
     Private Sub nudLogEntries_ValueChanged(sender As Object, e As EventArgs) Handles nudLogEntries.ValueChanged
         If Me.SettingsTmp Is Nothing Then Return
         Me.SettingsTmp.LoggerSettings.MaxEntries = CUInt(nudLogEntries.Value)
@@ -241,6 +252,9 @@ Public Class MsuSettingsControl
             .SetToolTip(Me.ctrlSaveMsuLocation,
                         "When saving a MSU config to JSON the folder path of the msu is saved." & System.Environment.NewLine &
                         "This allows putting the JSON config into another location than the msu itself.")
+
+            .SetToolTip(Me.ctrlSaveMsuLocationAuto,
+                        "Will automatically add the msu location to the saved JSON config, if that file is saved to a different folder than the msu location.")
 
             .SetToolTip(Me.lblMsuTrackMainVersionTitle,
                         "Title, that is used for the Main/Default Version of the MsuTrack, that is stored in the Main Folder.")

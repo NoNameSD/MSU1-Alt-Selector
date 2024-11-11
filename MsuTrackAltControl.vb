@@ -176,26 +176,34 @@ Public Class MsuTrackAltControl
         Dim autoSwitchTrackNumbersJson = Me.MsuTrackAltTmp.AutoSwitchTrackNumbersJson
         Me.txtAutoSwitch.Text = autoSwitchTrackNumbersJson
 
-        Me.grpLoopPointBase.Enabled = Not (Me.LoopPointConvertedToEdit Is Nothing AndAlso Me.LoopPointConvertedToEdit Is Nothing)
+        Me.grpLoopPointBase.Enabled = (Me.LoopPointToEdit IsNot Nothing OrElse Me.LoopPointConvertedToEdit IsNot Nothing)
 
         If Me.LoopPointToEdit Is Nothing Then
             Me.nudLoopPoint.Enabled = False
             Me.lblLoopPoint.Enabled = False
             Me.nudLoopPoint.Text = vbNullString
+            Me.btnLoopPointReset.Enabled = False
+            Me.btnLoopPointToMax.Enabled = False
         Else
             Me.nudLoopPoint.Value = CDec(Me.LoopPointToEdit)
             Me.nudLoopPoint.Enabled = True
             Me.lblLoopPoint.Enabled = True
+            Me.btnLoopPointReset.Enabled = True
+            Me.btnLoopPointToMax.Enabled = True
         End If
 
         If Me.LoopPointConvertedToEdit Is Nothing Then
             Me.nudLoopPointConv.Enabled = False
             Me.lblLoopPointConv.Enabled = False
             Me.nudLoopPointConv.Text = vbNullString
+            Me.btnLoopPointConvReset.Enabled = False
+            Me.btnLoopPointConvToMax.Enabled = False
         Else
             Me.nudLoopPointConv.Value = CDec(Me.LoopPointConvertedToEdit)
             Me.nudLoopPointConv.Enabled = True
             Me.lblLoopPointConv.Enabled = True
+            Me.btnLoopPointConvReset.Enabled = True
+            Me.btnLoopPointConvToMax.Enabled = True
         End If
 
     End Sub

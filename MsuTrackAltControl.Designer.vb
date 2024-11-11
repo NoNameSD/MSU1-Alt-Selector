@@ -23,337 +23,337 @@ Partial Class MsuTrackAltControl
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New ComponentModel.Container()
-        ofdPathPcm = New OpenFileDialog()
-        lblMsuTitle = New Label()
-        txtMsuAltTitle = New TextBox()
-        lblMsuTrackAltId = New Label()
-        txtMsuFileName = New TextBox()
-        nudMsuTrackAltId = New NumericUpDown()
-        txtRelativeLocation = New TextBox()
-        lblRelativeLocation = New Label()
-        txtAbsoluteLocation = New TextBox()
-        lblAbsoluteLocation = New Label()
-        txtFilePath = New TextBox()
-        lblFilePath = New Label()
-        btnSelPathPcm = New Button()
-        btnSelLocationPcm = New Button()
-        fbdLocationPcm = New FolderBrowserDialog()
-        txtAutoSwitch = New TextBox()
-        lblAutoSwitch = New Label()
-        ttpMsuTrackAltControl = New ToolTip(Me.components)
-        lblLoopPoint = New Label()
-        lblLoopPointConv = New Label()
-        nudLoopPoint = New NumericUpDown()
-        nudLoopPointConv = New NumericUpDown()
-        grpLoopPointBase = New GroupBox()
-        ctrlBase16 = New RadioButton()
-        ctrlBase10 = New RadioButton()
-        btnLoopPointToMax = New Button()
-        btnLoopPointConvToMax = New Button()
-        btnLoopPointReset = New Button()
-        btnLoopPointConvReset = New Button()
-        CType(nudMsuTrackAltId, ComponentModel.ISupportInitialize).BeginInit()
-        CType(nudLoopPoint, ComponentModel.ISupportInitialize).BeginInit()
-        CType(nudLoopPointConv, ComponentModel.ISupportInitialize).BeginInit()
-        grpLoopPointBase.SuspendLayout()
+        Me.ofdPathPcm = New OpenFileDialog()
+        Me.lblMsuTitle = New Label()
+        Me.txtMsuAltTitle = New TextBox()
+        Me.lblMsuTrackAltId = New Label()
+        Me.txtMsuFileName = New TextBox()
+        Me.nudMsuTrackAltId = New NumericUpDown()
+        Me.txtRelativeLocation = New TextBox()
+        Me.lblRelativeLocation = New Label()
+        Me.txtAbsoluteLocation = New TextBox()
+        Me.lblAbsoluteLocation = New Label()
+        Me.txtFilePath = New TextBox()
+        Me.lblFilePath = New Label()
+        Me.btnSelPathPcm = New Button()
+        Me.btnSelLocationPcm = New Button()
+        Me.fbdLocationPcm = New FolderBrowserDialog()
+        Me.txtAutoSwitch = New TextBox()
+        Me.lblAutoSwitch = New Label()
+        Me.ttpMsuTrackAltControl = New ToolTip(Me.components)
+        Me.lblLoopPoint = New Label()
+        Me.lblLoopPointConv = New Label()
+        Me.nudLoopPoint = New NumericUpDown()
+        Me.nudLoopPointConv = New NumericUpDown()
+        Me.grpLoopPointBase = New GroupBox()
+        Me.ctrlBase16 = New RadioButton()
+        Me.ctrlBase10 = New RadioButton()
+        Me.btnLoopPointToMax = New Button()
+        Me.btnLoopPointConvToMax = New Button()
+        Me.btnLoopPointReset = New Button()
+        Me.btnLoopPointConvReset = New Button()
+        CType(Me.nudMsuTrackAltId, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudLoopPoint, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudLoopPointConv, ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpLoopPointBase.SuspendLayout()
         Me.SuspendLayout()
         ' 
         ' ofdPathPcm
         ' 
-        ofdPathPcm.Filter = "All Files|*.*|MSU1 PCM Audio Track|*.pcm"
-        ofdPathPcm.FilterIndex = 2
-        ofdPathPcm.Title = "Select the .PCM file or the to use as an alternative version"
+        Me.ofdPathPcm.Filter = "All Files|*.*|MSU1 PCM Audio Track|*.pcm"
+        Me.ofdPathPcm.FilterIndex = 2
+        Me.ofdPathPcm.Title = "Select the .PCM file or the to use as an alternative version"
         ' 
         ' lblMsuTitle
         ' 
-        lblMsuTitle.AutoSize = True
-        lblMsuTitle.Location = New Drawing.Point(3, 14)
-        lblMsuTitle.Name = "lblMsuTitle"
-        lblMsuTitle.Size = New Drawing.Size(32, 15)
-        lblMsuTitle.TabIndex = 0
-        lblMsuTitle.Text = "Title:"
+        Me.lblMsuTitle.AutoSize = True
+        Me.lblMsuTitle.Location = New System.Drawing.Point(3, 14)
+        Me.lblMsuTitle.Name = "lblMsuTitle"
+        Me.lblMsuTitle.Size = New System.Drawing.Size(32, 15)
+        Me.lblMsuTitle.TabIndex = 0
+        Me.lblMsuTitle.Text = "Title:"
         ' 
         ' txtMsuAltTitle
         ' 
-        txtMsuAltTitle.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        txtMsuAltTitle.Location = New Drawing.Point(41, 11)
-        txtMsuAltTitle.Name = "txtMsuAltTitle"
-        txtMsuAltTitle.Size = New Drawing.Size(256, 23)
-        txtMsuAltTitle.TabIndex = 1
+        Me.txtMsuAltTitle.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.txtMsuAltTitle.Location = New System.Drawing.Point(41, 11)
+        Me.txtMsuAltTitle.Name = "txtMsuAltTitle"
+        Me.txtMsuAltTitle.Size = New System.Drawing.Size(256, 23)
+        Me.txtMsuAltTitle.TabIndex = 1
         ' 
         ' lblMsuTrackAltId
         ' 
-        lblMsuTrackAltId.AutoSize = True
-        lblMsuTrackAltId.Location = New Drawing.Point(3, 43)
-        lblMsuTrackAltId.Name = "lblMsuTrackAltId"
-        lblMsuTrackAltId.Size = New Drawing.Size(101, 15)
-        lblMsuTrackAltId.TabIndex = 2
-        lblMsuTrackAltId.Text = "Track alt. number:"
+        Me.lblMsuTrackAltId.AutoSize = True
+        Me.lblMsuTrackAltId.Location = New System.Drawing.Point(3, 43)
+        Me.lblMsuTrackAltId.Name = "lblMsuTrackAltId"
+        Me.lblMsuTrackAltId.Size = New System.Drawing.Size(101, 15)
+        Me.lblMsuTrackAltId.TabIndex = 2
+        Me.lblMsuTrackAltId.Text = "Track alt. number:"
         ' 
         ' txtMsuFileName
         ' 
-        txtMsuFileName.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        txtMsuFileName.Location = New Drawing.Point(166, 40)
-        txtMsuFileName.MaxLength = 3
-        txtMsuFileName.Name = "txtMsuFileName"
-        txtMsuFileName.ReadOnly = True
-        txtMsuFileName.Size = New Drawing.Size(131, 23)
-        txtMsuFileName.TabIndex = 4
+        Me.txtMsuFileName.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.txtMsuFileName.Location = New System.Drawing.Point(166, 40)
+        Me.txtMsuFileName.MaxLength = 3
+        Me.txtMsuFileName.Name = "txtMsuFileName"
+        Me.txtMsuFileName.ReadOnly = True
+        Me.txtMsuFileName.Size = New System.Drawing.Size(131, 23)
+        Me.txtMsuFileName.TabIndex = 4
         ' 
         ' nudMsuTrackAltId
         ' 
-        nudMsuTrackAltId.Location = New Drawing.Point(110, 40)
-        nudMsuTrackAltId.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
-        nudMsuTrackAltId.Name = "nudMsuTrackAltId"
-        nudMsuTrackAltId.Size = New Drawing.Size(50, 23)
-        nudMsuTrackAltId.TabIndex = 3
-        nudMsuTrackAltId.Value = New Decimal(New Integer() {65535, 0, 0, 0})
+        Me.nudMsuTrackAltId.Location = New System.Drawing.Point(110, 40)
+        Me.nudMsuTrackAltId.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
+        Me.nudMsuTrackAltId.Name = "nudMsuTrackAltId"
+        Me.nudMsuTrackAltId.Size = New System.Drawing.Size(50, 23)
+        Me.nudMsuTrackAltId.TabIndex = 3
+        Me.nudMsuTrackAltId.Value = New Decimal(New Integer() {65535, 0, 0, 0})
         ' 
         ' txtRelativeLocation
         ' 
-        txtRelativeLocation.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        txtRelativeLocation.Location = New Drawing.Point(117, 69)
-        txtRelativeLocation.Name = "txtRelativeLocation"
-        txtRelativeLocation.ReadOnly = True
-        txtRelativeLocation.Size = New Drawing.Size(180, 23)
-        txtRelativeLocation.TabIndex = 6
+        Me.txtRelativeLocation.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.txtRelativeLocation.Location = New System.Drawing.Point(117, 69)
+        Me.txtRelativeLocation.Name = "txtRelativeLocation"
+        Me.txtRelativeLocation.ReadOnly = True
+        Me.txtRelativeLocation.Size = New System.Drawing.Size(180, 23)
+        Me.txtRelativeLocation.TabIndex = 6
         ' 
         ' lblRelativeLocation
         ' 
-        lblRelativeLocation.AutoSize = True
-        lblRelativeLocation.Location = New Drawing.Point(3, 72)
-        lblRelativeLocation.Name = "lblRelativeLocation"
-        lblRelativeLocation.Size = New Drawing.Size(108, 15)
-        lblRelativeLocation.TabIndex = 5
-        lblRelativeLocation.Text = "Location (Relative):"
+        Me.lblRelativeLocation.AutoSize = True
+        Me.lblRelativeLocation.Location = New System.Drawing.Point(3, 72)
+        Me.lblRelativeLocation.Name = "lblRelativeLocation"
+        Me.lblRelativeLocation.Size = New System.Drawing.Size(108, 15)
+        Me.lblRelativeLocation.TabIndex = 5
+        Me.lblRelativeLocation.Text = "Location (Relative):"
         ' 
         ' txtAbsoluteLocation
         ' 
-        txtAbsoluteLocation.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        txtAbsoluteLocation.Location = New Drawing.Point(117, 98)
-        txtAbsoluteLocation.Name = "txtAbsoluteLocation"
-        txtAbsoluteLocation.ReadOnly = True
-        txtAbsoluteLocation.Size = New Drawing.Size(180, 23)
-        txtAbsoluteLocation.TabIndex = 8
+        Me.txtAbsoluteLocation.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.txtAbsoluteLocation.Location = New System.Drawing.Point(117, 98)
+        Me.txtAbsoluteLocation.Name = "txtAbsoluteLocation"
+        Me.txtAbsoluteLocation.ReadOnly = True
+        Me.txtAbsoluteLocation.Size = New System.Drawing.Size(180, 23)
+        Me.txtAbsoluteLocation.TabIndex = 8
         ' 
         ' lblAbsoluteLocation
         ' 
-        lblAbsoluteLocation.AutoSize = True
-        lblAbsoluteLocation.Location = New Drawing.Point(3, 101)
-        lblAbsoluteLocation.Name = "lblAbsoluteLocation"
-        lblAbsoluteLocation.Size = New Drawing.Size(114, 15)
-        lblAbsoluteLocation.TabIndex = 7
-        lblAbsoluteLocation.Text = "Location (Absolute):"
+        Me.lblAbsoluteLocation.AutoSize = True
+        Me.lblAbsoluteLocation.Location = New System.Drawing.Point(3, 101)
+        Me.lblAbsoluteLocation.Name = "lblAbsoluteLocation"
+        Me.lblAbsoluteLocation.Size = New System.Drawing.Size(114, 15)
+        Me.lblAbsoluteLocation.TabIndex = 7
+        Me.lblAbsoluteLocation.Text = "Location (Absolute):"
         ' 
         ' txtFilePath
         ' 
-        txtFilePath.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        txtFilePath.Location = New Drawing.Point(117, 127)
-        txtFilePath.Name = "txtFilePath"
-        txtFilePath.ReadOnly = True
-        txtFilePath.Size = New Drawing.Size(180, 23)
-        txtFilePath.TabIndex = 10
+        Me.txtFilePath.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.txtFilePath.Location = New System.Drawing.Point(117, 127)
+        Me.txtFilePath.Name = "txtFilePath"
+        Me.txtFilePath.ReadOnly = True
+        Me.txtFilePath.Size = New System.Drawing.Size(180, 23)
+        Me.txtFilePath.TabIndex = 10
         ' 
         ' lblFilePath
         ' 
-        lblFilePath.AutoSize = True
-        lblFilePath.Location = New Drawing.Point(3, 130)
-        lblFilePath.Name = "lblFilePath"
-        lblFilePath.Size = New Drawing.Size(113, 15)
-        lblFilePath.TabIndex = 9
-        lblFilePath.Text = "File path (Absolute):"
+        Me.lblFilePath.AutoSize = True
+        Me.lblFilePath.Location = New System.Drawing.Point(3, 130)
+        Me.lblFilePath.Name = "lblFilePath"
+        Me.lblFilePath.Size = New System.Drawing.Size(113, 15)
+        Me.lblFilePath.TabIndex = 9
+        Me.lblFilePath.Text = "File path (Absolute):"
         ' 
         ' btnSelPathPcm
         ' 
-        btnSelPathPcm.Location = New Drawing.Point(3, 243)
-        btnSelPathPcm.Name = "btnSelPathPcm"
-        btnSelPathPcm.Size = New Drawing.Size(145, 25)
-        btnSelPathPcm.TabIndex = 13
-        btnSelPathPcm.Text = "Select alt. Track"
-        btnSelPathPcm.UseVisualStyleBackColor = True
+        Me.btnSelPathPcm.Location = New System.Drawing.Point(3, 243)
+        Me.btnSelPathPcm.Name = "btnSelPathPcm"
+        Me.btnSelPathPcm.Size = New System.Drawing.Size(145, 25)
+        Me.btnSelPathPcm.TabIndex = 98
+        Me.btnSelPathPcm.Text = "Select alt. Track"
+        Me.btnSelPathPcm.UseVisualStyleBackColor = True
         ' 
         ' btnSelLocationPcm
         ' 
-        btnSelLocationPcm.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        btnSelLocationPcm.Location = New Drawing.Point(152, 243)
-        btnSelLocationPcm.Name = "btnSelLocationPcm"
-        btnSelLocationPcm.Size = New Drawing.Size(145, 25)
-        btnSelLocationPcm.TabIndex = 14
-        btnSelLocationPcm.Text = "Select alt. Track Location"
-        btnSelLocationPcm.UseVisualStyleBackColor = True
+        Me.btnSelLocationPcm.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Me.btnSelLocationPcm.Location = New System.Drawing.Point(152, 243)
+        Me.btnSelLocationPcm.Name = "btnSelLocationPcm"
+        Me.btnSelLocationPcm.Size = New System.Drawing.Size(145, 25)
+        Me.btnSelLocationPcm.TabIndex = 99
+        Me.btnSelLocationPcm.Text = "Select alt. Track Location"
+        Me.btnSelLocationPcm.UseVisualStyleBackColor = True
         ' 
         ' fbdLocationPcm
         ' 
-        fbdLocationPcm.Description = "Select the folder the currently used .PCM should be stored in."
-        fbdLocationPcm.RootFolder = Environment.SpecialFolder.Recent
-        fbdLocationPcm.Tag = ""
+        Me.fbdLocationPcm.Description = "Select the folder the currently used .PCM should be stored in."
+        Me.fbdLocationPcm.RootFolder = Environment.SpecialFolder.Recent
+        Me.fbdLocationPcm.Tag = ""
         ' 
         ' txtAutoSwitch
         ' 
-        txtAutoSwitch.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        txtAutoSwitch.Location = New Drawing.Point(117, 156)
-        txtAutoSwitch.Name = "txtAutoSwitch"
-        txtAutoSwitch.Size = New Drawing.Size(180, 23)
-        txtAutoSwitch.TabIndex = 12
+        Me.txtAutoSwitch.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.txtAutoSwitch.Location = New System.Drawing.Point(117, 156)
+        Me.txtAutoSwitch.Name = "txtAutoSwitch"
+        Me.txtAutoSwitch.Size = New System.Drawing.Size(180, 23)
+        Me.txtAutoSwitch.TabIndex = 12
         ' 
         ' lblAutoSwitch
         ' 
-        lblAutoSwitch.AutoSize = True
-        lblAutoSwitch.Location = New Drawing.Point(3, 159)
-        lblAutoSwitch.Name = "lblAutoSwitch"
-        lblAutoSwitch.Size = New Drawing.Size(116, 15)
-        lblAutoSwitch.TabIndex = 11
-        lblAutoSwitch.Text = "Auto switch Track(s):"
+        Me.lblAutoSwitch.AutoSize = True
+        Me.lblAutoSwitch.Location = New System.Drawing.Point(3, 159)
+        Me.lblAutoSwitch.Name = "lblAutoSwitch"
+        Me.lblAutoSwitch.Size = New System.Drawing.Size(116, 15)
+        Me.lblAutoSwitch.TabIndex = 11
+        Me.lblAutoSwitch.Text = "Auto switch Track(s):"
         ' 
         ' ttpMsuTrackAltControl
         ' 
-        ttpMsuTrackAltControl.AutoPopDelay = Integer.MaxValue
-        ttpMsuTrackAltControl.InitialDelay = 250
-        ttpMsuTrackAltControl.ReshowDelay = 50
+        Me.ttpMsuTrackAltControl.AutoPopDelay = Integer.MaxValue
+        Me.ttpMsuTrackAltControl.InitialDelay = 250
+        Me.ttpMsuTrackAltControl.ReshowDelay = 50
         ' 
         ' lblLoopPoint
         ' 
-        lblLoopPoint.AutoSize = True
-        lblLoopPoint.Location = New System.Drawing.Point(3, 188)
-        lblLoopPoint.Name = "lblLoopPoint"
-        lblLoopPoint.Size = New System.Drawing.Size(68, 15)
-        lblLoopPoint.TabIndex = 15
-        lblLoopPoint.Text = "Loop point:"
+        Me.lblLoopPoint.AutoSize = True
+        Me.lblLoopPoint.Location = New System.Drawing.Point(3, 188)
+        Me.lblLoopPoint.Name = "lblLoopPoint"
+        Me.lblLoopPoint.Size = New System.Drawing.Size(68, 15)
+        Me.lblLoopPoint.TabIndex = 15
+        Me.lblLoopPoint.Text = "Loop point:"
         ' 
         ' lblLoopPointConv
         ' 
-        lblLoopPointConv.AutoSize = True
-        lblLoopPointConv.Location = New System.Drawing.Point(3, 217)
-        lblLoopPointConv.Name = "lblLoopPointConv"
-        lblLoopPointConv.Size = New System.Drawing.Size(134, 15)
-        lblLoopPointConv.TabIndex = 17
-        lblLoopPointConv.Text = "Loop point (Converted):"
+        Me.lblLoopPointConv.AutoSize = True
+        Me.lblLoopPointConv.Location = New System.Drawing.Point(3, 217)
+        Me.lblLoopPointConv.Name = "lblLoopPointConv"
+        Me.lblLoopPointConv.Size = New System.Drawing.Size(134, 15)
+        Me.lblLoopPointConv.TabIndex = 17
+        Me.lblLoopPointConv.Text = "Loop point (Converted):"
         ' 
         ' nudLoopPoint
         ' 
-        nudLoopPoint.CausesValidation = False
-        nudLoopPoint.Hexadecimal = True
-        nudLoopPoint.Location = New System.Drawing.Point(143, 185)
-        nudLoopPoint.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
-        nudLoopPoint.Name = "nudLoopPoint"
-        nudLoopPoint.Size = New System.Drawing.Size(80, 23)
-        nudLoopPoint.TabIndex = 18
-        nudLoopPoint.Value = New Decimal(New Integer() {-1, 0, 0, 0})
+        Me.nudLoopPoint.CausesValidation = False
+        Me.nudLoopPoint.Hexadecimal = True
+        Me.nudLoopPoint.Location = New System.Drawing.Point(143, 185)
+        Me.nudLoopPoint.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
+        Me.nudLoopPoint.Name = "nudLoopPoint"
+        Me.nudLoopPoint.Size = New System.Drawing.Size(80, 23)
+        Me.nudLoopPoint.TabIndex = 18
+        Me.nudLoopPoint.Value = New Decimal(New Integer() {-1, 0, 0, 0})
         ' 
         ' nudLoopPointConv
         ' 
-        nudLoopPointConv.Location = New System.Drawing.Point(143, 214)
-        nudLoopPointConv.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
-        nudLoopPointConv.Name = "nudLoopPointConv"
-        nudLoopPointConv.Size = New System.Drawing.Size(80, 23)
-        nudLoopPointConv.TabIndex = 21
-        nudLoopPointConv.Value = New Decimal(New Integer() {-1, 0, 0, 0})
+        Me.nudLoopPointConv.Location = New System.Drawing.Point(143, 214)
+        Me.nudLoopPointConv.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
+        Me.nudLoopPointConv.Name = "nudLoopPointConv"
+        Me.nudLoopPointConv.Size = New System.Drawing.Size(80, 23)
+        Me.nudLoopPointConv.TabIndex = 21
+        Me.nudLoopPointConv.Value = New Decimal(New Integer() {-1, 0, 0, 0})
         ' 
         ' grpLoopPointBase
         ' 
-        grpLoopPointBase.Controls.Add(Me.ctrlBase16)
-        grpLoopPointBase.Controls.Add(Me.ctrlBase10)
-        grpLoopPointBase.Location = New System.Drawing.Point(318, 178)
-        grpLoopPointBase.Name = "grpLoopPointBase"
-        grpLoopPointBase.Size = New System.Drawing.Size(50, 59)
-        grpLoopPointBase.TabIndex = 25
-        grpLoopPointBase.TabStop = False
-        grpLoopPointBase.Text = "Base"
+        Me.grpLoopPointBase.Controls.Add(Me.ctrlBase16)
+        Me.grpLoopPointBase.Controls.Add(Me.ctrlBase10)
+        Me.grpLoopPointBase.Location = New System.Drawing.Point(318, 178)
+        Me.grpLoopPointBase.Name = "grpLoopPointBase"
+        Me.grpLoopPointBase.Size = New System.Drawing.Size(50, 59)
+        Me.grpLoopPointBase.TabIndex = 25
+        Me.grpLoopPointBase.TabStop = False
+        Me.grpLoopPointBase.Text = "Base"
         ' 
         ' ctrlBase16
         ' 
-        ctrlBase16.AutoSize = True
-        ctrlBase16.Location = New System.Drawing.Point(6, 34)
-        ctrlBase16.Name = "ctrlBase16"
-        ctrlBase16.Size = New System.Drawing.Size(37, 19)
-        ctrlBase16.TabIndex = 1
-        ctrlBase16.TabStop = True
-        ctrlBase16.Text = "16"
-        ctrlBase16.UseVisualStyleBackColor = True
+        Me.ctrlBase16.AutoSize = True
+        Me.ctrlBase16.Location = New System.Drawing.Point(6, 34)
+        Me.ctrlBase16.Name = "ctrlBase16"
+        Me.ctrlBase16.Size = New System.Drawing.Size(37, 19)
+        Me.ctrlBase16.TabIndex = 1
+        Me.ctrlBase16.TabStop = True
+        Me.ctrlBase16.Text = "16"
+        Me.ctrlBase16.UseVisualStyleBackColor = True
         ' 
         ' ctrlBase10
         ' 
-        ctrlBase10.AutoSize = True
-        ctrlBase10.Location = New System.Drawing.Point(6, 13)
-        ctrlBase10.Name = "ctrlBase10"
-        ctrlBase10.Size = New System.Drawing.Size(37, 19)
-        ctrlBase10.TabIndex = 0
-        ctrlBase10.TabStop = True
-        ctrlBase10.Text = "10"
-        ctrlBase10.UseVisualStyleBackColor = True
+        Me.ctrlBase10.AutoSize = True
+        Me.ctrlBase10.Location = New System.Drawing.Point(6, 13)
+        Me.ctrlBase10.Name = "ctrlBase10"
+        Me.ctrlBase10.Size = New System.Drawing.Size(37, 19)
+        Me.ctrlBase10.TabIndex = 0
+        Me.ctrlBase10.TabStop = True
+        Me.ctrlBase10.Text = "10"
+        Me.ctrlBase10.UseVisualStyleBackColor = True
         ' 
         ' btnLoopPointToMax
         ' 
-        btnLoopPointToMax.Location = New System.Drawing.Point(229, 184)
-        btnLoopPointToMax.Name = "btnLoopPointToMax"
-        btnLoopPointToMax.Size = New System.Drawing.Size(38, 25)
-        btnLoopPointToMax.TabIndex = 19
-        btnLoopPointToMax.Text = "Max"
-        btnLoopPointToMax.UseVisualStyleBackColor = True
+        Me.btnLoopPointToMax.Location = New System.Drawing.Point(229, 184)
+        Me.btnLoopPointToMax.Name = "btnLoopPointToMax"
+        Me.btnLoopPointToMax.Size = New System.Drawing.Size(38, 25)
+        Me.btnLoopPointToMax.TabIndex = 19
+        Me.btnLoopPointToMax.Text = "Max"
+        Me.btnLoopPointToMax.UseVisualStyleBackColor = True
         ' 
         ' btnLoopPointConvToMax
         ' 
-        btnLoopPointConvToMax.Location = New System.Drawing.Point(229, 213)
-        btnLoopPointConvToMax.Name = "btnLoopPointConvToMax"
-        btnLoopPointConvToMax.Size = New System.Drawing.Size(38, 25)
-        btnLoopPointConvToMax.TabIndex = 22
-        btnLoopPointConvToMax.Text = "Max"
-        btnLoopPointConvToMax.UseVisualStyleBackColor = True
+        Me.btnLoopPointConvToMax.Location = New System.Drawing.Point(229, 213)
+        Me.btnLoopPointConvToMax.Name = "btnLoopPointConvToMax"
+        Me.btnLoopPointConvToMax.Size = New System.Drawing.Size(38, 25)
+        Me.btnLoopPointConvToMax.TabIndex = 22
+        Me.btnLoopPointConvToMax.Text = "Max"
+        Me.btnLoopPointConvToMax.UseVisualStyleBackColor = True
         ' 
         ' btnLoopPointReset
         ' 
-        btnLoopPointReset.Location = New System.Drawing.Point(270, 184)
-        btnLoopPointReset.Name = "btnLoopPointReset"
-        btnLoopPointReset.Size = New System.Drawing.Size(43, 25)
-        btnLoopPointReset.TabIndex = 20
-        btnLoopPointReset.Text = "Reset"
-        btnLoopPointReset.UseVisualStyleBackColor = True
+        Me.btnLoopPointReset.Location = New System.Drawing.Point(270, 184)
+        Me.btnLoopPointReset.Name = "btnLoopPointReset"
+        Me.btnLoopPointReset.Size = New System.Drawing.Size(43, 25)
+        Me.btnLoopPointReset.TabIndex = 20
+        Me.btnLoopPointReset.Text = "Reset"
+        Me.btnLoopPointReset.UseVisualStyleBackColor = True
         ' 
         ' btnLoopPointConvReset
         ' 
-        btnLoopPointConvReset.Location = New System.Drawing.Point(270, 213)
-        btnLoopPointConvReset.Name = "btnLoopPointConvReset"
-        btnLoopPointConvReset.Size = New System.Drawing.Size(43, 25)
-        btnLoopPointConvReset.TabIndex = 23
-        btnLoopPointConvReset.Text = "Reset"
-        btnLoopPointConvReset.UseVisualStyleBackColor = True
+        Me.btnLoopPointConvReset.Location = New System.Drawing.Point(270, 213)
+        Me.btnLoopPointConvReset.Name = "btnLoopPointConvReset"
+        Me.btnLoopPointConvReset.Size = New System.Drawing.Size(43, 25)
+        Me.btnLoopPointConvReset.TabIndex = 23
+        Me.btnLoopPointConvReset.Text = "Reset"
+        Me.btnLoopPointConvReset.UseVisualStyleBackColor = True
         ' 
         ' MsuTrackAltControl
         ' 
         Me.AllowDrop = True
-        Me.AutoScaleDimensions = New Drawing.SizeF(7F, 15F)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
         Me.AutoScaleMode = AutoScaleMode.Font
-        Me.Controls.Add(btnLoopPointConvReset)
-        Me.Controls.Add(btnLoopPointReset)
-        Me.Controls.Add(btnLoopPointConvToMax)
-        Me.Controls.Add(btnLoopPointToMax)
-        Me.Controls.Add(txtAutoSwitch)
-        Me.Controls.Add(grpLoopPointBase)
-        Me.Controls.Add(nudLoopPointConv)
-        Me.Controls.Add(nudLoopPoint)
-        Me.Controls.Add(lblLoopPointConv)
-        Me.Controls.Add(lblLoopPoint)
-        Me.Controls.Add(lblAutoSwitch)
-        Me.Controls.Add(btnSelLocationPcm)
-        Me.Controls.Add(btnSelPathPcm)
-        Me.Controls.Add(txtFilePath)
-        Me.Controls.Add(lblFilePath)
-        Me.Controls.Add(txtAbsoluteLocation)
-        Me.Controls.Add(lblAbsoluteLocation)
-        Me.Controls.Add(txtRelativeLocation)
-        Me.Controls.Add(lblRelativeLocation)
-        Me.Controls.Add(nudMsuTrackAltId)
-        Me.Controls.Add(txtMsuFileName)
-        Me.Controls.Add(lblMsuTrackAltId)
-        Me.Controls.Add(txtMsuAltTitle)
-        Me.Controls.Add(lblMsuTitle)
+        Me.Controls.Add(Me.btnLoopPointConvReset)
+        Me.Controls.Add(Me.btnLoopPointReset)
+        Me.Controls.Add(Me.btnLoopPointConvToMax)
+        Me.Controls.Add(Me.btnLoopPointToMax)
+        Me.Controls.Add(Me.txtAutoSwitch)
+        Me.Controls.Add(Me.grpLoopPointBase)
+        Me.Controls.Add(Me.nudLoopPointConv)
+        Me.Controls.Add(Me.nudLoopPoint)
+        Me.Controls.Add(Me.lblLoopPointConv)
+        Me.Controls.Add(Me.lblLoopPoint)
+        Me.Controls.Add(Me.lblAutoSwitch)
+        Me.Controls.Add(Me.btnSelLocationPcm)
+        Me.Controls.Add(Me.btnSelPathPcm)
+        Me.Controls.Add(Me.txtFilePath)
+        Me.Controls.Add(Me.lblFilePath)
+        Me.Controls.Add(Me.txtAbsoluteLocation)
+        Me.Controls.Add(Me.lblAbsoluteLocation)
+        Me.Controls.Add(Me.txtRelativeLocation)
+        Me.Controls.Add(Me.lblRelativeLocation)
+        Me.Controls.Add(Me.nudMsuTrackAltId)
+        Me.Controls.Add(Me.txtMsuFileName)
+        Me.Controls.Add(Me.lblMsuTrackAltId)
+        Me.Controls.Add(Me.txtMsuAltTitle)
+        Me.Controls.Add(Me.lblMsuTitle)
         Me.Name = "MsuTrackAltControl"
-        Me.Size = New Drawing.Size(300, 272)
-        CType(nudMsuTrackAltId, ComponentModel.ISupportInitialize).EndInit()
-        CType(nudLoopPoint, ComponentModel.ISupportInitialize).EndInit()
-        CType(nudLoopPointConv, ComponentModel.ISupportInitialize).EndInit()
-        grpLoopPointBase.ResumeLayout(False)
-        grpLoopPointBase.PerformLayout()
+        Me.Size = New System.Drawing.Size(300, 272)
+        CType(Me.nudMsuTrackAltId, ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudLoopPoint, ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudLoopPointConv, ComponentModel.ISupportInitialize).EndInit()
+        Me.grpLoopPointBase.ResumeLayout(False)
+        Me.grpLoopPointBase.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
     End Sub

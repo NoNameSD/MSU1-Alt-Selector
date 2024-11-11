@@ -80,8 +80,11 @@ Namespace Msu
                 End Set
             End Property
 
+            <Newtonsoft.Json.JsonIgnore>
+            Private Property ShouldSerializeMsuLocationValue As Boolean
+
             Public Function ShouldSerializeMsuLocation() As Boolean
-                Return Me.Settings.TrackAltSettings.SaveMsuLocation
+                Return Me.ShouldSerializeMsuLocationValue
             End Function
 
             ''' <summary>
@@ -943,6 +946,26 @@ Namespace Msu
                     i += MsuHelper.OneByte
                 End While
 
+                Select Case Me.Settings.TrackAltSettings.SaveMsuLocation
+                    Case CheckState.Checked
+                        Me.ShouldSerializeMsuLocationValue = True
+                    Case CheckState.Unchecked
+                        Me.ShouldSerializeMsuLocationValue = False
+                    Case Else
+#If WINDOWS Then
+                        Dim locationAbsoluteRemLocUnc As String = Msu.MsuHelper.PathRemoveUncLocalPref(System.IO.Path.GetDirectoryName(jsonFilePath))
+                        Dim msuTracksLocationRemLocUnc As String = Msu.MsuHelper.PathRemoveUncLocalPref(Me.MsuLocation)
+#Else
+                        Dim locationAbsoluteRemLocUnc As String = System.IO.Path.GetDirectoryName(jsonFilePath)
+                        Dim msuTracksLocationRemLocUnc As String = Me.MsuLocation
+#End If
+                        If locationAbsoluteRemLocUnc.Equals(msuTracksLocationRemLocUnc, StringComparison.OrdinalIgnoreCase) Then
+                            Me.ShouldSerializeMsuLocationValue = False ' Folder path of JSON is the same as the MSU
+                        Else
+                            Me.ShouldSerializeMsuLocationValue = True  ' JSON is saved in a different location than the MSU
+                        End If
+                End Select
+
                 ' Create a new temporary file
                 Dim stream As _
             New System.IO.FileStream(
@@ -1113,7 +1136,7 @@ Namespace Msu
                     For Each keyValuePair As KeyValuePair(Of Byte, MsuTrack) In Me.TrackDict
 
                         Dim msuTrack As MsuTrack = keyValuePair.Value
-
+                        If msuTrack.TrackNumber = 2 Then Stop
                         Dim autoSwitchDict As SortedDictionary(Of Byte, MsuTrackAlt) = msuTrack.TrackAltAutoSwitchDict()
 
                         If autoSwitchDict.Count = MsuHelper.ZeroByte Then

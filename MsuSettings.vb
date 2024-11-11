@@ -280,8 +280,8 @@ Namespace Msu
             Public Property MsuTrackMainVersionLocation As String
 
             <Newtonsoft.Json.JsonProperty("save_msu_location")>
-            <System.ComponentModel.DefaultValue(True)>
-            Public Property SaveMsuLocation As Boolean
+            <System.ComponentModel.DefaultValue(System.Windows.Forms.CheckState.Indeterminate)>
+            Public Property SaveMsuLocation As System.Windows.Forms.CheckState
 
             <Newtonsoft.Json.JsonProperty("display_loop_point_hexadecimal")>
             <System.ComponentModel.DefaultValue(False)>
