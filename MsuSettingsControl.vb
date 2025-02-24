@@ -73,7 +73,20 @@ Public Class MsuSettingsControl
         Me.ctrlAutoSetDisplayOnlyTracksWithAlts.Checked = Me.SettingsTmp.TrackAltSettings.AutoSetDisplayOnlyTracksWithAlts
         Me.ctrlAutoSetAutoSwitch.Checked = Me.SettingsTmp.TrackAltSettings.AutoSetAutoSwitch
         Me.ctrlDisplayLoopPointInHexadecimal.Checked = Me.SettingsTmp.TrackAltSettings.DisplayLoopPointInHexadecimal
-        Me.ctrlSaveMsuLocation.CheckState = Me.SettingsTmp.TrackAltSettings.SaveMsuLocation
+        Try
+            Me.ctrlSaveMsuLocation.CheckState = Me.SettingsTmp.TrackAltSettings.SaveMsuLocation
+        Catch ex As System.ComponentModel.InvalidEnumArgumentException
+            ' Invalid enum in saved configuration. Reset to default value.
+            Call System.Windows.Forms.MessageBox.Show(
+                    owner:=Me,
+                    text:="The setting ""save_msu_location"" contained an invalid enum value." & System.Environment.NewLine & "Setting was reset to default value.",
+                    caption:=ex.GetType.ToString,
+                    buttons:=MessageBoxButtons.OK,
+                    icon:=MessageBoxIcon.Information
+                )
+            Me.ctrlSaveMsuLocation.CheckState = CheckState.Indeterminate
+            Me.Dirty = True
+        End Try
         Me.ctrlSaveMsuLocation.Enabled = Me.ctrlSaveMsuLocation.CheckState <> CheckState.Indeterminate
         Me.ctrlSaveMsuLocationAuto.Checked = Me.ctrlSaveMsuLocation.CheckState = CheckState.Indeterminate
         Me.nudLogEntries.Value = Me.SettingsTmp.LoggerSettings.MaxEntries
