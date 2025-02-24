@@ -1136,7 +1136,7 @@ Namespace Msu
                     For Each keyValuePair As KeyValuePair(Of Byte, MsuTrack) In Me.TrackDict
 
                         Dim msuTrack As MsuTrack = keyValuePair.Value
-                        If msuTrack.TrackNumber = 2 Then Stop
+
                         Dim autoSwitchDict As SortedDictionary(Of Byte, MsuTrackAlt) = msuTrack.TrackAltAutoSwitchDict()
 
                         If autoSwitchDict.Count = MsuHelper.ZeroByte Then
