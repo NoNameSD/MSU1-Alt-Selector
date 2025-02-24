@@ -89,6 +89,7 @@ Public Class MsuSettingsControl
         End Try
         Me.ctrlSaveMsuLocation.Enabled = Me.ctrlSaveMsuLocation.CheckState <> CheckState.Indeterminate
         Me.ctrlSaveMsuLocationAuto.Checked = Me.ctrlSaveMsuLocation.CheckState = CheckState.Indeterminate
+        Me.ctrlAutoSaveJsonConfigOnCreate.Checked = Me.SettingsTmp.TrackAltSettings.AutoSaveJsonConfigOnCreate
         Me.nudLogEntries.Value = Me.SettingsTmp.LoggerSettings.MaxEntries
 
     End Sub
@@ -109,6 +110,7 @@ Public Class MsuSettingsControl
 
         Me.SettingsToEdit.TrackAltSettings.AutoSetDisplayOnlyTracksWithAlts = Me.SettingsTmp.TrackAltSettings.AutoSetDisplayOnlyTracksWithAlts
         Me.SettingsToEdit.TrackAltSettings.AutoSetAutoSwitch = Me.SettingsTmp.TrackAltSettings.AutoSetAutoSwitch
+        Me.SettingsToEdit.TrackAltSettings.AutoSaveJsonConfigOnCreate = Me.SettingsTmp.TrackAltSettings.AutoSaveJsonConfigOnCreate
 
         Me.SettingsToEdit.TrackAltSettings.DisplayLoopPointInHexadecimal = Me.SettingsTmp.TrackAltSettings.DisplayLoopPointInHexadecimal
         Me.SettingsToEdit.TrackAltSettings.SaveMsuLocation = Me.SettingsTmp.TrackAltSettings.SaveMsuLocation
@@ -205,6 +207,13 @@ Public Class MsuSettingsControl
         RaiseEvent UserChangedValue(sender, e)
     End Sub
 
+    Private Sub ctrlAutoSaveJsonConfigOnCreate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ctrlAutoSaveJsonConfigOnCreate.Validating
+        Me.SettingsTmp.TrackAltSettings.AutoSaveJsonConfigOnCreate = Me.ctrlAutoSaveJsonConfigOnCreate.Checked()
+    End Sub
+    Private Sub ctrlAutoSaveJsonConfigOnCreate_Validated(sender As Object, e As EventArgs) Handles ctrlAutoSaveJsonConfigOnCreate.Validated
+        RaiseEvent UserChangedValue(sender, e)
+    End Sub
+
     Private Sub ctrlDisplayLoopPointInHexadecimal_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ctrlDisplayLoopPointInHexadecimal.Validating
         Me.SettingsTmp.TrackAltSettings.DisplayLoopPointInHexadecimal = Me.ctrlDisplayLoopPointInHexadecimal.Checked()
     End Sub
@@ -268,6 +277,10 @@ Public Class MsuSettingsControl
 
             .SetToolTip(Me.ctrlSaveMsuLocationAuto,
                         "Will automatically add the msu location to the saved JSON config, if that file is saved to a different folder than the msu location.")
+
+            .SetToolTip(Me.ctrlAutoSaveJsonConfigOnCreate,
+                        "When loading from a MSU pack without an existing JSON configuration the program will try to detect all tracks by itself." & System.Environment.NewLine &
+                        "If this flag is set, this new configuration will automatically be saved in the default location on creation. ([Path of MSU/ROM]\[BaseName of MSU/ROM].JSON)")
 
             .SetToolTip(Me.lblMsuTrackMainVersionTitle,
                         "Title, that is used for the Main/Default Version of the MsuTrack, that is stored in the Main Folder.")
