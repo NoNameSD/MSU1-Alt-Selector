@@ -40,6 +40,7 @@ Partial Class MsuSettingsControl
         Me.lblLogEntries = New Label()
         Me.nudLogEntries = New NumericUpDown()
         Me.ctrlSaveMsuLocationAuto = New CheckBox()
+        Me.ctrlAutoSaveJsonConfigOnCreate = New CheckBox()
         CType(Me.nudLogEntries, ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         ' 
@@ -179,7 +180,7 @@ Partial Class MsuSettingsControl
         ' lblLogEntries
         ' 
         Me.lblLogEntries.AutoSize = True
-        Me.lblLogEntries.Location = New System.Drawing.Point(3, 214)
+        Me.lblLogEntries.Location = New System.Drawing.Point(3, 243)
         Me.lblLogEntries.Name = "lblLogEntries"
         Me.lblLogEntries.Size = New System.Drawing.Size(128, 15)
         Me.lblLogEntries.TabIndex = 10
@@ -187,7 +188,7 @@ Partial Class MsuSettingsControl
         ' 
         ' nudLogEntries
         ' 
-        Me.nudLogEntries.Location = New System.Drawing.Point(137, 214)
+        Me.nudLogEntries.Location = New System.Drawing.Point(137, 243)
         Me.nudLogEntries.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
         Me.nudLogEntries.Name = "nudLogEntries"
         Me.nudLogEntries.Size = New System.Drawing.Size(57, 23)
@@ -207,10 +208,23 @@ Partial Class MsuSettingsControl
         Me.ctrlSaveMsuLocationAuto.Text = "Autodetect"
         Me.ctrlSaveMsuLocationAuto.UseVisualStyleBackColor = True
         ' 
+        ' ctrlAutoSaveJsonConfigOnCreate
+        ' 
+        Me.ctrlAutoSaveJsonConfigOnCreate.AutoSize = True
+        Me.ctrlAutoSaveJsonConfigOnCreate.CheckAlign = Drawing.ContentAlignment.MiddleRight
+        Me.ctrlAutoSaveJsonConfigOnCreate.Location = New System.Drawing.Point(3, 214)
+        Me.ctrlAutoSaveJsonConfigOnCreate.Margin = New Padding(2, 3, 3, 3)
+        Me.ctrlAutoSaveJsonConfigOnCreate.Name = "ctrlAutoSaveJsonConfigOnCreate"
+        Me.ctrlAutoSaveJsonConfigOnCreate.Size = New System.Drawing.Size(312, 19)
+        Me.ctrlAutoSaveJsonConfigOnCreate.TabIndex = 13
+        Me.ctrlAutoSaveJsonConfigOnCreate.Text = "Save automatically when creating a new configuration"
+        Me.ctrlAutoSaveJsonConfigOnCreate.UseVisualStyleBackColor = True
+        ' 
         ' MsuSettingsControl
         ' 
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
         Me.AutoScaleMode = AutoScaleMode.Font
+        Me.Controls.Add(Me.ctrlAutoSaveJsonConfigOnCreate)
         Me.Controls.Add(Me.ctrlSaveMsuLocationAuto)
         Me.Controls.Add(Me.lblLogEntries)
         Me.Controls.Add(Me.nudLogEntries)
@@ -227,7 +241,7 @@ Partial Class MsuSettingsControl
         Me.Controls.Add(Me.txtMsuPcmPath)
         Me.Controls.Add(Me.lblMsuPcmPath)
         Me.Name = "MsuSettingsControl"
-        Me.Size = New System.Drawing.Size(430, 244)
+        Me.Size = New System.Drawing.Size(430, 270)
         CType(Me.nudLogEntries, ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -251,4 +265,5 @@ Partial Class MsuSettingsControl
     Private WithEvents lblLogEntries As Label
     Private WithEvents nudLogEntries As NumericUpDown
     Friend WithEvents ctrlSaveMsuLocationAuto As CheckBox
+    Friend WithEvents ctrlAutoSaveJsonConfigOnCreate As CheckBox
 End Class

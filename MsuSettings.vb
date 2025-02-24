@@ -271,6 +271,10 @@ Namespace Msu
             <System.ComponentModel.DefaultValue(True)>
             Public Property AutoSetDisplayOnlyTracksWithAlts As Boolean
 
+            <Newtonsoft.Json.JsonProperty("auto_save_json_config_on_create")>
+            <System.ComponentModel.DefaultValue(True)>
+            Public Property AutoSaveJsonConfigOnCreate As Boolean
+
             <Newtonsoft.Json.JsonProperty("msu_track_main_version_title")>
             <System.ComponentModel.DefaultValue(_MainVerAltFldDefault)>
             Public Property MsuTrackMainVersionTitle As String

@@ -21,8 +21,8 @@ Partial Class MsuSettingsForm : Inherits System.Windows.Forms.Form
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim TreeNode3 As TreeNode = New TreeNode("Application")
-        Dim TreeNode4 As TreeNode = New TreeNode("Current Config")
+        Dim TreeNode1 As TreeNode = New TreeNode("Application")
+        Dim TreeNode2 As TreeNode = New TreeNode("Current Config")
         Me.btnOk = New Button()
         Me.btnCancel = New Button()
         Me.btnApply = New Button()
@@ -41,7 +41,7 @@ Partial Class MsuSettingsForm : Inherits System.Windows.Forms.Form
         Me.btnOk.BackgroundImageLayout = ImageLayout.None
         Me.btnOk.DialogResult = DialogResult.TryAgain
         Me.btnOk.ImageAlign = Drawing.ContentAlignment.TopLeft
-        Me.btnOk.Location = New System.Drawing.Point(280, 216)
+        Me.btnOk.Location = New System.Drawing.Point(280, 245)
         Me.btnOk.Name = "btnOk"
         Me.btnOk.Size = New System.Drawing.Size(54, 24)
         Me.btnOk.TabIndex = 2
@@ -53,7 +53,7 @@ Partial Class MsuSettingsForm : Inherits System.Windows.Forms.Form
         Me.btnCancel.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         Me.btnCancel.DialogResult = DialogResult.TryAgain
         Me.btnCancel.ImageAlign = Drawing.ContentAlignment.TopLeft
-        Me.btnCancel.Location = New System.Drawing.Point(340, 216)
+        Me.btnCancel.Location = New System.Drawing.Point(340, 245)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(54, 24)
         Me.btnCancel.TabIndex = 3
@@ -65,7 +65,7 @@ Partial Class MsuSettingsForm : Inherits System.Windows.Forms.Form
         Me.btnApply.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         Me.btnApply.DialogResult = DialogResult.TryAgain
         Me.btnApply.ImageAlign = Drawing.ContentAlignment.TopLeft
-        Me.btnApply.Location = New System.Drawing.Point(400, 216)
+        Me.btnApply.Location = New System.Drawing.Point(400, 245)
         Me.btnApply.Margin = New Padding(3, 3, 3, 0)
         Me.btnApply.Name = "btnApply"
         Me.btnApply.Size = New System.Drawing.Size(54, 24)
@@ -79,13 +79,13 @@ Partial Class MsuSettingsForm : Inherits System.Windows.Forms.Form
         Me.tvSettings.Location = New System.Drawing.Point(0, 0)
         Me.tvSettings.Margin = New Padding(0)
         Me.tvSettings.Name = "tvSettings"
-        TreeNode3.Name = "Application"
-        TreeNode3.Text = "Application"
-        TreeNode4.Checked = True
-        TreeNode4.Name = "CurrentConfig"
-        TreeNode4.Text = "Current Config"
-        Me.tvSettings.Nodes.AddRange(New TreeNode() {TreeNode3, TreeNode4})
-        Me.tvSettings.Size = New System.Drawing.Size(137, 243)
+        TreeNode1.Name = "Application"
+        TreeNode1.Text = "Application"
+        TreeNode2.Checked = True
+        TreeNode2.Name = "CurrentConfig"
+        TreeNode2.Text = "Current Config"
+        Me.tvSettings.Nodes.AddRange(New TreeNode() {TreeNode1, TreeNode2})
+        Me.tvSettings.Size = New System.Drawing.Size(137, 272)
         Me.tvSettings.TabIndex = 0
         ' 
         ' scSettings
@@ -104,7 +104,7 @@ Partial Class MsuSettingsForm : Inherits System.Windows.Forms.Form
         Me.scSettings.Panel2.Controls.Add(Me.btnOk)
         Me.scSettings.Panel2.Controls.Add(Me.btnCancel)
         Me.scSettings.Panel2.Controls.Add(Me.SettingsControl)
-        Me.scSettings.Size = New System.Drawing.Size(598, 243)
+        Me.scSettings.Size = New System.Drawing.Size(598, 272)
         Me.scSettings.SplitterDistance = 137
         Me.scSettings.TabIndex = 7
         ' 
@@ -113,14 +113,14 @@ Partial Class MsuSettingsForm : Inherits System.Windows.Forms.Form
         Me.SettingsControl.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         Me.SettingsControl.Location = New System.Drawing.Point(0, 0)
         Me.SettingsControl.Name = "SettingsControl"
-        Me.SettingsControl.Size = New System.Drawing.Size(454, 240)
+        Me.SettingsControl.Size = New System.Drawing.Size(454, 269)
         Me.SettingsControl.TabIndex = 1
         ' 
         ' MsuSettingsForm
         ' 
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
         Me.AutoScaleMode = AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(599, 243)
+        Me.ClientSize = New System.Drawing.Size(599, 272)
         Me.Controls.Add(Me.scSettings)
         Me.FormBorderStyle = FormBorderStyle.SizableToolWindow
         Me.Name = "MsuSettingsForm"

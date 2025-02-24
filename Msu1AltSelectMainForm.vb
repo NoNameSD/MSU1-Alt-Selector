@@ -11,6 +11,7 @@ Public Class Msu1AltSelectMainForm
     Private _DisplayOnlyTracksWithAlts As Boolean
     Private _DisplayLoopPoints As Boolean
     Public Property Settings As Msu.Settings.Settings
+    Public Event CreatedNewConfig()
 
     Private Property JsonFilePath As String
         Get
@@ -201,8 +202,15 @@ Public Class Msu1AltSelectMainForm
                     End If
                     Call ScanNewMsuFolder(filePath, e)
                     Me.JsonFilePath = jsonFilePath
+                    RaiseEvent CreatedNewConfig()
                 End If
         End Select
+    End Sub
+
+    Private Sub Me_CreatedNewConfig() Handles Me.CreatedNewConfig
+        If Me.Settings.TrackAltSettings.AutoSaveJsonConfigOnCreate Then
+            Call Me.SaveJson()
+        End If
     End Sub
 
     Private Sub ScanNewMsuFolder(ByRef msuFilePath As String, e As System.ComponentModel.CancelEventArgs)
