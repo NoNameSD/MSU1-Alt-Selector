@@ -15,6 +15,7 @@
     <NeutralLanguage>en-GB</NeutralLanguage>
     <PackageIcon>Resources\KiddyKong.ico</PackageIcon>
     <ApplicationIcon>Resources\KiddyKong.ico</ApplicationIcon>
+    <ForceDesignerDPIUnaware>true</ForceDesignerDPIUnaware>
     <OptionStrict>On</OptionStrict>
   </PropertyGroup>
 
