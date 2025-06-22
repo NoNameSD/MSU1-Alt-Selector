@@ -287,32 +287,43 @@ Namespace Msu
             End Sub
 
             Public Sub FindPcmPrefix()
+                Dim bSearchForPcmPrefix As Boolean = False
 
                 Me.PcmPrefix = Constants.vbNullString
 
-                Call AddToLog($"Checking if the PCM File are using the prefix ""{Me.MsuName}"" from the MSU.")
+                If String.IsNullOrEmpty(Me.MsuName) Then
+                    ' No MsuName was found
+                    Call AddToLog($"No MSU name found. (*.msu file missing?)")
+                    bSearchForPcmPrefix = True
+                Else
+                    Call AddToLog($"Checking if the PCM files are using the prefix ""{Me.MsuName}"" from the MSU.")
 
-                ' Look for PCM-Files with the ROM-Name as the prefix
-                Dim files() As String = System.IO.Directory.GetFiles(
-                         path:=Me.MsuLocation,
-                searchPattern:=Me.MsuName & "-*" & MsuHelper.PcmExtL,
-                 searchOption:=System.IO.SearchOption.TopDirectoryOnly)
+                    ' Look for PCM-Files with the ROM-Name as the prefix
+                    Dim files() As String = System.IO.Directory.GetFiles(
+                             path:=Me.MsuLocation,
+                    searchPattern:=Me.MsuName & "-*" & MsuHelper.PcmExtL,
+                     searchOption:=System.IO.SearchOption.TopDirectoryOnly)
 
-                If files.Length = 0 Then
+                    If files.Length = 0 Then
+                        Call AddToLog($"No PCM file using the prefix ""{Me.MsuName}"" found inside ""{Me.MsuLocation}"".")
+                        ' No PCM-Files with the ROM-Name as the prefix found
+                        ' Uses another name (higan uses track-#.pcm)
+                        bSearchForPcmPrefix = True
+                    End If
+                End If
 
-                    Call AddToLog($"No PCM File using the prefix ""{Me.MsuName}"" found inside ""{Me.MsuLocation}"".")
-
-                    ' No PCM-Files with the ROM-Name as the prefix found
-                    ' Uses another name (higan uses track-#.pcm)
+                If bSearchForPcmPrefix Then
                     Me.PcmPrefix = ReadFirstPcmPrefix()
+                Else
+                    Call AddToLog($"The prefix from the MSU and from the PCM files are the same.")
                 End If
 
                 If String.IsNullOrEmpty(Me.PcmPrefix) Then
-
-                    Call AddToLog($"The prefix from the MSU and from the PCM files are the same.")
-
-                    ' Normally the pcm files have the ROM-/MSU-Name + '-' as the prefix
-                    Me.PcmPrefix = Me.MsuName ' & msuhelper.Hyphenchar
+                    ' Normally the pcm files have same prefix as the ROM-/MSU-Name
+                    Me.PcmPrefix = Me.MsuName
+                ElseIf String.IsNullOrEmpty(Me.MsuName) Then
+                    ' Apply the found PcmPrefix to the MsuName as a fallback
+                    Me.MsuName = Me.PcmPrefix
                 End If
             End Sub
 

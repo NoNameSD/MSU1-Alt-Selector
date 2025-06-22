@@ -5,7 +5,7 @@ Imports System.IO
 
 Namespace Msu
     Public Module MsuHelper
-        Public Const IsDevelopmentVersion As Boolean = False
+        Public Const IsDevelopmentVersion As Boolean = True
 
         Public Const BackSlashChar As Char = "\"c
         Public Const DotChar As Char = "."c
