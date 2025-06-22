@@ -78,7 +78,7 @@ Partial Class MsuTrackAltControl
         Me.txtMsuAltTitle.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         Me.txtMsuAltTitle.Location = New System.Drawing.Point(41, 11)
         Me.txtMsuAltTitle.Name = "txtMsuAltTitle"
-        Me.txtMsuAltTitle.Size = New System.Drawing.Size(256, 23)
+        Me.txtMsuAltTitle.Size = New System.Drawing.Size(254, 23)
         Me.txtMsuAltTitle.TabIndex = 1
         ' 
         ' lblMsuTrackAltId
@@ -97,7 +97,7 @@ Partial Class MsuTrackAltControl
         Me.txtMsuFileName.MaxLength = 3
         Me.txtMsuFileName.Name = "txtMsuFileName"
         Me.txtMsuFileName.ReadOnly = True
-        Me.txtMsuFileName.Size = New System.Drawing.Size(131, 23)
+        Me.txtMsuFileName.Size = New System.Drawing.Size(129, 23)
         Me.txtMsuFileName.TabIndex = 4
         ' 
         ' nudMsuTrackAltId
@@ -115,7 +115,7 @@ Partial Class MsuTrackAltControl
         Me.txtRelativeLocation.Location = New System.Drawing.Point(117, 69)
         Me.txtRelativeLocation.Name = "txtRelativeLocation"
         Me.txtRelativeLocation.ReadOnly = True
-        Me.txtRelativeLocation.Size = New System.Drawing.Size(180, 23)
+        Me.txtRelativeLocation.Size = New System.Drawing.Size(178, 23)
         Me.txtRelativeLocation.TabIndex = 6
         ' 
         ' lblRelativeLocation
@@ -133,7 +133,7 @@ Partial Class MsuTrackAltControl
         Me.txtAbsoluteLocation.Location = New System.Drawing.Point(117, 98)
         Me.txtAbsoluteLocation.Name = "txtAbsoluteLocation"
         Me.txtAbsoluteLocation.ReadOnly = True
-        Me.txtAbsoluteLocation.Size = New System.Drawing.Size(180, 23)
+        Me.txtAbsoluteLocation.Size = New System.Drawing.Size(178, 23)
         Me.txtAbsoluteLocation.TabIndex = 8
         ' 
         ' lblAbsoluteLocation
@@ -151,7 +151,7 @@ Partial Class MsuTrackAltControl
         Me.txtFilePath.Location = New System.Drawing.Point(117, 127)
         Me.txtFilePath.Name = "txtFilePath"
         Me.txtFilePath.ReadOnly = True
-        Me.txtFilePath.Size = New System.Drawing.Size(180, 23)
+        Me.txtFilePath.Size = New System.Drawing.Size(178, 23)
         Me.txtFilePath.TabIndex = 10
         ' 
         ' lblFilePath
@@ -175,7 +175,7 @@ Partial Class MsuTrackAltControl
         ' btnSelLocationPcm
         ' 
         Me.btnSelLocationPcm.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        Me.btnSelLocationPcm.Location = New System.Drawing.Point(152, 243)
+        Me.btnSelLocationPcm.Location = New System.Drawing.Point(150, 243)
         Me.btnSelLocationPcm.Name = "btnSelLocationPcm"
         Me.btnSelLocationPcm.Size = New System.Drawing.Size(145, 25)
         Me.btnSelLocationPcm.TabIndex = 99
@@ -193,7 +193,7 @@ Partial Class MsuTrackAltControl
         Me.txtAutoSwitch.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         Me.txtAutoSwitch.Location = New System.Drawing.Point(117, 156)
         Me.txtAutoSwitch.Name = "txtAutoSwitch"
-        Me.txtAutoSwitch.Size = New System.Drawing.Size(180, 23)
+        Me.txtAutoSwitch.Size = New System.Drawing.Size(178, 23)
         Me.txtAutoSwitch.TabIndex = 12
         ' 
         ' lblAutoSwitch
@@ -255,7 +255,7 @@ Partial Class MsuTrackAltControl
         Me.grpLoopPointBase.Controls.Add(Me.ctrlBase10)
         Me.grpLoopPointBase.Location = New System.Drawing.Point(318, 178)
         Me.grpLoopPointBase.Name = "grpLoopPointBase"
-        Me.grpLoopPointBase.Size = New System.Drawing.Size(50, 59)
+        Me.grpLoopPointBase.Size = New System.Drawing.Size(59, 63)
         Me.grpLoopPointBase.TabIndex = 25
         Me.grpLoopPointBase.TabStop = False
         Me.grpLoopPointBase.Text = "Base"
@@ -263,7 +263,8 @@ Partial Class MsuTrackAltControl
         ' ctrlBase16
         ' 
         Me.ctrlBase16.AutoSize = True
-        Me.ctrlBase16.Location = New System.Drawing.Point(6, 34)
+        Me.ctrlBase16.Font = New System.Drawing.Font("Segoe UI", 8.5F)
+        Me.ctrlBase16.Location = New System.Drawing.Point(5, 34)
         Me.ctrlBase16.Name = "ctrlBase16"
         Me.ctrlBase16.Size = New System.Drawing.Size(37, 19)
         Me.ctrlBase16.TabIndex = 1
@@ -274,7 +275,8 @@ Partial Class MsuTrackAltControl
         ' ctrlBase10
         ' 
         Me.ctrlBase10.AutoSize = True
-        Me.ctrlBase10.Location = New System.Drawing.Point(6, 13)
+        Me.ctrlBase10.Font = New System.Drawing.Font("Segoe UI", 8.5F)
+        Me.ctrlBase10.Location = New System.Drawing.Point(5, 13)
         Me.ctrlBase10.Name = "ctrlBase10"
         Me.ctrlBase10.Size = New System.Drawing.Size(37, 19)
         Me.ctrlBase10.TabIndex = 0
@@ -304,7 +306,7 @@ Partial Class MsuTrackAltControl
         ' 
         Me.btnLoopPointReset.Location = New System.Drawing.Point(270, 184)
         Me.btnLoopPointReset.Name = "btnLoopPointReset"
-        Me.btnLoopPointReset.Size = New System.Drawing.Size(43, 25)
+        Me.btnLoopPointReset.Size = New System.Drawing.Size(45, 25)
         Me.btnLoopPointReset.TabIndex = 20
         Me.btnLoopPointReset.Text = "Reset"
         Me.btnLoopPointReset.UseVisualStyleBackColor = True
@@ -313,7 +315,7 @@ Partial Class MsuTrackAltControl
         ' 
         Me.btnLoopPointConvReset.Location = New System.Drawing.Point(270, 213)
         Me.btnLoopPointConvReset.Name = "btnLoopPointConvReset"
-        Me.btnLoopPointConvReset.Size = New System.Drawing.Size(43, 25)
+        Me.btnLoopPointConvReset.Size = New System.Drawing.Size(45, 25)
         Me.btnLoopPointConvReset.TabIndex = 23
         Me.btnLoopPointConvReset.Text = "Reset"
         Me.btnLoopPointConvReset.UseVisualStyleBackColor = True
@@ -321,8 +323,7 @@ Partial Class MsuTrackAltControl
         ' MsuTrackAltControl
         ' 
         Me.AllowDrop = True
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
-        Me.AutoScaleMode = AutoScaleMode.Font
+        Me.AutoScaleMode = AutoScaleMode.Inherit
         Me.Controls.Add(Me.btnLoopPointConvReset)
         Me.Controls.Add(Me.btnLoopPointReset)
         Me.Controls.Add(Me.btnLoopPointConvToMax)
@@ -348,7 +349,7 @@ Partial Class MsuTrackAltControl
         Me.Controls.Add(Me.txtMsuAltTitle)
         Me.Controls.Add(Me.lblMsuTitle)
         Me.Name = "MsuTrackAltControl"
-        Me.Size = New System.Drawing.Size(300, 272)
+        Me.Size = New System.Drawing.Size(298, 272)
         CType(Me.nudMsuTrackAltId, ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudLoopPoint, ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudLoopPointConv, ComponentModel.ISupportInitialize).EndInit()

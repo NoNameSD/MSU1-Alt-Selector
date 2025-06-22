@@ -76,8 +76,7 @@ Partial Class MsuTrackControl
         ' 
         ' MsuTrackControl
         ' 
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
-        Me.AutoScaleMode = AutoScaleMode.Font
+        Me.AutoScaleMode = AutoScaleMode.Inherit
         Me.Controls.Add(Me.nudMsuTrackId)
         Me.Controls.Add(Me.txtMsuFileName)
         Me.Controls.Add(Me.lblMsuTrackId)
