@@ -1083,6 +1083,7 @@ Namespace Msu
                         LoadFromJson.CheckMsuLocation(jsonFilePath)
                         LoadFromJson.CalculateAbsoluteLocationForAltTracks()
                         LoadFromJson.CheckMsuName()
+                        LoadFromJson.ScanMsuDirectoryForTracks()
                     End Using
                 Catch ex As System.Exception
                     If logger IsNot Nothing Then Call logger.AddToLog(ex.ToString, Drawing.Color.Red)
