@@ -356,6 +356,7 @@ Partial Class Msu1AltSelectMainForm
         ' ctrlDisplayCmd
         ' 
         Me.ctrlDisplayCmd.AutoSize = True
+        Me.ctrlDisplayCmd.Font = New System.Drawing.Font("Segoe UI", 8.5F)
         Me.ctrlDisplayCmd.Location = New System.Drawing.Point(6, 71)
         Me.ctrlDisplayCmd.Name = "ctrlDisplayCmd"
         Me.ctrlDisplayCmd.Size = New System.Drawing.Size(137, 19)
@@ -519,6 +520,7 @@ Partial Class Msu1AltSelectMainForm
         ' ctrlKeepCmdOpen
         ' 
         Me.ctrlKeepCmdOpen.AutoSize = True
+        Me.ctrlKeepCmdOpen.Font = New System.Drawing.Font("Segoe UI", 8.5F)
         Me.ctrlKeepCmdOpen.Location = New System.Drawing.Point(148, 71)
         Me.ctrlKeepCmdOpen.Name = "ctrlKeepCmdOpen"
         Me.ctrlKeepCmdOpen.Size = New System.Drawing.Size(210, 19)
@@ -530,7 +532,7 @@ Partial Class Msu1AltSelectMainForm
         ' 
         Me.btnSaveJson.DialogResult = DialogResult.TryAgain
         Me.btnSaveJson.Image = My.Resources.Resources.Shell32_1965
-        Me.btnSaveJson.ImageAlign = Drawing.ContentAlignment.TopLeft
+        Me.btnSaveJson.ImageAlign = Drawing.ContentAlignment.MiddleLeft
         Me.btnSaveJson.Location = New System.Drawing.Point(6, 45)
         Me.btnSaveJson.Name = "btnSaveJson"
         Me.btnSaveJson.Size = New System.Drawing.Size(60, 24)
@@ -543,7 +545,7 @@ Partial Class Msu1AltSelectMainForm
         ' 
         Me.btnSaveJsonAs.DialogResult = DialogResult.TryAgain
         Me.btnSaveJsonAs.Image = My.Resources.Resources.Shell32_1965
-        Me.btnSaveJsonAs.ImageAlign = Drawing.ContentAlignment.TopLeft
+        Me.btnSaveJsonAs.ImageAlign = Drawing.ContentAlignment.MiddleLeft
         Me.btnSaveJsonAs.Location = New System.Drawing.Point(73, 45)
         Me.btnSaveJsonAs.Name = "btnSaveJsonAs"
         Me.btnSaveJsonAs.Size = New System.Drawing.Size(76, 24)

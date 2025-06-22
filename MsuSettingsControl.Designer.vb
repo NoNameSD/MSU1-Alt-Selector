@@ -59,13 +59,13 @@ Partial Class MsuSettingsControl
         Me.txtMsuPcmPath.Location = New System.Drawing.Point(123, 11)
         Me.txtMsuPcmPath.Name = "txtMsuPcmPath"
         Me.txtMsuPcmPath.PlaceholderText = "...\msupcm.exe"
-        Me.txtMsuPcmPath.Size = New System.Drawing.Size(176, 23)
+        Me.txtMsuPcmPath.Size = New System.Drawing.Size(172, 23)
         Me.txtMsuPcmPath.TabIndex = 1
         ' 
         ' btnSelPathMsuPcm
         ' 
         Me.btnSelPathMsuPcm.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        Me.btnSelPathMsuPcm.Location = New System.Drawing.Point(305, 10)
+        Me.btnSelPathMsuPcm.Location = New System.Drawing.Point(298, 10)
         Me.btnSelPathMsuPcm.Name = "btnSelPathMsuPcm"
         Me.btnSelPathMsuPcm.Size = New System.Drawing.Size(50, 25)
         Me.btnSelPathMsuPcm.TabIndex = 2
@@ -164,9 +164,9 @@ Partial Class MsuSettingsControl
         ' btnDownloadMsuPcm
         ' 
         Me.btnDownloadMsuPcm.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        Me.btnDownloadMsuPcm.Location = New System.Drawing.Point(358, 10)
+        Me.btnDownloadMsuPcm.Location = New System.Drawing.Point(349, 10)
         Me.btnDownloadMsuPcm.Name = "btnDownloadMsuPcm"
-        Me.btnDownloadMsuPcm.Size = New System.Drawing.Size(70, 25)
+        Me.btnDownloadMsuPcm.Size = New System.Drawing.Size(79, 25)
         Me.btnDownloadMsuPcm.TabIndex = 3
         Me.btnDownloadMsuPcm.Text = "Download"
         Me.btnDownloadMsuPcm.UseVisualStyleBackColor = True
