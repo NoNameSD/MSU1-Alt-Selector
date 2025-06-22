@@ -145,7 +145,7 @@ Partial Class MsuSettingsControl
         Me.ctrlDisplayLoopPointInHexadecimal.Margin = New Padding(2, 3, 3, 3)
         Me.ctrlDisplayLoopPointInHexadecimal.Name = "ctrlDisplayLoopPointInHexadecimal"
         Me.ctrlDisplayLoopPointInHexadecimal.Size = New System.Drawing.Size(210, 19)
-        Me.ctrlDisplayLoopPointInHexadecimal.TabIndex = 9
+        Me.ctrlDisplayLoopPointInHexadecimal.TabIndex = 10
         Me.ctrlDisplayLoopPointInHexadecimal.Text = "Display loop point in Hexadecimal:"
         Me.ctrlDisplayLoopPointInHexadecimal.UseVisualStyleBackColor = True
         ' 
@@ -157,7 +157,7 @@ Partial Class MsuSettingsControl
         Me.ctrlSaveMsuLocation.Margin = New Padding(2, 3, 3, 3)
         Me.ctrlSaveMsuLocation.Name = "ctrlSaveMsuLocation"
         Me.ctrlSaveMsuLocation.Size = New System.Drawing.Size(227, 19)
-        Me.ctrlSaveMsuLocation.TabIndex = 9
+        Me.ctrlSaveMsuLocation.TabIndex = 11
         Me.ctrlSaveMsuLocation.Text = "Save location of msu in configuration:"
         Me.ctrlSaveMsuLocation.UseVisualStyleBackColor = True
         ' 
@@ -183,7 +183,7 @@ Partial Class MsuSettingsControl
         Me.lblLogEntries.Location = New System.Drawing.Point(3, 243)
         Me.lblLogEntries.Name = "lblLogEntries"
         Me.lblLogEntries.Size = New System.Drawing.Size(128, 15)
-        Me.lblLogEntries.TabIndex = 10
+        Me.lblLogEntries.TabIndex = 14
         Me.lblLogEntries.Text = "Maximum Log-Entries:"
         ' 
         ' nudLogEntries
@@ -192,7 +192,7 @@ Partial Class MsuSettingsControl
         Me.nudLogEntries.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
         Me.nudLogEntries.Name = "nudLogEntries"
         Me.nudLogEntries.Size = New System.Drawing.Size(57, 23)
-        Me.nudLogEntries.TabIndex = 11
+        Me.nudLogEntries.TabIndex = 15
         Me.nudLogEntries.TextAlign = HorizontalAlignment.Right
         Me.nudLogEntries.Value = New Decimal(New Integer() {1000, 0, 0, 0})
         ' 

@@ -979,7 +979,7 @@ Public Class Msu1AltSelectMainForm
 
         If Me.Settings IsNot Nothing AndAlso maxLoggerEntriesSave <> Me.Settings.LoggerSettings.MaxEntries Then
             Me.Logger.MaxEntries = Me.Settings.LoggerSettings.MaxEntries
-            Me.nudLogEntries.Value = Me.Logger.MaxEntries
+            Me.ucMsuLog.MaxLogEntriesNUD.Value = Me.Logger.MaxEntries
         End If
     End Sub
 
@@ -1075,24 +1075,6 @@ Public Class Msu1AltSelectMainForm
         End Try
     End Sub
 
-    Private Sub RefreshRichTextLogHandler(sender As Object, e As EventArgs) Handles objLogger.LogEntriesUpdated
-        Call RefreshRichTextLog()
-    End Sub
-
-    Private Delegate Sub RefreshRichTextLogCallback()
-
-    Private Sub RefreshRichTextLog()
-        If Me.rtbLog Is Nothing Then Return
-        ' See https://stackoverflow.com/a/10775421
-        If Me.rtbLog.InvokeRequired Then
-            Dim RefreshRichTextLogCallback As RefreshRichTextLogCallback = New RefreshRichTextLogCallback(AddressOf RefreshRichTextLog)
-            Me.Invoke(RefreshRichTextLogCallback)
-        Else
-            Me.rtbLog.Rtf = Me.Logger.GetLogAsRichText(False, True)
-            If Me.ctrlLogAutoScroll.Checked Then Call Me.rtbLog.ScrollToBottom()
-        End If
-    End Sub
-
     Private Sub Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         If Msu.MsuHelper.IsDevelopmentVersion Then
@@ -1123,7 +1105,9 @@ Public Class Msu1AltSelectMainForm
         End If
 
         objLogger.MaxEntries = Me.Settings.LoggerSettings.MaxEntries
-        Me.nudLogEntries.Value = objLogger.MaxEntries
+        Me.ucMsuLog.MaxLogEntriesNUD.Value = objLogger.MaxEntries
+
+        Me.ucMsuLog.Logger = objLogger
 
         Call FindAndLoadMsu()
 
@@ -1224,10 +1208,6 @@ searchPattern:="*.msu",
             End Try
         Next
 
-    End Sub
-
-    Private Sub rtbLog_Resize(sender As Object, e As EventArgs) Handles rtbLog.Resize
-        If Me.ctrlLogAutoScroll.Checked Then Call Me.rtbLog.ScrollToBottom()
     End Sub
 
     Private Sub btnScanMsuDirectory_Click(sender As Object, e As EventArgs) Handles btnScanMsuDirectory.Click
@@ -1377,12 +1357,8 @@ searchPattern:="*.msu",
                 Continue For
             End If
 
-            ' Do not disable Settings for Log 
-            If Control Is Me.grpLogSettings Then
-                Continue For
-            End If
-            ' Do not disable RichTextBox for Log 
-            If Control Is Me.rtbLog Then
+            ' Do not disable Settings for Log Control
+            If Control Is Me.ucMsuLog Then
                 Continue For
             End If
 
@@ -1508,20 +1484,8 @@ searchPattern:="*.msu",
         Call ctrlKeepCmdOpen_RefreshEnableCheck()
     End Sub
 
-    Private Sub btnLogClear_Click(sender As Object, e As EventArgs) Handles btnLogClear.Click
-        Call Me.Logger.Clear()
-    End Sub
-
-    Private Sub nudLogEntries_ValueChanged(sender As Object, e As System.EventArgs) Handles nudLogEntries.ValueChanged
-        If Me.Logger Is Nothing Then Return
-        Dim MaxEntries = CUInt(nudLogEntries.Value)
-        If Me.Logger.MaxEntries <> MaxEntries Then
-            Me.Logger.MaxEntries = MaxEntries
-        End If
-    End Sub
-
-    Private Sub btnLogExport_Click(sender As Object, e As EventArgs) Handles btnLogExport.Click
-        Dim DefaultFileNameSet As Boolean = False
+    Private Sub btnLogExport_Click(sender As Object, e As EventArgs) Handles ucMsuLog.ClickedLogExport
+        Dim DefaultFileNameSet = False
 
         If Me.MsuTracks IsNot Nothing Then
             If String.IsNullOrWhiteSpace(Me.MsuTracks.MsuName) Then
@@ -1536,7 +1500,7 @@ searchPattern:="*.msu",
             Me.sfdLogExport.FileName = String.Concat("Msu_LogExport.", Me.sfdLogExport.DefaultExt)
         End If
 
-        Call Me.sfdLogExport.ShowDialog(owner:=Me)
+        Me.sfdLogExport.ShowDialog(owner:=Me)
     End Sub
 
     Private Sub sfdLogExport_FileOk(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles sfdLogExport.FileOk
@@ -2035,20 +1999,6 @@ searchPattern:="*.msu",
             .SetToolTip(Me.grpAutoSwitch,
                        $"Set alt. Tracks automatically as the current track, if another TrackId is playing.{Environment.NewLine}" &
                         "(Mostly relevant for DKC3)")
-
-            .SetToolTip(Me.nudLogEntries,
-                       $"Maximum number of Log-Entries that will be kept.{Environment.NewLine}" &
-                        "Too many Log-Entries will decrease performance.")
-            .SetToolTip(Me.lblLogEntries, .GetToolTip(Me.nudLogEntries))
-
-            .SetToolTip(Me.ctrlLogAutoScroll,
-                       $"Automatically scroll to the last Log-Entry.")
-
-            .SetToolTip(Me.btnLogClear,
-                       $"Clear log.")
-
-            .SetToolTip(Me.btnLogExport,
-                       $"Export the log as a text file.")
         End With
     End Sub
 End Class

@@ -52,11 +52,11 @@ Partial Class Msu1AltSelectMainForm
         Me.chAltTrackLoopPoint = New ColumnHeader()
         Me.chAltTrackLoopPointConverted = New ColumnHeader()
         Me.scTracks = New SplitContainer()
+        Me.ucMsuLog = New MsuLogControl()
         Me.grpPcmConvert = New GroupBox()
         Me.ctrlDisplayCmd = New CheckBox()
         Me.nudProcessCount = New NumericUpDown()
         Me.nudPcmResample = New NumericUpDown()
-        Me.lblProcessCount = New Label()
         Me.btnPcmToNormal = New Button()
         Me.lblHz = New Label()
         Me.btnConvertPcm = New Button()
@@ -66,6 +66,7 @@ Partial Class Msu1AltSelectMainForm
         Me.nudPcmVolume = New NumericUpDown()
         Me.lblPcmVolume = New Label()
         Me.ctrlKeepCmdOpen = New CheckBox()
+        Me.lblProcessCount = New Label()
         Me.btnSaveJson = New Button()
         Me.btnSaveJsonAs = New Button()
         Me.grpMsuTracks = New GroupBox()
@@ -77,14 +78,6 @@ Partial Class Msu1AltSelectMainForm
         Me.tmrAutoSwitch = New Timer(Me.components)
         Me.ctrlDisplayOnlyTracksWithAlts = New CheckBox()
         Me.scVerticalHalf = New SplitContainer()
-        Me.rtbLog = New Logger.ScrollingRichTextBox()
-        Me.grpLogSettings = New GroupBox()
-        Me.ctrlLogAutoScroll = New CheckBox()
-        Me.scLogSettingButtons = New SplitContainer()
-        Me.btnLogClear = New Button()
-        Me.btnLogExport = New Button()
-        Me.lblLogEntries = New Label()
-        Me.nudLogEntries = New NumericUpDown()
         Me.btnSettings = New Button()
         Me.btnScanMsuDirectory = New Button()
         Me.BackgroundWorkerDelegate = New ComponentModel.BackgroundWorker()
@@ -109,12 +102,6 @@ Partial Class Msu1AltSelectMainForm
         Me.scVerticalHalf.Panel1.SuspendLayout()
         Me.scVerticalHalf.Panel2.SuspendLayout()
         Me.scVerticalHalf.SuspendLayout()
-        Me.grpLogSettings.SuspendLayout()
-        CType(Me.scLogSettingButtons, ComponentModel.ISupportInitialize).BeginInit()
-        Me.scLogSettingButtons.Panel1.SuspendLayout()
-        Me.scLogSettingButtons.Panel2.SuspendLayout()
-        Me.scLogSettingButtons.SuspendLayout()
-        CType(Me.nudLogEntries, ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         ' 
         ' sfdLogExport
@@ -332,13 +319,23 @@ Partial Class Msu1AltSelectMainForm
         Me.scTracks.SplitterDistance = 158
         Me.scTracks.TabIndex = 0
         ' 
+        ' ucMsuLog
+        ' 
+        Me.ucMsuLog.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        Me.ucMsuLog.AutoSizeMode = AutoSizeMode.GrowAndShrink
+        Me.ucMsuLog.Location = New System.Drawing.Point(0, 0)
+        Me.ucMsuLog.Logger = Nothing
+        Me.ucMsuLog.Margin = New Padding(0)
+        Me.ucMsuLog.Name = "ucMsuLog"
+        Me.ucMsuLog.Size = New System.Drawing.Size(523, 115)
+        Me.ucMsuLog.TabIndex = 84
+        ' 
         ' grpPcmConvert
         ' 
         Me.grpPcmConvert.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         Me.grpPcmConvert.Controls.Add(Me.ctrlDisplayCmd)
         Me.grpPcmConvert.Controls.Add(Me.nudProcessCount)
         Me.grpPcmConvert.Controls.Add(Me.nudPcmResample)
-        Me.grpPcmConvert.Controls.Add(Me.lblProcessCount)
         Me.grpPcmConvert.Controls.Add(Me.btnPcmToNormal)
         Me.grpPcmConvert.Controls.Add(Me.lblHz)
         Me.grpPcmConvert.Controls.Add(Me.btnConvertPcm)
@@ -346,6 +343,7 @@ Partial Class Msu1AltSelectMainForm
         Me.grpPcmConvert.Controls.Add(Me.nudPcmVolume)
         Me.grpPcmConvert.Controls.Add(Me.lblPcmVolume)
         Me.grpPcmConvert.Controls.Add(Me.ctrlKeepCmdOpen)
+        Me.grpPcmConvert.Controls.Add(Me.lblProcessCount)
         Me.grpPcmConvert.Location = New System.Drawing.Point(0, 225)
         Me.grpPcmConvert.Name = "grpPcmConvert"
         Me.grpPcmConvert.Size = New System.Drawing.Size(365, 96)
@@ -397,18 +395,6 @@ Partial Class Msu1AltSelectMainForm
         Me.nudPcmResample.TabIndex = 11
         Me.nudPcmResample.TextAlign = HorizontalAlignment.Right
         Me.nudPcmResample.Value = New Decimal(New Integer() {44100, 0, 0, 0})
-        ' 
-        ' lblProcessCount
-        ' 
-        Me.lblProcessCount.BackColor = Drawing.Color.Transparent
-        Me.lblProcessCount.ForeColor = Drawing.SystemColors.ControlText
-        Me.lblProcessCount.Location = New System.Drawing.Point(124, 21)
-        Me.lblProcessCount.Margin = New Padding(4, 0, 4, 0)
-        Me.lblProcessCount.Name = "lblProcessCount"
-        Me.lblProcessCount.RightToLeft = RightToLeft.No
-        Me.lblProcessCount.Size = New System.Drawing.Size(58, 20)
-        Me.lblProcessCount.TabIndex = 14
-        Me.lblProcessCount.Text = "Processes"
         ' 
         ' btnPcmToNormal
         ' 
@@ -527,6 +513,18 @@ Partial Class Msu1AltSelectMainForm
         Me.ctrlKeepCmdOpen.TabIndex = 18
         Me.ctrlKeepCmdOpen.Text = "Keep CMD Windows open (Debug)"
         Me.ctrlKeepCmdOpen.UseVisualStyleBackColor = True
+        ' 
+        ' lblProcessCount
+        ' 
+        Me.lblProcessCount.BackColor = Drawing.Color.Transparent
+        Me.lblProcessCount.ForeColor = Drawing.SystemColors.ControlText
+        Me.lblProcessCount.Location = New System.Drawing.Point(124, 21)
+        Me.lblProcessCount.Margin = New Padding(4, 0, 4, 0)
+        Me.lblProcessCount.Name = "lblProcessCount"
+        Me.lblProcessCount.RightToLeft = RightToLeft.No
+        Me.lblProcessCount.Size = New System.Drawing.Size(72, 20)
+        Me.lblProcessCount.TabIndex = 14
+        Me.lblProcessCount.Text = "Processes"
         ' 
         ' btnSaveJson
         ' 
@@ -648,112 +646,10 @@ Partial Class Msu1AltSelectMainForm
         ' 
         ' scVerticalHalf.Panel2
         ' 
-        Me.scVerticalHalf.Panel2.Controls.Add(Me.rtbLog)
-        Me.scVerticalHalf.Panel2.Controls.Add(Me.grpLogSettings)
+        Me.scVerticalHalf.Panel2.Controls.Add(Me.ucMsuLog)
         Me.scVerticalHalf.Size = New System.Drawing.Size(524, 441)
         Me.scVerticalHalf.SplitterDistance = 322
         Me.scVerticalHalf.TabIndex = 82
-        ' 
-        ' rtbLog
-        ' 
-        Me.rtbLog.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        Me.rtbLog.Location = New System.Drawing.Point(0, 0)
-        Me.rtbLog.Margin = New Padding(0)
-        Me.rtbLog.Name = "rtbLog"
-        Me.rtbLog.Size = New System.Drawing.Size(400, 113)
-        Me.rtbLog.TabIndex = 29
-        Me.rtbLog.Text = ""
-        ' 
-        ' grpLogSettings
-        ' 
-        Me.grpLogSettings.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
-        Me.grpLogSettings.Controls.Add(Me.ctrlLogAutoScroll)
-        Me.grpLogSettings.Controls.Add(Me.scLogSettingButtons)
-        Me.grpLogSettings.Controls.Add(Me.lblLogEntries)
-        Me.grpLogSettings.Controls.Add(Me.nudLogEntries)
-        Me.grpLogSettings.Location = New System.Drawing.Point(402, -8)
-        Me.grpLogSettings.Margin = New Padding(3, 0, 3, 3)
-        Me.grpLogSettings.Name = "grpLogSettings"
-        Me.grpLogSettings.Size = New System.Drawing.Size(116, 121)
-        Me.grpLogSettings.TabIndex = 1
-        Me.grpLogSettings.TabStop = False
-        ' 
-        ' ctrlLogAutoScroll
-        ' 
-        Me.ctrlLogAutoScroll.AutoSize = True
-        Me.ctrlLogAutoScroll.Checked = True
-        Me.ctrlLogAutoScroll.CheckState = CheckState.Checked
-        Me.ctrlLogAutoScroll.Location = New System.Drawing.Point(7, 42)
-        Me.ctrlLogAutoScroll.Name = "ctrlLogAutoScroll"
-        Me.ctrlLogAutoScroll.Size = New System.Drawing.Size(84, 19)
-        Me.ctrlLogAutoScroll.TabIndex = 32
-        Me.ctrlLogAutoScroll.Text = "Auto Scroll"
-        Me.ctrlLogAutoScroll.UseVisualStyleBackColor = True
-        ' 
-        ' scLogSettingButtons
-        ' 
-        Me.scLogSettingButtons.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
-        Me.scLogSettingButtons.Location = New System.Drawing.Point(1, 63)
-        Me.scLogSettingButtons.Name = "scLogSettingButtons"
-        Me.scLogSettingButtons.Orientation = Orientation.Horizontal
-        ' 
-        ' scLogSettingButtons.Panel1
-        ' 
-        Me.scLogSettingButtons.Panel1.Controls.Add(Me.btnLogClear)
-        ' 
-        ' scLogSettingButtons.Panel2
-        ' 
-        Me.scLogSettingButtons.Panel2.Controls.Add(Me.btnLogExport)
-        Me.scLogSettingButtons.Size = New System.Drawing.Size(114, 54)
-        Me.scLogSettingButtons.SplitterDistance = 25
-        Me.scLogSettingButtons.TabIndex = 33
-        ' 
-        ' btnLogClear
-        ' 
-        Me.btnLogClear.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left
-        Me.btnLogClear.BackColor = Drawing.SystemColors.Control
-        Me.btnLogClear.ForeColor = Drawing.SystemColors.ControlText
-        Me.btnLogClear.Location = New System.Drawing.Point(4, 0)
-        Me.btnLogClear.Margin = New Padding(4, 0, 4, 3)
-        Me.btnLogClear.Name = "btnLogClear"
-        Me.btnLogClear.RightToLeft = RightToLeft.No
-        Me.btnLogClear.Size = New System.Drawing.Size(106, 25)
-        Me.btnLogClear.TabIndex = 34
-        Me.btnLogClear.Text = "Clear"
-        Me.btnLogClear.UseVisualStyleBackColor = False
-        ' 
-        ' btnLogExport
-        ' 
-        Me.btnLogExport.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left
-        Me.btnLogExport.BackColor = Drawing.SystemColors.Control
-        Me.btnLogExport.ForeColor = Drawing.SystemColors.ControlText
-        Me.btnLogExport.Location = New System.Drawing.Point(4, 0)
-        Me.btnLogExport.Margin = New Padding(4, 0, 4, 3)
-        Me.btnLogExport.Name = "btnLogExport"
-        Me.btnLogExport.RightToLeft = RightToLeft.No
-        Me.btnLogExport.Size = New System.Drawing.Size(106, 25)
-        Me.btnLogExport.TabIndex = 35
-        Me.btnLogExport.Text = "Export"
-        Me.btnLogExport.UseVisualStyleBackColor = False
-        ' 
-        ' lblLogEntries
-        ' 
-        Me.lblLogEntries.AutoSize = True
-        Me.lblLogEntries.Location = New System.Drawing.Point(5, 19)
-        Me.lblLogEntries.Name = "lblLogEntries"
-        Me.lblLogEntries.Size = New System.Drawing.Size(45, 15)
-        Me.lblLogEntries.TabIndex = 30
-        Me.lblLogEntries.Text = "Entries:"
-        ' 
-        ' nudLogEntries
-        ' 
-        Me.nudLogEntries.Location = New System.Drawing.Point(51, 17)
-        Me.nudLogEntries.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
-        Me.nudLogEntries.Name = "nudLogEntries"
-        Me.nudLogEntries.Size = New System.Drawing.Size(57, 23)
-        Me.nudLogEntries.TabIndex = 31
-        Me.nudLogEntries.TextAlign = HorizontalAlignment.Right
-        Me.nudLogEntries.Value = New Decimal(New Integer() {1000, 0, 0, 0})
         ' 
         ' btnSettings
         ' 
@@ -798,14 +694,14 @@ Partial Class Msu1AltSelectMainForm
         Me.ctrlDisplayLoopPoints.Location = New System.Drawing.Point(237, 75)
         Me.ctrlDisplayLoopPoints.Name = "ctrlDisplayLoopPoints"
         Me.ctrlDisplayLoopPoints.Size = New System.Drawing.Size(118, 19)
-        Me.ctrlDisplayLoopPoints.TabIndex = 83
+        Me.ctrlDisplayLoopPoints.TabIndex = 7
         Me.ctrlDisplayLoopPoints.Text = "Show loop points"
         Me.ctrlDisplayLoopPoints.UseVisualStyleBackColor = True
         ' 
         ' Msu1AltSelectMainForm
         ' 
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
-        Me.AutoScaleMode = AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(96F, 96F)
+        Me.AutoScaleMode = AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(528, 536)
         Me.Controls.Add(Me.btnScanMsuDirectory)
         Me.Controls.Add(Me.btnSettings)
@@ -840,13 +736,6 @@ Partial Class Msu1AltSelectMainForm
         Me.scVerticalHalf.Panel2.ResumeLayout(False)
         CType(Me.scVerticalHalf, ComponentModel.ISupportInitialize).EndInit()
         Me.scVerticalHalf.ResumeLayout(False)
-        Me.grpLogSettings.ResumeLayout(False)
-        Me.grpLogSettings.PerformLayout()
-        Me.scLogSettingButtons.Panel1.ResumeLayout(False)
-        Me.scLogSettingButtons.Panel2.ResumeLayout(False)
-        CType(Me.scLogSettingButtons, ComponentModel.ISupportInitialize).EndInit()
-        Me.scLogSettingButtons.ResumeLayout(False)
-        CType(Me.nudLogEntries, ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
     End Sub
@@ -894,12 +783,6 @@ Partial Class Msu1AltSelectMainForm
     Private WithEvents grpPcmConvert As GroupBox
     Private WithEvents ctrlKeepCmdOpen As CheckBox
     Private WithEvents ctrlDisplayCmd As CheckBox
-    Private WithEvents grpLogSettings As GroupBox
-    Private WithEvents lblLogEntries As Label
-    Private WithEvents nudLogEntries As NumericUpDown
-    Private WithEvents btnLogExport As Button
-    Private WithEvents btnLogClear As Button
-    Private WithEvents scLogSettingButtons As SplitContainer
 
     Private WithEvents EditTrackToolStripMenuItem As ToolStripMenuItem
     Private WithEvents DeleteTrackToolStripMenuItem As ToolStripMenuItem
@@ -918,8 +801,7 @@ Partial Class Msu1AltSelectMainForm
     Private WithEvents ToolStripMenuItem3 As ToolStripMenuItem
     Private WithEvents ToolStripMenuItem4 As ToolStripMenuItem
     Private WithEvents AddNewAltTrackToolStripMenuItem As ToolStripMenuItem
-    Private WithEvents rtbLog As Logger.ScrollingRichTextBox
     Private WithEvents ttpMsuAltSel As ToolTip
-    Private WithEvents ctrlLogAutoScroll As CheckBox
     Private WithEvents ctrlDisplayLoopPoints As CheckBox
+    Friend WithEvents ucMsuLog As MsuLogControl
 End Class
