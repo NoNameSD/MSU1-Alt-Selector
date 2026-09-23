@@ -32,6 +32,7 @@ Partial Class MsuLogControl
         Me.rtbLog.Location = New System.Drawing.Point(0, 0)
         Me.rtbLog.Margin = New Padding(0)
         Me.rtbLog.Name = "rtbLog"
+        Me.rtbLog.ReadOnly = True
         Me.rtbLog.Size = New System.Drawing.Size(78, 115)
         Me.rtbLog.TabIndex = 30
         Me.rtbLog.Text = ""
