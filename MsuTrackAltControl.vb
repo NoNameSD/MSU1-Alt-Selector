@@ -13,6 +13,7 @@ Public Class MsuTrackAltControl
     Public Event FormDirty(sender As Object, e As EventArgs)
 
     Private _Dirty As Boolean
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property Dirty As Boolean
         Get
             Return _Dirty
@@ -53,6 +54,7 @@ Public Class MsuTrackAltControl
     Private Property LoopPointToEdit As Nullable(Of UInt32)
     Private Property LoopPointConvertedToEdit As Nullable(Of UInt32)
 
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property MsuSelButtonForFullPathEnabled As Boolean
         Get
             Return Me.btnSelPathPcm.Enabled
@@ -62,6 +64,7 @@ Public Class MsuTrackAltControl
         End Set
     End Property
 
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property MsuSelButtonForLocationEnabled As Boolean
         Get
             Return Me.btnSelLocationPcm.Enabled

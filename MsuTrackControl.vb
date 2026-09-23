@@ -13,6 +13,7 @@ Public Class MsuTrackControl
     Private Property MsuTrackTmp As MsuTrack
     Private Property MsuTracks As MsuTracks
 
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property MsuTrackNumberChangeAllowed As Boolean
         Get
             Return Me.nudMsuTrackId.Enabled

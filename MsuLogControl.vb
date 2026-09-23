@@ -2,6 +2,7 @@
 
     Public Event ClickedLogExport(sender As Object, e As EventArgs)
 
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property Logger As MsuAltSelect.Logger.Logger
         Get
             Return objLogger

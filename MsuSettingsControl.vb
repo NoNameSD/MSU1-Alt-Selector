@@ -8,6 +8,7 @@ Public Class MsuSettingsControl
     Public Event FormDirty(sender As Object, e As EventArgs)
 
     Private _Dirty As Boolean
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property Dirty As Boolean
         Get
             Return _Dirty

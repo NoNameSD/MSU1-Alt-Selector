@@ -10,6 +10,7 @@ Public Class Msu1AltSelectMainForm
     Private _JsonFilePath As String
     Private _DisplayOnlyTracksWithAlts As Boolean
     Private _DisplayLoopPoints As Boolean
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property Settings As Msu.Settings.Settings
     Public Event CreatedNewConfig()
 
@@ -38,6 +39,7 @@ Public Class Msu1AltSelectMainForm
         End Get
     End Property
 
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property EnableAutoSwitch As Boolean
         Get
             Return Me.tmrAutoSwitch.Enabled
@@ -69,6 +71,7 @@ Public Class Msu1AltSelectMainForm
         End Set
     End Property
 
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property DisplayOnlyTracksWithAlts As Boolean
         Get
             Return _DisplayOnlyTracksWithAlts 'Me.ctrlDisplayOnlyTracksWithAlts.Checked
@@ -110,6 +113,7 @@ Public Class Msu1AltSelectMainForm
         Me.DisplayOnlyTracksWithAlts = tracksWithAltsExist
     End Sub
 
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property DisplayLoopPoints As Boolean
         Get
             Return _DisplayLoopPoints
@@ -293,6 +297,7 @@ Public Class Msu1AltSelectMainForm
         End If
     End Sub
 
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property TrackSelected As Tracks.MsuTrack
         Get
             If Me.MsuTracks Is Nothing Then Return Nothing
@@ -319,9 +324,11 @@ Public Class Msu1AltSelectMainForm
         End Set
     End Property
 
+
     ''' <returns>
     ''' Current TrackId (which has the alt. Tracks shown) selected by the user
     ''' </returns>
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property TrackIdSelected As Nullable(Of Byte)
         Get
             Dim selectedItems As ListView.SelectedListViewItemCollection = lstvTracks.SelectedItems
@@ -382,6 +389,7 @@ Public Class Msu1AltSelectMainForm
     ''' <returns>
     ''' Current selected alt. Track for the currently selected TrackId
     ''' </returns>
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property TrackAltSelected As MsuTrackAlt
         Get
             Dim trackIdSelected = Me.TrackSelected
@@ -409,6 +417,7 @@ Public Class Msu1AltSelectMainForm
     ''' <returns>
     ''' Current selected alt. Track for the currently selected TrackId
     ''' </returns>
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property TrackAltIdSelected As Nullable(Of System.UInt16)
         Get
             Dim trackIdSelected As Nullable(Of Byte) = Me.TrackIdSelected
@@ -482,6 +491,7 @@ Public Class Msu1AltSelectMainForm
     ''' <returns>
     ''' alt. Track, that is marked as the current alt. Track
     ''' </returns>
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property TrackAltMarkedAsCurrent As MsuTrackAlt
         Get
             Dim trackIdSelected = Me.TrackSelected
@@ -509,6 +519,7 @@ Public Class Msu1AltSelectMainForm
     ''' <returns>
     ''' alt. Track, that is marked as the current alt. Track
     ''' </returns>
+    <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property TrackAltIdMarkedAsCurrent As Nullable(Of System.UInt16)
         Get
             Dim checkedItems As ListView.CheckedListViewItemCollection = lstvAltTracks.CheckedItems
@@ -1465,7 +1476,7 @@ searchPattern:="*.msu",
 
         DialogResult = MessageBox.Show(
             owner:=Me,
-             text:=Msg,
+             text:=msg,
           caption:=My.Application.Info.ProductName,
           buttons:=MessageBoxButtons.YesNo,
              icon:=MessageBoxIcon.Question, defaultButton:=MessageBoxDefaultButton.Button2
