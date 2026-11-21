@@ -672,10 +672,16 @@ Namespace Msu
                     End If
                 End If
 
-                If isMainDir Then
-                    Call AddPcmTrack(locationAbsolute, trackNumber, Me.Settings.TrackAltSettings.MsuTrackMainVersionTitle)
+                Dim title As String = Nothing
+
+                If MsuPcmFile.TryGetTitleFromTitleTxtFile(locationAbsolute:=locationAbsolute, pcmPrefix:=Me.PcmPrefix, trackNumber:=trackNumber, outTitle:=title) Then
+                    Call AddPcmTrack(locationAbsolute:=locationAbsolute, trackNumber:=trackNumber, title:=title)
                 Else
-                    Call AddPcmTrack(locationAbsolute, trackNumber)
+                    If isMainDir Then
+                        Call AddPcmTrack(locationAbsolute:=locationAbsolute, trackNumber:=trackNumber, title:=Me.Settings.TrackAltSettings.MsuTrackMainVersionTitle)
+                    Else
+                        Call AddPcmTrack(locationAbsolute:=locationAbsolute, trackNumber:=trackNumber)
+                    End If
                 End If
             End Sub
 

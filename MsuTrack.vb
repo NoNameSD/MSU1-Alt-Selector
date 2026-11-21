@@ -85,6 +85,38 @@ Namespace Msu
                 End Try
             End Sub
 
+            ''' <returns>Path where the program expects the .txt file for the track title</returns>
+            Public Shared Function GetTitleTxtFilePath(locationAbsolute As String, pcmPrefix As String, trackNumber As Byte) As String
+                Return MsuPcmFile.GetFilePath(locationAbsolute, pcmPrefix, trackNumber, "_Title", ".txt")
+            End Function
+
+            Public Shared Function TryFindTitleTxtFile(locationAbsolute As String, pcmPrefix As String, trackNumber As Byte, ByRef outTitleTxtPath As String) As Boolean
+                Dim txtPath = GetTitleTxtFilePath(locationAbsolute, pcmPrefix, trackNumber)
+
+                If System.IO.File.Exists(txtPath) Then
+                    outTitleTxtPath = txtPath
+                    Return True
+                Else
+                    Return False
+                End If
+            End Function
+
+            Public Shared Function TryGetTitleFromTitleTxtFile(locationAbsolute As String, pcmPrefix As String, trackNumber As Byte, ByRef outTitle As String) As Boolean
+                Try
+                    Dim titleTxtPath As String = Nothing
+
+                    If TryFindTitleTxtFile(locationAbsolute:=locationAbsolute, pcmPrefix:=pcmPrefix, trackNumber:=trackNumber, outTitleTxtPath:=titleTxtPath) Then
+
+                        outTitle = System.IO.File.ReadAllText(titleTxtPath, System.Text.Encoding.UTF8)
+                        Return True
+                    Else
+                        Return False
+                    End If
+                Catch ex As Exception
+                    Return False
+                End Try
+            End Function
+
             ''' <returns>
             ''' Checks if the file at <see cref="MsuPcmFile.FilePath"/> exists.
             ''' </returns>
@@ -141,6 +173,21 @@ Namespace Msu
             ''' </returns>
             Public Shared Function GetFileName(pcmPrefix As String, trackNumber As Byte, ByRef suffix As String) As String
                 Return String.Concat(pcmPrefix, MsuHelper.HyphenChar, trackNumber, suffix, MsuHelper.PcmExtL)
+            End Function
+
+            ''' <param name="PcmPrefix">Prefix for the .pcm FileName</param>
+            ''' <param name="TrackNumber">MSU1 Track-Id to use</param>
+            ''' <param name="Suffix">Additional Suffix in the Filename after the <paramref name="TrackNumber"/></param>
+            ''' <param name="fileExtWithDot">File extension including the dot at the start</param>
+            ''' <returns>
+            ''' Filename of this <see cref="MsuPcmFile"/>
+            ''' </returns>
+            Public Shared Function GetFileName(pcmPrefix As String, trackNumber As Byte, ByRef suffix As String, ByRef fileExtWithDot As String) As String
+                If String.IsNullOrWhiteSpace(fileExtWithDot) Then
+                    Return String.Concat(pcmPrefix, MsuHelper.HyphenChar, trackNumber, suffix)
+                Else
+                    Return String.Concat(pcmPrefix, MsuHelper.HyphenChar, trackNumber, suffix, fileExtWithDot)
+                End If
             End Function
 
             ''' <param name="PcmPrefix">Prefix for the .pcm FileName</param>
@@ -222,6 +269,18 @@ Namespace Msu
             ''' </returns>
             Public Shared Function GetFilePath(location As String, pcmPrefix As String, trackNumber As Byte, suffix As String) As String
                 Return System.IO.Path.Join(location, MsuPcmFile.GetFileName(pcmPrefix, trackNumber, suffix))
+            End Function
+
+            ''' <param name="Location">Path to parent directory</param>
+            ''' <param name="PcmPrefix">Prefix for the .pcm FileName</param>
+            ''' <param name="TrackNumber">MSU1 Track-Id to use</param>
+            ''' <param name="Suffix">Additional Suffix in the Filename after the <paramref name="TrackNumber"/></param>
+            ''' <param name="fileExtWithDot">File extension including the dot at the start</param>
+            ''' <returns>
+            ''' Full file path of this <see cref="MsuPcmFile"/>
+            ''' </returns>
+            Public Shared Function GetFilePath(location As String, pcmPrefix As String, trackNumber As Byte, suffix As String, fileExtWithDot As String) As String
+                Return System.IO.Path.Join(location, MsuPcmFile.GetFileName(pcmPrefix, trackNumber, suffix, fileExtWithDot))
             End Function
 
             Public Function FilePathWithNormalVersionSuffix() As String
