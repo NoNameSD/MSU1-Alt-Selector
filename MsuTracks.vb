@@ -9,6 +9,7 @@ Namespace Msu
         Public Class MsuTracks : Implements IDisposable
             Public Event TrackAltSwitched(ByVal sender As Object, ByVal e As MsuAltSelect.Msu.Tracks.MsuTrack.TrackAltSwitchedEventArgs)
             Public Event ConvertedFilesSwitched(ByVal sender As Object, ByVal e As EventArgs)
+            Public Event Dirty(ByVal sender As Object, ByVal e As EventArgs)
             Private disposedValue As Boolean
 
             Private WithEvents _Logger As Logger.Logger
@@ -25,6 +26,13 @@ Namespace Msu
                     _Logger = value
                 End Set
             End Property
+
+            <Newtonsoft.Json.JsonIgnore>
+            Public Property IsDirty As Boolean
+
+            Private Sub MsuTracks_Dirty(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Dirty
+                Me.IsDirty = True
+            End Sub
 
             Private Sub MsuTrack_TrackAltSwitched(ByVal sender As Object, ByVal e As MsuAltSelect.Msu.Tracks.MsuTrack.TrackAltSwitchedEventArgs) Handles Me.TrackAltSwitched
 
@@ -62,6 +70,9 @@ Namespace Msu
                 RaiseEvent ConvertedFilesSwitched(sender, e)
             End Sub
 
+            Friend Sub RaiseEventDirty(ByVal sender As Object, ByVal e As EventArgs)
+                RaiseEvent Dirty(sender, e)
+            End Sub
 
             <Newtonsoft.Json.JsonIgnore>
             Private _MsuLocation As String
@@ -252,6 +263,7 @@ Namespace Msu
                 Me.Logger = logger
                 If String.IsNullOrWhiteSpace(msuFilePath) Then Else Me.MsuFilePath = msuFilePath
                 Me.Settings = settings
+                Me.IsDirty = False
             End Sub
 
             ' Set the working directory to the directory of the .msu file
@@ -1026,6 +1038,7 @@ Namespace Msu
                     Call System.IO.File.Move(jsonPathTmp, jsonFilePath)
 
                 End If
+                Me.IsDirty = False
             End Sub
 
             ''' <summary>

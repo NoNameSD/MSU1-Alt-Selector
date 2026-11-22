@@ -39,6 +39,36 @@ Public Class Msu1AltSelectMainForm
         End Get
     End Property
 
+    Public Sub PromptSaveWhenDirty(e As System.ComponentModel.CancelEventArgs)
+        If Me.MsuTracks Is Nothing Then Exit Sub
+        If Me.MsuTracks.IsDirty Then
+            Dim result As DialogResult = MessageBox.Show(
+                "There are unsaved changes to the current configuration." & System.Environment.NewLine &
+                "Do you want to save the changes?",
+                My.Application.Info.ProductName,
+                MessageBoxButtons.YesNoCancel,
+                MessageBoxIcon.Warning
+            )
+
+            Select Case result
+                Case DialogResult.Yes
+
+                    ' Attempt to save
+                    Call Me.SaveJson()
+
+                    ' Save successful when isDirty was set to false
+                    If e IsNot Nothing Then e.Cancel = Me.MsuTracks.IsDirty
+
+                Case DialogResult.No
+                    ' Do nothing; Continue action without saving
+
+                Case DialogResult.Cancel
+                    ' Abort; Cancel the next action
+                    If e IsNot Nothing Then e.Cancel = True
+            End Select
+        End If
+    End Sub
+
     <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Property EnableAutoSwitch As Boolean
         Get
@@ -137,10 +167,21 @@ Public Class Msu1AltSelectMainForm
         End If
     End Sub
 
+    Private Sub Msu1AltSelectMainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Call Me.PromptSaveWhenDirty(e)
+    End Sub
+
     Private Sub SelectMsuFileClicked(sender As System.Object, e As System.EventArgs) Handles btnSelPathMsu.Click
         Call SelectMsuFile()
     End Sub
     Private Sub SelectMsuFile()
+        Dim e As New System.ComponentModel.CancelEventArgs
+        Call Me.PromptSaveWhenDirty(e)
+
+        If e.Cancel Then
+            Exit Sub ' User cancelled saving unsaved changes
+        End If
+
         Call Me.ofdPathMsu.ShowDialog(owner:=Me)
     End Sub
 
@@ -1645,6 +1686,7 @@ searchPattern:="*.msu",
         Call TrackSelected.Dispose()
 
         Call Me.FillTrackList()
+        Call Me.MsuTracks.RaiseEventDirty(Me, Nothing)
     End Sub
 
     Private Sub DeleteAltTrackToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteAltTrackToolStripMenuItem.Click
@@ -1714,6 +1756,7 @@ searchPattern:="*.msu",
         Call TrackAltSelected.Dispose()
 
         Call Me.FillAltTrackList()
+        Call Me.MsuTracks.RaiseEventDirty(Me, Nothing)
     End Sub
 
     Private Sub EditTrackToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditTrackToolStripMenuItem.Click

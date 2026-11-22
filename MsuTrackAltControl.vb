@@ -280,9 +280,13 @@ Public Class MsuTrackAltControl
             ' Add New track
 
             Call Me.MsuTrack.AddPcmTrack(Me.MsuTrackAltTmp)
+            Call Me.MsuTrack.RaiseEventDirty(Me, Nothing)
         Else
 
             ' Update existing track
+
+            ' Track whether the actual current configuration needs to get marked as dirty (not the form itself)
+            Dim isDirty As Boolean = False
 
             ' If the AltNumber was changed (Already checked if new AltNumber already exists)
             If Me.MsuTrackAltToEdit.AltNumber <> Me.MsuTrackAltTmp.AltNumber Then
@@ -290,14 +294,29 @@ Public Class MsuTrackAltControl
                 Call Me.MsuTrack.TrackAltDict.Remove(Me.MsuTrackAltToEdit.AltNumber)
                 Me.MsuTrackAltToEdit.AltNumber = Me.MsuTrackAltTmp.AltNumber
                 Call Me.MsuTrack.TrackAltDict.Add(Me.MsuTrackAltToEdit.AltNumber, Me.MsuTrackAltToEdit)
+                isDirty = True
             End If
 
-            Me.MsuTrackAltToEdit.Title = Me.MsuTrackAltTmp.Title
-            Me.MsuTrackAltToEdit.AutoSwitchTrackNumbers = Me.MsuTrackAltTmp.AutoSwitchTrackNumbers
+            If String.Compare(Me.MsuTrackAltToEdit.Title, Me.MsuTrackAltTmp.Title, StringComparison.Ordinal) <> 0 Then
+                Me.MsuTrackAltToEdit.Title = Me.MsuTrackAltTmp.Title
+                isDirty = True
+            End If
+
+            If Me.MsuTrackAltToEdit.AutoSwitchTrackNumbers.AsSpan().SequenceEqual(Me.MsuTrackAltTmp.AutoSwitchTrackNumbers.AsSpan()) Then
+            Else
+                Me.MsuTrackAltToEdit.AutoSwitchTrackNumbers = Me.MsuTrackAltTmp.AutoSwitchTrackNumbers
+                isDirty = True
+            End If
+
             If Me.ChangedLocation Then
                 Me.MsuTrackAltToEdit.LocationAbsolute = Me.MsuTrackAltTmp.LocationAbsolute
                 Call Me.MsuTrackAltToEdit.UpdateSavedLocation()
+                isDirty = True
             End If
+
+            ' Note: Changes to the loop point are directly done in the pcm files
+            '       and are not stored in the configuration.
+            '       This means they do not get marked as dirty.
 
             ' Update loop point of pcm file if changed
             If Me.LoopPoint IsNot Nothing AndAlso Me.LoopPointToEdit IsNot Nothing _
@@ -398,6 +417,8 @@ Public Class MsuTrackAltControl
                     Me.LoopPointConverted = Me.LoopPointConvertedToEdit
                 End If
             End If
+
+            If isDirty Then Call Me.MsuTrackAltToEdit.RaiseEventDirty(Me, Nothing)
         End If
 
         Me.MsuSelButtonForFullPathEnabled = Me.MsuTrackAltTmp.FilePathExists

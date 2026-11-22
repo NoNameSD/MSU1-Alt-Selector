@@ -55,11 +55,10 @@ Public Class MsuTrackControl
     End Sub
 
     Public Sub ApplyChanges()
+        Dim objMsuTrackExisting As MsuTrack = Nothing
 
         ' Check for existing Track with this Id
-        If Me.MsuTracks.TrackDict.ContainsKey(Me.MsuTrackTmp.TrackNumber) Then
-            Dim objMsuTrackExisting As MsuTrack = Me.MsuTracks.TrackDict.Item(Me.MsuTrackTmp.TrackNumber)
-
+        If Me.MsuTracks.TrackDict.TryGetValue(Me.MsuTrackTmp.TrackNumber, objMsuTrackExisting) Then
             If objMsuTrackExisting IsNot Me.MsuTrackToEdit Then
                 Throw New MsuTrackAlreadyExistsException(objMsuTrackExisting)
             End If
@@ -71,15 +70,24 @@ Public Class MsuTrackControl
 
             Call Me.MsuTracks.TrackDict.Add(Me.MsuTrackTmp.TrackNumber, Me.MsuTrackTmp)
             Me.MsuTrackNumberChangeAllowed = False
+            Me.MsuTracks.RaiseEventDirty(Me, Nothing)
         Else
 
             ' Update existing track
+
+            ' Track whether the actual current configuration needs to get marked as dirty (not the form itself)
+            Dim isDirty As Boolean = False
 
             If Me.MsuTrackToEdit.TrackNumber <> Me.MsuTrackTmp.TrackNumber Then
                 Throw New MsuTrackNumberChangeException
             End If
 
-            Me.MsuTrackToEdit.Title = Me.MsuTrackTmp.Title
+            If String.Compare(Me.MsuTrackToEdit.Title, Me.MsuTrackTmp.Title, StringComparison.Ordinal) <> 0 Then
+                Me.MsuTrackToEdit.Title = Me.MsuTrackTmp.Title
+                isDirty = True
+            End If
+
+            If isDirty Then Call Me.MsuTrackToEdit.RaiseEventDirty(Me, Nothing)
         End If
 
         RaiseEvent AppliedChanges(Me, Nothing)

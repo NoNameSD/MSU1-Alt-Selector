@@ -1048,6 +1048,12 @@ Namespace Msu
                 Log = Log & $"with relative path: ""{msuTrackAlt.LocationRelative}"""
 
                 Call Me.AddToLog(Log)
+
+                ' Mark configuration as dirty when alt. tracks are added, that are not the Main Version
+                ' (If at this point the .pcm file is not in the swap directory, it has to be the Main Version)
+                If msuTrackAlt.FilePathExists Then
+                    Call Me.RaiseEventDirty(Me, Nothing)
+                End If
             End Sub
 
             Public Function GetFirstAvailableAltNum() As UShort
@@ -1080,6 +1086,12 @@ Namespace Msu
                 For Each keyValuePair As KeyValuePair(Of UShort, MsuTrackAlt) In Me.TrackAltDict
                     Call keyValuePair.Value.CalculateAbsoluteLocation()
                 Next
+            End Sub
+
+            Public Sub RaiseEventDirty(ByVal sender As Object, ByVal e As EventArgs)
+                If Me.Parent IsNot Nothing Then
+                    Call Me.Parent.RaiseEventDirty(sender, e)
+                End If
             End Sub
 
             Friend Sub AddToLog(ByRef text As String)
@@ -1547,6 +1559,12 @@ NextPath:
 
             Friend Sub SetAsCurrentAltTrack(ByRef trackAltCurrent As MsuTrackAlt)
                 Call Parent.SetCurrentAltTrack(Me, trackAltCurrent)
+            End Sub
+
+            Public Sub RaiseEventDirty(ByVal sender As Object, ByVal e As EventArgs)
+                If Me.Parent IsNot Nothing Then
+                    Call Me.Parent.RaiseEventDirty(sender, e)
+                End If
             End Sub
 
             Public Sub New(ByRef parent As MsuTrack, ByRef altNumber As UShort, ByRef location As String, ByRef title As String)
